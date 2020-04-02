@@ -1,0 +1,1002 @@
+/*------------------------------------------------------------------
+[Master Stylesheet]
+Theme Name: Dekor HTML5 Template
+Theme URI: http://www.templaza.com/
+Author: templaza
+Author URI: http://themeforest.net/user/templaza
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: ajax contact form, animation, blog, bootstrap, business, corporate, css3, html5, portfolio, responsive
+------------------------------------------------------------------*/
+
+/**
+* Table of Contents:
+* 1.0 - Reset
+* 2.0 - Off canvas
+* 3.0 - Isotope
+* 4.0 - Content
+*   4.1 - Header / .tz-header
+*   4.2 - Slider / .tz-slider
+*   4.3 - Introduce / .tz-introduce
+*   4.4 - About / .tz-about
+*   4.5 - Why choose / .tz-why-choose
+*   4.6 - Lastest shop / .tz-lastest-shop
+*   4.7 - Lastest shop / .tz-award
+*   4.8 - Portfolio / .tz-portfolio
+*   4.9 - Our blog / .tz-our-blog
+*   4.10 - Partner / .tz-partner
+*   4.11 - Our team / .tz-team-slider
+*   4.12 - Simple Porduct / .tz-simple-product
+*   4.13 - Free Shipping / .tz-free-shipping
+*   4.14 - Quote / .tz-quote
+*   4.15 - Skill / .tz-overlay-skill
+*   4.16 - Custom Html / .custom-html
+*   4.17 - Connected / .tz-overlay-connected
+*   4.18 - The Say / .tz-the-say
+*   4.19 - Shop Tab / .tz-shop-tab-wrap
+*   4.20 - Font awesome / .tz-awesome
+*   4.21 - Bestsellers / .tz-bestsellers
+*   4.22 - Love Words / .tz_love_words
+*   4.23 - Custom Porduct / .tz-custom-product
+*   4.24 - Count / .tz-count
+*   4.25 - Love Words 2 / .tz-love-words2
+*   4.26 - Video / .tz-video
+*   4.27 - Custom Blog / .tzcustom-block
+*   4.28 - Portfolio Page / .tzportfolio-wrap
+*   4.29 - Single Portfolio / .tzsingle-wrap
+*   4.30 - Blog Page / .tzblog-wrap
+*   4.31 - Single Post Page / .tzsingleblog-wrap
+*   4.32 - Comment Post / .tzcomments-area
+*   4.33 - Shop / .tzcategory-shop-wrap
+*   4.34 - Our Facts / .tz-our-facts
+*   4.35 - Our Office / .tz-our-office
+*   4.36 - Contact Pages / .tz-contact
+*   4.37 - Page default & typho / .tzpage-default
+*   4.38 - Shortcode
+*   4.39 - Forum / .tz-forum
+*   4.40 - Joom page default
+*   4.41 - 404 Page/ .404-page
+*   4.42 - Category slider / .tzcategory-slider
+* 5.0 - Footer / .tz-footer
+* 6.0 - Home Color
+*   6.1 - Home Yellow / .home-yellow
+*   6.2 - Home Black / .home-back
+*   6.3 - Home Blue / .home-blue
+*   6.4 - Home Red / .home-red
+* 7.0 - Home RTL / .home-rtl
+* 8.0 - Responsive
+* -----------------------------------------------------------------------------
+*/
+
+
+/*
+* 4.2 - Slider
+* -----------------------------------------------------------------------------
+*/
+
+.tz-slider{
+    width: 100%;
+    overflow: hidden;
+
+}
+.learn-more-styl2:after{
+    background: none repeat scroll 0 0 #ffffff;
+    content: "";
+    height: 100%;
+    left: -100%;
+    position: absolute;
+    top: 0;
+    transition: all 0.25s linear 0s;
+    -moz-transition: all 0.25s linear 0s;
+    -webkit-transition: all 0.25s linear 0s;
+    -o-transition: all 0.25s linear 0s;
+    -ms-transition: all 0.25s linear 0s;
+    width: 100%;
+}
+.learn-more-styl2{
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 2px solid #fff;
+    color: #fff;
+    display: inline-block;
+    font-family: 'Raleway',sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 15px;
+    margin: 31px 0 19px;
+    overflow: hidden;
+    padding: 17px 21px 18px;
+    position: relative;
+    text-align: center;
+    text-decoration: none !important;
+    transition: all 0.3s linear 0s;
+    -moz-transition: all 0.3s linear 0s;
+    -webkit-transition: all 0.3s linear 0s;
+    -ms-transition: all 0.3s linear 0s;
+    -o-transition: all 0.3s linear 0s;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+.learn-more-styl2:hover:after{
+    left: 0;
+}
+.learn-more-styl2:hover span{
+    color: #333333;
+}
+.learn-more-styl2 span {
+    color: #fff;
+    position: relative;
+    z-index: 99;
+}
+
+
+body .tp-caption.title-slider {
+    color: #fff;
+    display: block;
+    font-family: "Raleway",sans-serif;
+    font-size: 90px;
+    font-weight: 700;
+    line-height: 108px;
+    text-align: center;
+    text-decoration: none;
+}
+
+body .tp-caption.content-slider {
+    color: #fff;
+    display: block;
+    font-family: "Raleway",sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    margin: 0;
+    padding: 0 0 15px;
+    text-align: center;
+    text-decoration: none;
+}
+body .slider-button2 {
+    background: none repeat scroll 0 0 #fff;
+    border: 0 none;
+    color: #fff;
+    display: inline-block;
+    font-family: "Raleway",sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    margin: 0;
+    overflow: hidden;
+    padding: 17px 37px 18px;
+    position: relative;
+    text-align: center;
+    text-decoration: none !important;
+}
+.slider-button2 span{
+    color: #1f1f1f;
+}
+body .tp-caption.slider-attach {
+    color: #fff;
+    display: block;
+    font-family: "Raleway",sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    text-align: center;
+    text-decoration: none;
+}
+body .tp-caption.title-slider-blod {
+    color: #fff;
+    display: inline-block;
+    font-family: "Raleway",sans-serif;
+    font-size: 65px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    line-height: 78px;
+}
+body .tp-caption.slider-ds {
+    color: #fff;
+    display: block;
+    font-family: "Raleway",sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 3px;
+}
+body .tp-caption.tz-title-small{
+    color: #fff;
+    display: block;
+    font-family: "Raleway",sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 36px;
+    text-align: center;
+    text-decoration: none;
+}
+body .tp-caption.tz-title-large {
+    color: #fff;
+    display: block;
+    font-family: "Raleway",sans-serif;
+    font-size: 100px;
+    font-weight: 400;
+    line-height: 88px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    text-decoration: none;
+}
+body .tp-caption.title-slider-big{
+    color: #fff;
+    display: block;
+    font-family: "Raleway",sans-serif;
+    font-size: 180px;
+    font-weight: 600;
+    line-height: 146px;
+    text-align: center;
+    text-decoration: none;
+}
+.tz-slider-content p {
+    color: #fff;
+    display: block;
+    font-family: "Raleway",sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 48px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    text-decoration: none;
+}
+body .tp-caption.tz-content-lager{
+    color: #fff;
+    display: block;
+    font-family: "Raleway",sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 0;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    text-decoration: none;
+}
+body .tp-leftarrow.default{
+    background-image: url('images/pre-slider.png');
+}
+body .tp-leftarrow:hover{
+    background-image: url('images/pre-slider-hover.png');
+}
+body .tp-leftarrow:hover,
+body .tp-rightarrow:hover {
+    background-position: inherit;
+}
+body .tp-rightarrow.default{
+    background-image: url('images/next-slider.png');
+}
+body .tp-rightarrow:hover{
+    background-image: url('images/next-slider-hover.png');
+}
+.bk-responsive-slide{
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.3);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+}
+
+
+/**
+* 4.3 - Introduce
+* -----------------------------------------------------------------------------
+*/
+.tz-introduce{
+    padding: 108px 0 83px;
+}
+.tz-introduce iframe{
+    width: 100%;
+    height: 280px;
+    margin-top: 7px;
+}
+.tz-introduce .col-md-6:first-child{
+    padding-right: 54px;
+}
+.tz-title-1{
+    color: #333333;
+    font-family: "Raleway",sans-serif;
+    font-size: 27px;
+    font-weight: 600;
+    line-height: 32.4px;
+    margin: 0;
+    padding: 0 0 20px;
+    position: relative;
+    text-decoration: none;
+}
+.tz-title-1:after{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 20px;
+    height: 3px;
+    content: '';
+    background: #333333;
+}
+.tz-introduce-content p{
+    color: #666666;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 25px;
+    margin: 0;
+    padding: 12px 0;
+    text-decoration: none;
+    position: relative;
+}
+.tz-introduce-content{
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+.tz-view-more{
+    color: #333333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 14px;
+    margin: 27px 0 11px;
+    padding: 17px 48px 18px;
+    text-decoration: none !important;
+    position: relative;
+    border: 1px solid #343434;
+    display: inline-block;
+    background: none;
+    text-align: center;
+    overflow: hidden;
+    transition: all 0.3s linear 0s;
+    -moz-transition: all 0.3s linear 0s;
+    -webkit-transition: all 0.3s linear 0s;
+    -ms-transition: all 0.3s linear 0s;
+    -o-transition: all 0.3s linear 0s;
+}
+.tz-view-more span{
+    color: #fff;
+    position: relative;
+    z-index: 99;
+}
+.theme-white .tz-view-more span{
+    color: #000;
+}
+.theme-white .tz-view-more:hover span{
+    color: #fff;
+}
+.tz-view-more:after{
+    position: absolute;
+    left: -100%;
+    top: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: #333333;
+    transition: all 0.25s linear 0s;
+    -moz-transition: all 0.25s linear 0s;
+    -webkit-transition: all 0.25s linear 0s;
+    -ms-transition: all 0.25s linear 0s;
+    -o-transition: all 0.25s linear 0s;
+}
+.tz-view-more:hover span{
+    color: #333333;
+}
+.tz-view-more:hover:after{
+    left: 0;
+
+}
+
+
+/*-----------tz-introduce3----------*/
+.tz-introduce3{
+    padding: 81px 0 83px;
+}
+.tz-introduce3 .tz-title-1{
+    color: #333333;
+    padding: 0 0 20px;
+    font-size: 20px;
+    line-height: 24px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.tz-introduce3 .tz-view-more{
+    margin: 32px 0 11px;
+}
+.tz-introduce3 p{
+    color: #999999;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 26px;
+    margin: 0;
+    padding: 0;
+    text-decoration: none !important;
+}
+/*-----------tz-introduce4----------*/
+.tz-introduce4{
+    padding: 79px 0 75px;
+}
+.tz-introduce4 .tz-title-1{
+    color: #fff;
+    padding: 0 0 20px;
+    text-transform: none;
+    font-size: 27px;
+    line-height: 32px;
+}
+.tz-introduce4 .tz-title-1:after{
+    background: #fff;
+}
+.tz-introduce4 p{
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 28px;
+    margin: 0;
+    padding: 45px 0 0 0;
+    text-decoration: none !important;
+    font-style: italic;
+}
+.tz-introduce4 .tz-view-more{
+    border-color: #fff;
+    color: #fff;
+    margin: 40px 0 3px;
+}
+.tz-introduce4 .tz-view-more a{
+
+    color: #fff;
+}
+.tz-introduce4 .tz-view-more:hover a{
+    color: #333333;
+}
+.tz-introduce4 .tz-view-more:after{
+    background: #fff;
+}
+/**
+* 4.4 - About
+* -----------------------------------------------------------------------------
+*/
+.tz-about{
+    position: relative;
+    overflow: hidden;
+    padding: 50px 0 40px;
+}
+.tz-about4{
+    position: relative;
+    overflow: hidden;
+    padding: 80px 0 70px;
+}
+.tz-about4-padding{
+    padding: 81px 0 110px;
+}
+body .no-padding{
+    padding-top: 0 !important;
+}
+body .top-padding{
+    padding-top: 38px !important;
+}
+.top-padding .tz-collection2 .item-collection{
+    margin: 15px 0;
+}
+.tz-about3{
+    position: relative;
+    overflow: hidden;
+    padding: 42px 0 54px;
+}
+body .shop-padding{
+    padding: 88px 0 83px;
+}
+.tz-about .tz-about-item{
+    display: block;
+    text-align: center;
+    position: relative;
+    width: 332px;
+    height: 332px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    padding-top: 58px;
+    padding-bottom: 72px;
+    transition: all 0.1s linear 0s;
+    -moz-transition: all 0.1s linear 0s;
+    -webkit-transition: all 0.1s linear 0s;
+    -ms-transition: all 0.1s linear 0s;
+    -o-transition: all 0.1s linear 0s;
+    overflow: hidden;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+.tz-about-item i{
+    font-size: 48px;
+    color: #dbbd5a;
+    line-height: 36px;
+    position: relative;
+    z-index: 99999;
+}
+.tz-about .tz-about-item:hover{
+    /*background: #e57368;*/
+    cursor: pointer;
+}
+.tz-about .tz-about-item:hover *{
+    /*color: #fff !important;*/
+}
+.tz-about  .tz-about-item .about-icon{
+    width: auto;
+    height: auto;
+    position: relative;
+    z-index: 88;
+}
+.tz-about-ds{
+    z-index: 999;
+    position: relative;
+}
+.tz-about-ds h6{
+    color: #333333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 18px;
+    margin: 0;
+    padding: 29px 0 6px;
+    text-decoration: none;
+    text-transform: uppercase;
+
+}
+.tz-about-ds p{
+    color: #333333;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 25px;
+    margin: 0;
+    padding: 12px 15%;
+    text-decoration: none;
+}
+
+/*-------About us 2----------*/
+.tz-about2{
+    padding: 90px 0 89px;
+}
+.tz-about-bk{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    background: #fff;
+    border: 1px solid #eeeeee;
+    opacity: 0;
+    transition: all 0.3s linear 0s;
+    -moz-transition: all 0.3s linear 0s;
+    -webkit-transition: all 0.3s linear 0s;
+    -ms-transition: all 0.3s linear 0s;
+    -o-transition: all 0.3s linear 0s;
+}
+.tz-about-bk img{
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    height: 310px;
+    width: 310px;
+    display: block;
+
+}
+.tz-about-overlay-bk{
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.6);
+}
+.tz-about-overlay{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+body .tz-about2 .tz-about-item:hover {
+    background: none;
+    cursor: pointer;
+}
+body .tz-about2 .tz-about-item:hover .tz-about-bk{
+    opacity: 1;
+    cursor: pointer;
+}
+.tz-about2 .tz-about-ds h6{
+    text-transform: none;
+}
+.tz-about2 .tz-about-ds h6{
+    font-size: 18px;
+    line-height: 20px;
+}
+body .tz-about2 .tz-about-item{
+    margin: 36px 0 3px;
+}
+
+body .tz-about2 .tz-about-item:hover .tz-about-bk img{
+    animation: animation_about 15s linear 0.1s infinite ;
+    -webkit-animation: animation_about 15s linear 0.1s infinite ;
+}
+
+@keyframes animation_about{
+    to{
+        transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+
+    }
+    from{
+        transform: rotate(-360deg);
+        -moz-transform: rotate(-360deg);
+        -webkit-transform: rotate(-360deg);
+        -ms-transform: rotate(-360deg);
+        -o-transform: rotate(-360deg);
+
+
+    }
+}
+@-webkit-keyframes animation_about{
+     to{
+         transform: rotate(0deg);
+         -moz-transform: rotate(0deg);
+         -webkit-transform: rotate(0deg);
+         -ms-transform: rotate(0deg);
+         -o-transform: rotate(0deg);
+
+     }
+     from{
+         transform: rotate(-360deg);
+         -moz-transform: rotate(-360deg);
+         -webkit-transform: rotate(-360deg);
+         -ms-transform: rotate(-360deg);
+         -o-transform: rotate(-360deg);
+
+     }
+ }
+
+/*-------About us 3----------*/
+body .tz-about3 .tz-about-item{
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    padding-bottom: 47px;
+    padding-top: 42px;
+}
+body .tz-about3 .tz-about-item .about-icon{
+    transform: translateY(31px);
+    -moz-transform: translateY(31px);
+    -webkit-transform: translateY(31px);
+    -ms-transform: translateY(31px);
+    -o-transform: translateY(31px);
+    transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -webkit-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+}
+body .tz-about3 .tz-about-ds h6{
+    text-transform: none;
+    padding: 2px 0 6px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 21px;
+    transform: translateY(47px);
+    -moz-transform: translateY(47px);
+    -ms-transform: translateY(47px);
+    -o-transform: translateY(47px);
+    -webkit-transform: translateY(47px);
+    transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -webkit-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+}
+body .tz-about3 .tz-about-ds p {
+    color: #333333;
+    font-family: 'Raleway',sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    margin: 0;
+    padding: 10px 8%;
+    text-decoration: none;
+    opacity: 0;
+    transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+}
+body .tz-about3 .thumb-bk{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -webkit-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+
+}
+.tz-about-item:after{
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.6);
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: '';
+    opacity: 0;
+}
+
+.line-left{
+    display: block;
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    left: 5%;
+    top: 5%;
+    z-index: 999;
+
+}
+.line-border{
+    display: block;
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    left: 5%;
+    top: 5%;
+    z-index: 999;
+    border: 1px solid #fff;
+}
+.line-left:before{
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    background: #757574;
+    transform: scaleX(0);
+    -moz-transform: scaleX(0);
+    -webkit-transform: scaleX(0);
+    -ms-transform: scaleX(0);
+    -o-transform: scaleX(0);
+    transform-origin: left center;
+    -moz-transform-origin: left center;
+    -webkit-transform-origin: left center;
+    -ms-transform-origin: left center;
+    -o-transform-origin: left center;
+    transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -webkit-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+
+}
+.line-left:after{
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    background: #757574;
+    transform: scaleY(0);
+    -moz-transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -o-transform: scaleY(0);
+    transform-origin: top center;
+    -moz-transform-origin: top center;
+    -webkit-transform-origin: top center;
+    -ms-transform-origin: top center;
+    -o-transform-origin: top center;
+    transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -webkit-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+
+}
+.line-right{
+    display: block;
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    left: 5%;
+    top: 5%;
+    z-index: 999;
+
+}
+.line-right:before{
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: '';
+    background: #757574;
+    transform: scaleX(0);
+    -moz-transform: scaleX(0);
+    -webkit-transform: scaleX(0);
+    -o-transform: scaleX(0);
+    -ms-transform: scaleX(0);
+    transform-origin: right center;
+    -moz-transform-origin: right center;
+    -webkit-transform-origin: right center;
+    -ms-transform-origin: right center;
+    -o-transform-origin: right center;
+    transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -webkit-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+
+}
+.line-right:after{
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    content: '';
+    background: #757574;
+    transform: scaleY(0);
+    -moz-transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    -o-transform: scaleY(0);
+    transform-origin: bottom center;
+    -moz-transform-origin: bottom center;
+    -webkit-transform-origin: bottom center;
+    -o-transform-origin: bottom center;
+    -ms-transform-origin: bottom center;
+    transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -webkit-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+
+}
+.tz-about3 .tz-about-item * {
+    color: #fff !important;
+}
+.tz-about-item:hover .line-right:after,
+.tz-about-item:hover .line-left:after{
+    transform: scaleY(1);
+    -moz-transform: scaleY(1);
+    -webkit-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1);
+    transition: all 0.4s ease 0.1s;
+    -moz-transition: all 0.4s ease 0.1s;
+    -ms-transition: all 0.4s ease 0.1s;
+    -webkit-transition: all 0.4s ease 0.1s;
+    -o-transition: all 0.4s ease 0.1s;
+
+}
+.tz-about-item:hover .line-right:before,
+.tz-about-item:hover .line-left:before{
+    transform: scaleX(1);
+    -moz-transform: scaleX(1);
+    -webkit-transform: scaleX(1);
+    -ms-transform: scaleX(1);
+    -o-transform: scaleX(1);
+    transition: all 0.4s ease 0.1s;
+    -moz-transition: all 0.4s ease 0.1s;
+    -ms-transition: all 0.4s ease 0.1s;
+    -webkit-transition: all 0.4s ease 0.1s;
+    -o-transition: all 0.4s ease 0.1s;
+
+}
+body .tz-about3 .tz-about-item:hover .about-icon{
+    transform: scale(0.5) ;
+    -moz-transform: scale(0.5) ;
+    -webkit-transform: scale(0.5) ;
+    -ms-transform: scale(0.5) ;
+    -o-transform: scale(0.5) ;
+}
+body .tz-about3 .tz-about-item:hover .tz-about-ds h6{
+    transform: translateY(0);
+    -moz-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+}
+body .tz-about3 .tz-about-item:hover .tz-about-ds p{
+    opacity: 1;
+    transform: scale(1);
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transition: all 0.4s ease 0.2s;
+    -moz-transition: all 0.4s ease 0.2s;
+    -ms-transition: all 0.4s ease0.2s;
+    -webkit-transition: all 0.4s ease 0.2s;
+    -o-transition: all 0.4s ease 0.2s;
+}
+body .tz-about3 .tz-about-item:hover{
+    background: none;
+}
+body .tz-about3 .tz-about-item:hover:after{
+    opacity: 1;
+}
+body .tz-about3 .tz-about-item:hover .thumb-bk{
+    opacity: 1;
+    transform: scale(1);
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+
+}
+.tzheader-background{
+    width: 100%;
+    max-height: 700px;
+    height: 100%;
+}
+.tzheader-background img{
+    width: 100%;
+}
+.about-title{
+    margin-top: 4px;
+    position: absolute;
+    text-align: center;
+    top: 46%;
+    width: 100%;
+}
+.about-title span{
+    color: #ffffff;
+    font-family: 'Raleway', sans-serif;
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 72px;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+}

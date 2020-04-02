@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e3a2ab1778cc49d586c14a4009b441f8" Name="Diagram1" ZoomLevel="97">
+        <EntityTypeShape EntityType="SmartShutterModel.C__MigrationHistory" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartShutterModel.AspNetRole" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartShutterModel.AspNetUserClaim" Width="1.5" PointX="13.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartShutterModel.AspNetUserLogin" Width="1.5" PointX="13.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartShutterModel.AspNetUser" Width="1.5" PointX="11" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartShutterModel.Category" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartShutterModel.Currency" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartShutterModel.Supplier" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartShutterModel.Transaction" Width="1.5" PointX="5.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartShutterModel.Unit" Width="1.5" PointX="0.75" PointY="12.375" IsExpanded="true" />
+        <AssociationConnector Association="SmartShutterModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartShutterModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartShutterModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SmartShutterModel.Logger" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SmartShutterModel.DeadMaterial" Width="1.5" PointX="3" PointY="13" />
+        <AssociationConnector Association="SmartShutterModel.FK_DeadMaterials_Units" />
+        <EntityTypeShape EntityType="SmartShutterModel.Customer" Width="1.5" PointX="6.623680402815193" PointY="12.901079869317394" />
+        <EntityTypeShape EntityType="SmartShutterModel.Store" Width="1.5" PointX="7.8998086377511765" PointY="24.64147759631345" />
+        <AssociationConnector Association="SmartShutterModel.FK_DeadMaterials_Stores" />
+        <EntityTypeShape EntityType="SmartShutterModel.Material" Width="1.5" PointX="6.728258016858371" PointY="3.9278804976157287" />
+        <AssociationConnector Association="SmartShutterModel.FK_DeadMaterials_Materials" />
+        <AssociationConnector Association="SmartShutterModel.FK_Materials_Materials" />
+        <AssociationConnector Association="SmartShutterModel.FK_Materials_Supplier" />
+        <AssociationConnector Association="SmartShutterModel.FK_Materials_Units" />
+        <EntityTypeShape EntityType="SmartShutterModel.CuttingListsMaterial" Width="1.5" PointX="0.18299994626222177" PointY="0.61681652097814554" />
+        <EntityTypeShape EntityType="SmartShutterModel.SubCategory" Width="1.5" PointX="0.2256969140030895" PointY="28.25067059521129" />
+        <AssociationConnector Association="SmartShutterModel.FK_SubCategories_Category" />
+        <AssociationConnector Association="SmartShutterModel.FK_DefectiveMaterials_Materials" />
+        <AssociationConnector Association="SmartShutterModel.FK_DefectiveMaterials_Stores" />
+        <AssociationConnector Association="SmartShutterModel.FK_DefectiveMaterials_Units" />
+        <EntityTypeShape EntityType="SmartShutterModel.ReservedMaterial" Width="1.5" PointX="10.375" PointY="8.75" />
+        <EntityTypeShape EntityType="SmartShutterModel.MaterialInStock" Width="1.5" PointX="10.125" PointY="12.5" />
+        <AssociationConnector Association="SmartShutterModel.FK_MaterialInStock_Currency" />
+        <AssociationConnector Association="SmartShutterModel.FK_MaterialInStock_Materials" />
+        <AssociationConnector Association="SmartShutterModel.FK_MaterialInStock_Stores" />
+        <AssociationConnector Association="SmartShutterModel.FK_MaterialInStock_Supplier" />
+        <AssociationConnector Association="SmartShutterModel.FK_MaterialInStock_Units" />
+        <AssociationConnector Association="SmartShutterModel.FK_ReservedMaterials_MaterialInStock" />
+        <EntityTypeShape EntityType="SmartShutterModel.StockLogger" Width="1.5" PointX="12.375" PointY="13.625" />
+        <AssociationConnector Association="SmartShutterModel.FK_StockLogger_MaterialInStock" />
+        <EntityTypeShape EntityType="SmartShutterModel.OrderDetail" Width="1.5" PointX="4" PointY="3.75" />
+        <EntityTypeShape EntityType="SmartShutterModel.Order" Width="1.5" PointX="13" PointY="8.75" />
+        <AssociationConnector Association="SmartShutterModel.FK_Orders_Customers" />
+        <AssociationConnector Association="SmartShutterModel.FK_OrderDetails_Materials" />
+        <AssociationConnector Association="SmartShutterModel.FK_OrderDetails_Orders" />
+        <AssociationConnector Association="SmartShutterModel.FK_OrderDetails_Stores" />
+        <EntityTypeShape EntityType="SmartShutterModel.MaterialsForOrder" Width="1.5" PointX="14.375" PointY="12.75" />
+        <EntityTypeShape EntityType="SmartShutterModel.Application" Width="1.5" PointX="0.045197289458102217" PointY="0.282932192218924" />
+        <EntityTypeShape EntityType="SmartShutterModel.Membership" Width="1.5" PointX="6.4394113470052421" PointY="28.043904228156389" />
+        <EntityTypeShape EntityType="SmartShutterModel.Profile" Width="1.5" PointX="0.91410692451247333" PointY="6.3556776672395312" />
+        <EntityTypeShape EntityType="SmartShutterModel.Role" Width="1.5" PointX="11.803752165196347" PointY="19.35899477608455" />
+        <EntityTypeShape EntityType="SmartShutterModel.User" Width="1.5" PointX="9.7237263031880037" PointY="9.6702409580677013" />
+        <AssociationConnector Association="SmartShutterModel.MembershipApplication" />
+        <AssociationConnector Association="SmartShutterModel.RoleApplication" />
+        <AssociationConnector Association="SmartShutterModel.UserApplication" />
+        <AssociationConnector Association="SmartShutterModel.MembershipUser" />
+        <AssociationConnector Association="SmartShutterModel.UserProfile" />
+        <AssociationConnector Association="SmartShutterModel.UsersInRoles" />
+        <EntityTypeShape EntityType="SmartShutterModel.TransferDetail" Width="1.5" PointX="15.375" PointY="16.5" />
+        <EntityTypeShape EntityType="SmartShutterModel.Transfer" Width="1.5" PointX="10.125" PointY="24.625" />
+        <AssociationConnector Association="SmartShutterModel.FK_TransferDetails_Materials" />
+        <AssociationConnector Association="SmartShutterModel.FK_Transfers_Stores" />
+        <AssociationConnector Association="SmartShutterModel.FK_Transfers_Stores1" />
+        <AssociationConnector Association="SmartShutterModel.FK_TransferDetails_Transfers" />
+        <AssociationConnector Association="SmartShutterModel.FK_Transfers_Transfers" />
+        <AssociationConnector Association="SmartShutterModel.FK_Materials_SubCategories" />
+        <EntityTypeShape EntityType="SmartShutterModel.OrderDetailsData" Width="1.5" PointX="3.9653671029793882" PointY="14.496987528399092" />
+        <EntityTypeShape EntityType="SmartShutterModel.MaterialHistory" Width="1.5" PointX="15.625" PointY="0.75" />
+        <AssociationConnector Association="SmartShutterModel.FK_MaterialHistory_Materials" />
+        <AssociationConnector Association="SmartShutterModel.FK_MaterialHistory_Stores" />
+        <EntityTypeShape EntityType="SmartShutterModel.Container" Width="1.5" PointX="11.875" PointY="29" />
+        <EntityTypeShape EntityType="SmartShutterModel.ContainerData" Width="1.5" PointX="14.125" PointY="20.875" />
+        <AssociationConnector Association="SmartShutterModel.FK_ContainerData_Container" />
+        <AssociationConnector Association="SmartShutterModel.FK_ContainerData_Materials" />
+        <AssociationConnector Association="SmartShutterModel.FK_ContainerData_Stores" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
