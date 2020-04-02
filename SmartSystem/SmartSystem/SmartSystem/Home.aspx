@@ -17,6 +17,7 @@
             width: 100%;
             height: 600px;
             padding: 20px;
+
             /*margin :20px;*/
         }
 
