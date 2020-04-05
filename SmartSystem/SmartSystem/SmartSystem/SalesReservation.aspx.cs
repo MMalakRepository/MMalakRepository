@@ -175,9 +175,15 @@ namespace SmartSystem
                 var newreserved = oldreserved + Convert.ToDecimal(txtReservedStock.Value);
                
                 if (material.ReservedStock == null)
+                {
                     material.ReservedStock = Convert.ToDecimal(txtReservedStock.Value);
+                }
+
                 else
+                {
                     material.ReservedStock += Convert.ToDecimal(txtReservedStock.Value);
+                }
+                    
 
 
                 material.StockOnHand -= Convert.ToDecimal(txtReservedStock.Value);
@@ -233,17 +239,22 @@ namespace SmartSystem
             decimal QTY = Convert.ToDecimal(gv.Cells[2].Text);
             decimal pai = 0;
             if(gv.Cells[7].Text !="&nbsp;")
+            {
                 pai = Convert.ToDecimal(gv.Cells[7].Text);
+            }
+                
             decimal reserved = Convert.ToDecimal(gv.Cells[8].Text);
             decimal stock = Convert.ToDecimal(gv.Cells[9].Text);
             int materialid = Convert.ToInt32(gv.Cells[10].Text);
             int storeid = Convert.ToInt32(gv.Cells[11].Text);
 
             var item = db.MaterialInStocks.Where(x => x.MaterialID == materialid && x.StoreID == storeid ).FirstOrDefault();
-            if(pai != 0)
-                item.StockOnHand  = stock + reserved;
+            if (pai != 0)
+            {
+                item.StockOnHand = stock + QTY;
+            }
 
-            item.ReservedStock = stock - reserved;
+            item.ReservedStock = reserved - QTY;
             db.SaveChanges();
 
             var materilainstock = db.MaterialInStocks.Where(x => x.MaterialID == materialid && x.StoreID == storeid).FirstOrDefault();
