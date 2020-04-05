@@ -94,6 +94,9 @@ namespace SmartSystem
             int M = Convert.ToInt32(dsMaterials.SelectedValue);
             var MS = db.MaterialInStocks.Where(x => x.MaterialID == M && x.StoreID == S).FirstOrDefault();
             int MSS = MS.ID;
+            decimal res = 0;
+            decimal oldres = 0;
+            decimal newres = 0;
             try
             {
                 ReservedMaterial RM = new ReservedMaterial();
@@ -101,12 +104,11 @@ namespace SmartSystem
                 RM.ReservedDate = DateTime.Now;
                 RM.UserName = User.Identity.Name;
                 RM.Quantity = Convert.ToDecimal(txtReservedStock.Value);
-                if (txtPaidAmount.Value == "")
+                if (txtPaidAmount.Value == null || txtPaidAmount.Value == String.Empty)
                 {
-                    decimal res = 0;
-                    decimal newres = 0;
+                    
                     res = Convert.ToDecimal(txtReservedStock.Value);
-                    decimal oldres = 0;
+
                     RM.Paid = false;
                     if (MS.ReservedStock == null)
                     {
@@ -117,7 +119,7 @@ namespace SmartSystem
                     {
                         oldres = Convert.ToDecimal(MS.ReservedStock);
                         newres = oldres + res;
-                        MS.ReservedStock += res;
+                        MS.ReservedStock = newres;
                     }
 
 
@@ -128,6 +130,8 @@ namespace SmartSystem
                 {
                     RM.Paid = true;
                     RM.PaidAmount = Convert.ToDecimal(txtPaidAmount.Value);
+
+
                     DecreaseStock(MSS);
                 }
 
@@ -171,9 +175,10 @@ namespace SmartSystem
                 var newreserved = oldreserved + Convert.ToDecimal(txtReservedStock.Value);
                
                 if (material.ReservedStock == null)
-                    material.ReservedStock += Convert.ToDecimal(txtReservedStock.Value);
-                else
                     material.ReservedStock = Convert.ToDecimal(txtReservedStock.Value);
+                else
+                    material.ReservedStock += Convert.ToDecimal(txtReservedStock.Value);
+
 
                 material.StockOnHand -= Convert.ToDecimal(txtReservedStock.Value);
                 db.SaveChanges();

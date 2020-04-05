@@ -206,13 +206,13 @@
                                                                             </ItemTemplate>
                                                                         </asp:TemplateField>
                                                                         <asp:BoundField DataField="MaterialName" HeaderText="Name" SortExpression="MaterialName" />
-                                                                        <asp:BoundField DataField="Quantity" HeaderText="Quantity" SortExpression="Quantity" />
+                                                                        <asp:BoundField DataField="Quantity" HeaderText="Reserved Quantity" SortExpression="Quantity" />
                                                                         <asp:BoundField DataField="ReservedDate" HeaderText="Reserved Date" SortExpression="ReservedDate" />
                                                                         <asp:BoundField DataField="Note" HeaderText="Note" SortExpression="Note" />
                                                                         <asp:BoundField DataField="UserName" HeaderText="User Name" SortExpression="UserName" />
                                                                         <asp:CheckBoxField DataField="Paid" HeaderText="Paid" SortExpression="Paid" Visible="false" />
                                                                         <asp:BoundField DataField="PaidAmount" HeaderText="Paid Amount" SortExpression="PaidAmount" />
-                                                                        <asp:BoundField DataField="ReservedStock" HeaderText="Reserved Stock" SortExpression="ReservedStock" />
+                                                                        <asp:BoundField DataField="ReservedStock" HeaderText="Total Reserved" SortExpression="ReservedStock" />
                                                                         <asp:BoundField DataField="StockOnHand" HeaderText="Current Stock" SortExpression="StockOnHand" />
                                                                         <asp:BoundField DataField="MaterialID" HeaderText="Material ID" SortExpression="MaterialID" />
                                                                         <asp:BoundField DataField="StoreID" HeaderText="StoreID" SortExpression="StoreID" />
