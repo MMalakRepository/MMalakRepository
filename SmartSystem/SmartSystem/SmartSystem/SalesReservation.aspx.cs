@@ -110,6 +110,7 @@ namespace SmartSystem
                     res = Convert.ToDecimal(txtReservedStock.Value);
 
                     RM.Paid = false;
+                    RM.PaidAmount = 0;
                     if (MS.ReservedStock == null)
                     {
                         MS.ReservedStock = res;
@@ -190,6 +191,7 @@ namespace SmartSystem
                 db.SaveChanges();
 
                 LogAction(oldstock, oldreserved, newstock, newreserved, material.ID);
+                LogSalesReservation(oldstock, newstock, material.ID,true);
             }
             catch(Exception ex)
             {
@@ -198,6 +200,41 @@ namespace SmartSystem
                 lblError.Visible = true;
             }
 
+        }
+
+        private void LogSalesReservation(decimal? oldstock, decimal? newstock, int iD,bool reserve)
+        {
+            try
+            {
+                var material = db.MaterialInStocks.Where(x => x.ID == iD).FirstOrDefault();
+                MaterialHistory MH = new MaterialHistory();
+                MH.ActionDate = DateTime.Now;
+                MH.MaterialID = material.MaterialID;
+                MH.StoreID = material.StoreID;
+                MH.OldStock = oldstock;
+                MH.NewStock = newstock;
+                if(reserve)
+                {
+                    MH.Note = " Sales Reservation By " + User.Identity.Name.ToString();
+                    MH.TransactionName = "Sales Reservation";
+                }
+                else
+                {
+                    MH.Note = " Sales Reservation Cancelled By " + User.Identity.Name.ToString();
+                    MH.TransactionName = "Cancel Reservation";
+                }
+
+                MH.UserName = User.Identity.Name.ToString();
+               
+                db.MaterialHistories.Add(MH);
+                db.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                lblError.Text = "Error in Log History of Reservation , Error is " + ex.InnerException.Message;
+                lblError.Visible = true;
+                lblError.ForeColor = System.Drawing.Color.Red;
+            }
         }
 
         private void LogAction(decimal? oldstock, decimal? oldreserved, decimal? newstock, decimal? newreserved,int materialinstock)
@@ -251,7 +288,10 @@ namespace SmartSystem
             var item = db.MaterialInStocks.Where(x => x.MaterialID == materialid && x.StoreID == storeid ).FirstOrDefault();
             if (pai != 0)
             {
-                item.StockOnHand = stock + QTY;
+                decimal oldstock =  Convert.ToDecimal(item.StockOnHand);
+                decimal newstock = oldstock + QTY;
+                item.StockOnHand = newstock;
+                LogSalesReservation(oldstock, newstock, item.ID, false);
             }
 
             item.ReservedStock = reserved - QTY;
@@ -272,8 +312,6 @@ namespace SmartSystem
 
             db.StockLoggers.Add(st);
             db.SaveChanges();
-           
-
             
             var resmaterial = db.ReservedMaterials.Where(x => x.MaterialInStock == item.ID && x.PaidAmount == pai && x.Quantity == QTY).FirstOrDefault();
             resmaterial.IsDeleted = true;
