@@ -1,12 +1,20 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SmartShutter.Master" AutoEventWireup="true" CodeBehind="NewMaterial.aspx.cs" Inherits="SmartSystem.NewMaterial" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
- 
+    <script src="Scripts/jquery-1.7.1.js"></script>
     <style>
         .btnaction {
             margin-top: 35px;
         }
     </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var filename = $(this).val().split('\\').pop();
+                $(this).next('.custom-file-label').html(filename);
+            });
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!-- Content Wrapper. Contains page content -->

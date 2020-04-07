@@ -268,67 +268,136 @@ namespace SmartSystem
             GridData.DataBind();
         }
 
+        //protected void GridData_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    // Reservation ID, MaterialName,Quantity
+        //    //ReservedDate,Note,UserName,
+        //    //Paid,PaidAmount,ReservedStock,
+        //    //StockOnHand,MaterialID,StoreID
+        //    GridViewRow gv = GridData.SelectedRow;
+        //    int ReservedID = Convert.ToInt32(gv.Cells[1].Text.ToString());
+        //    var resmaterial = db.ReservedMaterials.Where(x => x.ID == ReservedID).FirstOrDefault();
+        //    //string name = gv.Cells[2].Text;
+        //    string name = resmaterial.MaterialInStock1.Material.MaterialName;
+
+        //    //decimal QTY = Convert.ToDecimal(gv.Cells[3].Text);
+        //    decimal QTY = Convert.ToDecimal(resmaterial.Quantity);
+        //    string ReservationNote = resmaterial.Note;
+        //    //string ReservationNote = gv.Cells[5].Text.ToString();
+        //    decimal pai = Convert.ToDecimal(resmaterial.PaidAmount);
+
+        //    //decimal pai = 0;
+        //    if(gv.Cells[7].Text !="&nbsp;")
+        //    {
+        //        pai = Convert.ToDecimal(gv.Cells[8].Text);
+        //    }
+
+                
+        //    //decimal reserved = Convert.ToDecimal(gv.Cells[9].Text);
+        //    decimal reserved = Convert.ToDecimal(resmaterial.MaterialInStock1.ReservedStock);
+        //    //decimal stock = Convert.ToDecimal(gv.Cells[10].Text);
+        //    decimal stock = Convert.ToDecimal(resmaterial.MaterialInStock1.StockOnHand);
+        //    //int materialid = Convert.ToInt32(gv.Cells[11].Text);
+        //    int materialid = Convert.ToInt32(resmaterial.MaterialInStock1.MaterialID);
+        //    //int storeid = Convert.ToInt32(gv.Cells[12].Text);
+        //    int storeid = Convert.ToInt32(resmaterial.MaterialInStock1.StoreID);
+
+        //    var item = db.MaterialInStocks.Where(x => x.MaterialID == materialid && x.StoreID == storeid ).FirstOrDefault();
+        //    if (pai != 0)
+        //    {
+        //        decimal oldstock =  Convert.ToDecimal(item.StockOnHand);
+        //        decimal newstock = oldstock + QTY;
+        //        item.StockOnHand = newstock;
+        //        LogSalesReservation(oldstock, newstock, item.ID, false);
+        //    }
+
+        //    item.ReservedStock = reserved - QTY;
+        //    db.SaveChanges();
+
+        //    //var materilainstock = db.MaterialInStocks.Where(x => x.MaterialID == materialid && x.StoreID == storeid).FirstOrDefault();
+
+        //    StockLogger st = new StockLogger();
+        //    st.MaterialInStock = item.ID;
+        //    st.OldStock = stock;
+        //    if (pai != 0 )
+        //        st.NewStock = stock + reserved;
+        //    else
+        //        st.NewStock = stock;
+        //    st.OldReservedStock = reserved;
+        //    st.NewReservedStock = reserved - QTY;
+        //    st.Notes = "Reservation Cancelled By " + User.Identity.Name;
+
+        //    db.StockLoggers.Add(st);
+        //    db.SaveChanges();
+
+        //    //var resmaterial = db.ReservedMaterials.Where(x => x.MaterialInStock == item.ID && x.PaidAmount == pai && x.Quantity == QTY && x.Note == ReservationNote ).FirstOrDefault();
+            
+        //    resmaterial.IsDeleted = true;
+        //    db.SaveChanges();
+
+        //    Logger log = new Logger();
+        //    log.Action ="Reservation of " + name + " in Store " + storeid.ToString() + " with Quantity "+ QTY.ToString()+" is cancelled ";
+        //    log.ActionDate = DateTime.Now;
+        //    log.UserName = User.Identity.Name;
+        //    log.ActionType = "Cancel Reservation";
+        //    db.Loggers.Add(log);
+        //    db.SaveChanges();
+
+        //    GridData.DataBind();
+        //}
+
         protected void GridData_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // MaterialName,Quantity,ReservedDate,Note,UserName,Paid,PaidAmount,ReservedStock,StockOnHand,MaterialID,StoreID
             GridViewRow gv = GridData.SelectedRow;
-            string name = gv.Cells[1].Text;
-            decimal QTY = Convert.ToDecimal(gv.Cells[2].Text);
-            decimal pai = 0;
-            if(gv.Cells[7].Text !="&nbsp;")
-            {
-                pai = Convert.ToDecimal(gv.Cells[7].Text);
-            }
-                
-            decimal reserved = Convert.ToDecimal(gv.Cells[8].Text);
-            decimal stock = Convert.ToDecimal(gv.Cells[9].Text);
-            int materialid = Convert.ToInt32(gv.Cells[10].Text);
-            int storeid = Convert.ToInt32(gv.Cells[11].Text);
+            int ReservedID = Convert.ToInt32(gv.Cells[1].Text.ToString());
+            var ReservedMaterial = db.ReservedMaterials.Where(x => x.ID == ReservedID).FirstOrDefault();
+            string name = ReservedMaterial.MaterialInStock1.Material.MaterialName;
+            decimal QTY = Convert.ToDecimal(ReservedMaterial.Quantity);
+            string ReservationNote = ReservedMaterial.Note;
+            decimal PaidAmount = Convert.ToDecimal(ReservedMaterial.PaidAmount);
+            decimal TotalReserved = Convert.ToDecimal(ReservedMaterial.MaterialInStock1.ReservedStock);
+            decimal stock = Convert.ToDecimal(ReservedMaterial.MaterialInStock1.StockOnHand);
+            int materialid = Convert.ToInt32(ReservedMaterial.MaterialInStock1.MaterialID);
+            int storeid = Convert.ToInt32(ReservedMaterial.MaterialInStock1.StoreID);
 
-            var item = db.MaterialInStocks.Where(x => x.MaterialID == materialid && x.StoreID == storeid ).FirstOrDefault();
-            if (pai != 0)
+            var item = db.MaterialInStocks.Where(x => x.MaterialID == materialid && x.StoreID == storeid).FirstOrDefault();
+            if (PaidAmount != 0)
             {
-                decimal oldstock =  Convert.ToDecimal(item.StockOnHand);
+                decimal oldstock = Convert.ToDecimal(item.StockOnHand);
                 decimal newstock = oldstock + QTY;
                 item.StockOnHand = newstock;
                 LogSalesReservation(oldstock, newstock, item.ID, false);
             }
 
-            item.ReservedStock = reserved - QTY;
+            item.ReservedStock = TotalReserved - QTY;
             db.SaveChanges();
 
-            var materilainstock = db.MaterialInStocks.Where(x => x.MaterialID == materialid && x.StoreID == storeid).FirstOrDefault();
-
             StockLogger st = new StockLogger();
-            st.MaterialInStock = materilainstock.ID;
+            st.MaterialInStock = item.ID;
             st.OldStock = stock;
-            if (pai != 0)
-                st.NewStock = stock + reserved;
+            if (PaidAmount != 0)
+                st.NewStock = stock + QTY;
             else
                 st.NewStock = stock;
-            st.OldReservedStock = reserved;
-            st.NewReservedStock = reserved - QTY;
+            st.OldReservedStock = TotalReserved;
+            st.NewReservedStock = TotalReserved - QTY;
             st.Notes = "Reservation Cancelled By " + User.Identity.Name;
 
             db.StockLoggers.Add(st);
             db.SaveChanges();
-            
-            var resmaterial = db.ReservedMaterials.Where(x => x.MaterialInStock == item.ID && x.PaidAmount == pai && x.Quantity == QTY).FirstOrDefault();
-            resmaterial.IsDeleted = true;
+ 
+            ReservedMaterial.IsDeleted = true;
             db.SaveChanges();
 
             Logger log = new Logger();
-            log.Action ="Reservation of " + name + " in Store " + storeid.ToString() + " with Quantity "+QTY.ToString()+" is cancelled ";
+            log.Action = "Reservation of " + name + " in Store " + storeid.ToString() + " with Quantity " + QTY.ToString() + " is cancelled ";
             log.ActionDate = DateTime.Now;
             log.UserName = User.Identity.Name;
             log.ActionType = "Cancel Reservation";
-
             db.Loggers.Add(log);
             db.SaveChanges();
 
             GridData.DataBind();
-
-
         }
     }
 }

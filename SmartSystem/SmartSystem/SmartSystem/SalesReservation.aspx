@@ -205,6 +205,7 @@
                                                                                 <asp:ImageButton ID="btnCancelReservation" runat="server" ImageUrl="~/Images/icons8-delete-bin-64.png" Width="40px" Height="40px" CommandName="Select"></asp:ImageButton>
                                                                             </ItemTemplate>
                                                                         </asp:TemplateField>
+                                                                         <asp:BoundField DataField="ReservedID" HeaderText="ReservedID" SortExpression="ReservedID" />
                                                                         <asp:BoundField DataField="MaterialName" HeaderText="Name" SortExpression="MaterialName" />
                                                                         <asp:BoundField DataField="Quantity" HeaderText="Reserved Quantity" SortExpression="Quantity" />
                                                                         <asp:BoundField DataField="ReservedDate" HeaderText="Reserved Date" SortExpression="ReservedDate" />
@@ -228,7 +229,15 @@
                                                                     <SortedDescendingCellStyle BackColor="#FFFDF8" />
                                                                     <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                                                                 </asp:GridView>
-                                                                <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>" SelectCommand="SELECT Materials.MaterialName, ReservedMaterials.Quantity, ReservedMaterials.ReservedDate, ReservedMaterials.Note, ReservedMaterials.UserName, ReservedMaterials.Paid, ReservedMaterials.PaidAmount, MaterialInStock.ReservedStock, MaterialInStock.StockOnHand, MaterialInStock.MaterialID, MaterialInStock.StoreID FROM MaterialInStock INNER JOIN Materials ON MaterialInStock.MaterialID = Materials.ID INNER JOIN ReservedMaterials ON MaterialInStock.ID = ReservedMaterials.MaterialInStock WHERE (MaterialInStock.StoreID = @storeID) AND (MaterialInStock.MaterialID = @MaterialID) and ReservedMaterials.UserName = @UserName and ReservedMaterials.IsDeleted = 0">
+                                                                <asp:SqlDataSource ID="SqlDataSource3" runat="server"
+                                                                    ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>" 
+                                                                    SelectCommand="SELECT ReservedMaterials.ID As ReservedID, Materials.MaterialName, ReservedMaterials.Quantity, ReservedMaterials.ReservedDate, ReservedMaterials.Note, ReservedMaterials.UserName, 
+                                                                    ReservedMaterials.Paid, ReservedMaterials.PaidAmount, MaterialInStock.ReservedStock,
+                                                                    MaterialInStock.StockOnHand, MaterialInStock.MaterialID, MaterialInStock.StoreID
+                                                                    FROM MaterialInStock INNER JOIN Materials ON MaterialInStock.MaterialID = Materials.ID 
+                                                                    INNER JOIN ReservedMaterials ON MaterialInStock.ID = ReservedMaterials.MaterialInStock 
+                                                                    WHERE (MaterialInStock.StoreID = @storeID) AND (MaterialInStock.MaterialID = @MaterialID) 
+                                                                    and ReservedMaterials.UserName = @UserName and ReservedMaterials.IsDeleted = 0">
                                                                     <SelectParameters>
                                                                         <asp:ControlParameter ControlID="selectCancelStore" Name="storeID" PropertyName="SelectedValue" />
                                                                         <asp:ControlParameter ControlID="selectcancelitem" Name="MaterialID" PropertyName="SelectedValue" />
