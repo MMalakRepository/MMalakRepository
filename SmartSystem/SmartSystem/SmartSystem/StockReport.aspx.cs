@@ -16,17 +16,9 @@ namespace SmartSystem
 
         protected void btnGetStoreReport_Click(object sender, EventArgs e)
         {
-            if (Store.SelectedIndex == 0)
-            {
-                lblOrderErr.Text = "Please Select a Store ";
-                lblOrderErr.Visible = true;
-                lblOrderErr.ForeColor = System.Drawing.Color.Red;
-            }
-            else
-            {
-                int Storeid = Convert.ToInt32(Store.SelectedValue);
-                Response.Redirect("PrintMaterialsStock.aspx?ID=" + Storeid.ToString());
-            }
+            int Storeid = Convert.ToInt32(Store.SelectedValue);
+            int Mid = Convert.ToInt32(dsMaterials.SelectedValue);
+            Response.Redirect("PrintMaterialsStock.aspx?SID=" + Storeid.ToString() + "&MID=" + Mid.ToString());
         }
     }
 }

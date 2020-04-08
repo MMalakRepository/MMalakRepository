@@ -32,7 +32,7 @@
                     <div class="row mb-2">
 
                         <div class="container-fluid">
-                                <div class="row">
+                            <div class="row">
                                 <div class="col-md-12">
                                     <div class="card card-danger card-outline">
                                         <div class="card-header">
@@ -54,8 +54,8 @@
                                                         SelectCommand="SELECT * FROM [Customers] Order By CustomerName Asc "></asp:SqlDataSource>
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <asp:ImageButton ID="btnExportCustomerOrdersPDF" CssClass="btnaction float-right" Width="50px" Height="50px" runat="server" ImageUrl="~/Images/pdf.png" OnClick="btnExportCustomerOrdersPDF_Click"/>
-                                                    <asp:ImageButton ID="btnExportCustomerOrdersExcel" runat="server" CssClass="btnaction float-right" Width="50px" Height="50px" ImageUrl="~/Images/excel.png"  OnClick="btnExportCustomerOrdersExcel_Click"/>
+                                                    <asp:ImageButton ID="btnExportCustomerOrdersPDF" CssClass="btnaction float-right" Width="50px" Height="50px" runat="server" ImageUrl="~/Images/pdf.png" OnClick="btnExportCustomerOrdersPDF_Click" />
+                                                    <asp:ImageButton ID="btnExportCustomerOrdersExcel" runat="server" CssClass="btnaction float-right" Width="50px" Height="50px" ImageUrl="~/Images/excel.png" OnClick="btnExportCustomerOrdersExcel_Click" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -89,8 +89,8 @@
                                                         <SortedDescendingCellStyle BackColor="#FFFDF8" />
                                                         <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                                                     </asp:GridView>
-                                                    <asp:SqlDataSource ID="SqlDataSource4" runat="server" 
-                                                        ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>" 
+                                                    <asp:SqlDataSource ID="SqlDataSource4" runat="server"
+                                                        ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
                                                         SelectCommand="SELECT Orders.ID AS OrderNo, Orders.OrderDate, Orders.Notes, Orders.UserName, Customers.CustomerName, Customers.PhoneNumber FROM Orders INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID WHERE (Orders.CustomerID = @CustomerID) Order By Orders.ID Desc">
                                                         <SelectParameters>
                                                             <asp:Parameter DefaultValue="True" Name="IsActive" Type="Boolean" />
@@ -100,7 +100,7 @@
 
                                                 </div>
                                             </div>
- 
+
 
                                         </div>
                                         <!-- /.card -->
@@ -149,8 +149,9 @@
                                                             <asp:BoundField DataField="Quantity" HeaderText="Quantity" SortExpression="Quantity"></asp:BoundField>
                                                             <asp:BoundField DataField="Notes" HeaderText="Notes" SortExpression="Notes"></asp:BoundField>
                                                             <asp:BoundField DataField="MaterialType" HeaderText="Type" SortExpression="MaterialType" />
-                                                            <asp:BoundField DataField="Height" HeaderText="Height" SortExpression="Height" />
                                                             <asp:BoundField DataField="Width" HeaderText="Width" SortExpression="Width" />
+                                                            <asp:BoundField DataField="Height" HeaderText="Height" SortExpression="Height" />
+
                                                         </Columns>
                                                         <EditRowStyle BackColor="#999999" />
                                                         <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -163,8 +164,8 @@
                                                         <SortedDescendingCellStyle BackColor="#FFFDF8" />
                                                         <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                                                     </asp:GridView>
-                                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-                                                        ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>" 
+                                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server"
+                                                        ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
                                                         SelectCommand="SELECT Materials.MaterialName, Materials.MaterialNo, 
                                                         OrderDetails.Quantity, Orders.ID AS OrderNo, Orders.OrderDate, Orders.Notes,
                                                         OrderDetails.StoreID, OrderDetails.MaterialType, OrderDetails.Height,
@@ -227,8 +228,8 @@
                                                             <asp:BoundField DataField="OrderNo" HeaderText="Order" SortExpression="OrderNo" InsertVisible="False" ReadOnly="True" />
                                                             <asp:BoundField DataField="OrderDate" HeaderText="Date" SortExpression="OrderDate"></asp:BoundField>
                                                             <asp:BoundField DataField="Quantity" HeaderText="Quantity" SortExpression="Quantity"></asp:BoundField>
-                                                            <asp:BoundField DataField="Height" HeaderText="Height" SortExpression="Height"></asp:BoundField>
                                                             <asp:BoundField DataField="Width" HeaderText="Width" SortExpression="Width" />
+                                                            <asp:BoundField DataField="Height" HeaderText="Height" SortExpression="Height"></asp:BoundField>
                                                             <asp:BoundField DataField="MaterialType" HeaderText="Type" SortExpression="MaterialType" />
 
                                                         </Columns>
@@ -247,7 +248,7 @@
 
                                                 </div>
                                             </div>
-                                            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>" 
+                                            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
                                                 SelectCommand="SELECT Materials.MaterialName, Materials.MaterialNo, Orders.ID AS OrderNo, Orders.OrderDate, OrderDetails.Quantity, 
                                                 OrderDetails.Height, OrderDetails.Width, OrderDetails.MaterialType, Stores.StoreName, Customers.CustomerName FROM Materials
                                                 INNER JOIN OrderDetails ON Materials.ID = OrderDetails.MaterialID INNER JOIN Orders ON OrderDetails.OrderID = Orders.ID 

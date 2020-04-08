@@ -8,7 +8,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <form id="Form1" runat="server" enctype="multipart/form-data">
+    <form id="Form1" runat="server" enctype="multipart/form-data">
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
@@ -45,11 +45,27 @@
                                             <div class="row">
                                                 <div class="form-group col-md-4">
                                                     <label for="Store">Select Store </label>
-                                                    <asp:DropDownList ToolTip="أختار المخزن" AppendDataBoundItems="true" CssClass="form-control"
+                                                    <asp:DropDownList ToolTip="أختار المخزن" CssClass="form-control"
                                                         ID="Store" DataSourceID="ldsStores" DataTextField="StoreName"
-                                                        DataValueField="ID" runat="server">
-                                                        <asp:ListItem Selected="True" Value="0" Text="Select Store"></asp:ListItem>
+                                                        DataValueField="ID" runat="server" AutoPostBack="true">
+                                                        <%--<asp:ListItem Selected="True" Value="0" Text="Select Store"></asp:ListItem>--%>
                                                     </asp:DropDownList>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="dsMaterials">Select Material </label>
+                                                    <asp:DropDownList ToolTip="أختار المخزن"
+                                                        CssClass="form-control"
+                                                        ID="dsMaterials" DataSourceID="ldsitems"
+                                                        DataTextField="MaterialName"
+                                                        DataValueField="ID" runat="server">
+                                                        <%--<asp:ListItem Selected="True" Value="0" Text="Select Material"></asp:ListItem>--%>
+                                                    </asp:DropDownList>
+                                                    <asp:SqlDataSource ID="ldsitems" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
+                                                        SelectCommand="SELECT DISTINCT M.ID, M.MaterialName FROM Materials AS M INNER JOIN MaterialInStock AS MS ON M.ID = MS.MaterialID WHERE (M.IsActive = 1) AND (MS.StoreID = @StoreID) Order by M.MaterialName ASC">
+                                                        <SelectParameters>
+                                                            <asp:ControlParameter ControlID="Store" Name="StoreID" PropertyName="SelectedValue" />
+                                                        </SelectParameters>
+                                                    </asp:SqlDataSource>
                                                 </div>
 
                                                 <div class="form-group col-md-3">

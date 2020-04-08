@@ -31,6 +31,24 @@ namespace SmartSystem {
         protected global::System.Web.UI.WebControls.DropDownList Store;
         
         /// <summary>
+        /// dsMaterials control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dsMaterials;
+        
+        /// <summary>
+        /// ldsitems control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ldsitems;
+        
+        /// <summary>
         /// btnGetStoreReport control.
         /// </summary>
         /// <remarks>

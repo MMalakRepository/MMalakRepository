@@ -99,7 +99,7 @@
 
                                                 <div class="form-group col-md-5">
                                                     <label for="selectitem">Select Material</label>
-                                                    <asp:DropDownList ToolTip="أختار الصنف"  ID="selectitem" 
+                                                    <asp:DropDownList ToolTip="أختار الصنف" ID="selectitem"
                                                         DataSourceID="ldsitems" DataTextField="MaterialName" DataValueField="ID" CssClass="form-control" runat="server">
                                                         <%--<asp:ListItem Value="0" Selected="true" Text="Select Material"></asp:ListItem>--%>
                                                     </asp:DropDownList>
@@ -111,12 +111,12 @@
                                                 <div class="form-group col-md-2">
                                                     <asp:Button ID="btnCheckItemStock" ToolTip="بيانات البضاعة فى المخزن" Width="100%" CssClass="btn btnaction float-right m80" Style="background-color: #5858FA; color: white;" runat="server" Text="Get Available Material" OnClick="btnCheckItemStock_Click" />
                                                 </div>
-                                                   <asp:SqlDataSource ID="ldsitems" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
-                                            SelectCommand="SELECT DISTINCT M.ID, M.MaterialName FROM Materials AS M INNER JOIN MaterialInStock AS MS ON M.ID = MS.MaterialID WHERE (M.IsActive = 1) AND (MS.StoreID = @StoreID) Order by M.MaterialName ASC">
-                                            <SelectParameters>
-                                                <asp:ControlParameter ControlID="Store" Name="StoreID" PropertyName="SelectedValue" />
-                                            </SelectParameters>
-                                        </asp:SqlDataSource>
+                                                <asp:SqlDataSource ID="ldsitems" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
+                                                    SelectCommand="SELECT DISTINCT M.ID, M.MaterialName FROM Materials AS M INNER JOIN MaterialInStock AS MS ON M.ID = MS.MaterialID WHERE (M.IsActive = 1) AND (MS.StoreID = @StoreID) Order by M.MaterialName ASC">
+                                                    <SelectParameters>
+                                                        <asp:ControlParameter ControlID="Store" Name="StoreID" PropertyName="SelectedValue" />
+                                                    </SelectParameters>
+                                                </asp:SqlDataSource>
 
                                                 <%-- <asp:SqlDataSource ID="ldsitems" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
                                                     SelectCommand="SELECT Distinct [ID], [MaterialName] FROM [Materials] Order By MaterialName Asc">
@@ -149,8 +149,8 @@
                                                             <asp:BoundField DataField="MaterialID" HeaderText="Material" SortExpression="MaterialID" />
                                                             <asp:BoundField DataField="StoreID" HeaderText="Store" SortExpression="StoreID" />
                                                             <asp:BoundField DataField="Stock" HeaderText="Stock" SortExpression="Stock" />
-                                                            <asp:BoundField DataField="Height" HeaderText="Height" SortExpression="Height" />
                                                             <asp:BoundField DataField="Width" HeaderText="Width" SortExpression="Width" />
+                                                            <asp:BoundField DataField="Height" HeaderText="Height" SortExpression="Height" />
                                                             <asp:BoundField DataField="Notes" HeaderText="Notes" SortExpression="Notes" />
                                                             <asp:BoundField DataField="MaterialType" HeaderText="Type" SortExpression="MaterialType" />
                                                         </Columns>
@@ -263,8 +263,8 @@
                                                             <asp:BoundField DataField="MaterialNo" HeaderText="Code" SortExpression="MaterialNo"></asp:BoundField>
                                                             <asp:BoundField DataField="MaterialName" HeaderText="Name" SortExpression="MaterialName"></asp:BoundField>
                                                             <asp:BoundField DataField="Quantity" HeaderText="Quantity" SortExpression="Quantity" />
-                                                            <asp:BoundField DataField="Height" HeaderText="Height" SortExpression="Height" />
                                                             <asp:BoundField DataField="Width" HeaderText="Width" SortExpression="Width" />
+                                                            <asp:BoundField DataField="Height" HeaderText="Height" SortExpression="Height" />
                                                             <asp:BoundField DataField="MaterialType" HeaderText="MaterialType" SortExpression="MaterialType" />
                                                             <asp:BoundField DataField="CustomerID" HeaderText="Customer" SortExpression="CustomerID" />
                                                             <asp:BoundField DataField="StoreName" HeaderText="Store" SortExpression="StoreName" />

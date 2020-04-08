@@ -24,14 +24,16 @@ namespace SmartSystem
         Entities db = new Entities();
         protected void Page_Init(object sender, EventArgs e)
         {
-            int StoreID =  int.Parse(Request.QueryString["ID"]);
+            int StoreID =  int.Parse(Request.QueryString["SID"]);
+            int MID = int.Parse(Request.QueryString["MID"]);
             
             SqlConnection con = new SqlConnection();
             con.ConnectionString = ConfigurationManager.ConnectionStrings["SmartShutterConnectionString"].ConnectionString;
             string cmdtxt = "SELECT Stores.StoreName, Materials.MaterialNo, Materials.MaterialName, MaterialsForOrder.Stock, MaterialsForOrder.Height, "+
                 " MaterialsForOrder.Width, MaterialsForOrder.Notes, MaterialsForOrder.MaterialType, SubCategories.SubCategoryName, Supplier.Name AS Supplier " +
                 " FROM Materials INNER JOIN SubCategories ON Materials.TypeID = SubCategories.ID INNER JOIN Supplier ON Materials.SupplierID = Supplier.SupplierID "+ 
-                " INNER JOIN MaterialsForOrder ON Materials.ID = MaterialsForOrder.MaterialID INNER JOIN Stores ON MaterialsForOrder.StoreID = Stores.ID Where Stores.ID = " + StoreID.ToString();
+                " INNER JOIN MaterialsForOrder ON Materials.ID = MaterialsForOrder.MaterialID "+
+                "INNER JOIN Stores ON MaterialsForOrder.StoreID = Stores.ID Where Stores.ID = " + StoreID.ToString() + " and Materials.ID = " + MID.ToString();
 
             SqlCommand cmd = new SqlCommand(cmdtxt, con);
             cmd.CommandTimeout = 0;

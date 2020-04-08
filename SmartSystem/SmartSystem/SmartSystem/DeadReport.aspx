@@ -153,8 +153,8 @@
                                                                                 <asp:BoundField DataField="MaterialNo" HeaderText="Code" SortExpression="MaterialNo" />
                                                                                 <asp:BoundField DataField="MaterialName" HeaderText="Name" SortExpression="MaterialName" />
                                                                                 <asp:BoundField DataField="ActionDate" HeaderText="Date" SortExpression="ActionDate" />
-                                                                                <asp:BoundField DataField="Height" HeaderText="Height" SortExpression="Height" />
                                                                                 <asp:BoundField DataField="Width" HeaderText="Width" SortExpression="Width" />
+                                                                                <asp:BoundField DataField="Height" HeaderText="Height" SortExpression="Height" />
                                                                                 <asp:BoundField DataField="Notes" HeaderText="Notes" SortExpression="Notes" />
                                                                                 <asp:BoundField DataField="Quantity" HeaderText="Quantity" SortExpression="Quantity" />
                                                                                 <asp:BoundField DataField="UserName" HeaderText="UserName" SortExpression="UserName"></asp:BoundField>
@@ -226,8 +226,8 @@
                                                                                 <asp:BoundField DataField="MaterialName" HeaderText="Name" SortExpression="MaterialName" />
                                                                                 <asp:BoundField DataField="Notes" HeaderText="Notes" SortExpression="Notes" />
                                                                                 <asp:BoundField DataField="ActionDate" HeaderText="Date" SortExpression="ActionDate" />
-                                                                                <asp:BoundField DataField="Height" HeaderText="Height" SortExpression="Height" />
                                                                                 <asp:BoundField DataField="Width" HeaderText="Width" SortExpression="Width" />
+                                                                                <asp:BoundField DataField="Height" HeaderText="Height" SortExpression="Height" />
                                                                                 <asp:BoundField DataField="Quantity" HeaderText="Quantity" SortExpression="Quantity" />
                                                                                 <asp:BoundField DataField="UserName" HeaderText="UserName" SortExpression="UserName"></asp:BoundField>
                                                                             </Columns>
@@ -298,8 +298,8 @@
                                                                                 <asp:BoundField DataField="MaterialName" HeaderText="MaterialName" SortExpression="MaterialName" />
                                                                                 <asp:BoundField DataField="Notes" HeaderText="Notes" SortExpression="Notes" />
                                                                                 <asp:BoundField DataField="ActionDate" HeaderText="ActionDate" SortExpression="ActionDate" />
-                                                                                <asp:BoundField DataField="Height" HeaderText="Height" SortExpression="Height" />
                                                                                 <asp:BoundField DataField="Width" HeaderText="Width" SortExpression="Width" />
+                                                                                <asp:BoundField DataField="Height" HeaderText="Height" SortExpression="Height" />
                                                                                 <asp:BoundField DataField="Supplier" HeaderText="Supplier" SortExpression="Supplier" />
                                                                                 <asp:BoundField DataField="StoreName" HeaderText="StoreName" SortExpression="StoreName" />
                                                                             </Columns>
@@ -368,8 +368,8 @@
                                                                                 <asp:BoundField DataField="MaterialNo" HeaderText="Code" SortExpression="MaterialNo" />
                                                                                 <asp:BoundField DataField="MaterialName" HeaderText="Name" SortExpression="MaterialName" />
                                                                                 <asp:BoundField DataField="Name" HeaderText="Supplier" SortExpression="Name"></asp:BoundField>
-                                                                                <asp:BoundField DataField="Height" HeaderText="Height" SortExpression="Height" />
                                                                                 <asp:BoundField DataField="Width" HeaderText="Width" SortExpression="Width" />
+                                                                                <asp:BoundField DataField="Height" HeaderText="Height" SortExpression="Height" />
                                                                                 <asp:BoundField DataField="Quantity" HeaderText="Quantity" SortExpression="Quantity" />
                                                                                 <asp:BoundField DataField="Notes" HeaderText="Notes" SortExpression="Notes" />
                                                                                 <asp:BoundField DataField="ActionDate" HeaderText="Date" SortExpression="ActionDate"></asp:BoundField>
@@ -433,8 +433,8 @@
                                                                                 <asp:BoundField DataField="MaterialNo" HeaderText="Code" SortExpression="MaterialNo" />
                                                                                 <asp:BoundField DataField="MaterialName" HeaderText="Name" SortExpression="MaterialName" />
                                                                                 <asp:BoundField DataField="Supplier" HeaderText="Supplier" SortExpression="Supplier" />
-                                                                                <asp:BoundField DataField="Height" HeaderText="Height" SortExpression="Height" />
                                                                                 <asp:BoundField DataField="Width" HeaderText="Width" SortExpression="Width" />
+                                                                                <asp:BoundField DataField="Height" HeaderText="Height" SortExpression="Height" />
                                                                                 <asp:BoundField DataField="Quantity" HeaderText="Quantity" SortExpression="Quantity" />
                                                                                 <asp:BoundField DataField="Notes" HeaderText="Notes" SortExpression="Notes"></asp:BoundField>
                                                                                 <asp:BoundField DataField="ActionDate" HeaderText="Date" SortExpression="ActionDate"></asp:BoundField>
