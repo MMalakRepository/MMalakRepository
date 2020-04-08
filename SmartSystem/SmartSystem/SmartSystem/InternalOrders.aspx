@@ -43,14 +43,14 @@
                                 <!-- /.timeline-label -->
                                 <!-- timeline item -->
                                 <div>
-                                    <i class="fa fa-store-alt" style=" background-color:#08298A;color:white;"></i>
+                                    <i class="fa fa-store-alt" style="background-color: #08298A; color: white;"></i>
                                     <div class="timeline-item">
-                                        <span class="time"><i class="fa fa-store-alt" style=" background-color:#08298A;color:white;"></i></span>
-                                        <h3 class="timeline-header" style=" background-color:#08298A;color:white;">Add new Order</h3>
+                                        <span class="time"><i class="fa fa-store-alt" style="background-color: #08298A; color: white;"></i></span>
+                                        <h3 class="timeline-header" style="background-color: #08298A; color: white;">Add new Order</h3>
                                         <div class="timeline-body">
                                             <div class="row">
                                                 <div class="form-group col-md-4">
-                                                    <label for="Store">Select Customer </label>
+                                                    <label for="Customer">Select Customer </label>
                                                     <asp:DropDownList ToolTip="أختار العميل" AppendDataBoundItems="true" CssClass="form-control"
                                                         ID="Customer" DataSourceID="Customers" DataTextField="CustomerName"
                                                         DataValueField="CustomerID" runat="server">
@@ -66,10 +66,10 @@
                                                     <asp:Label ID="LblOrderID" runat="server" Text="" Visible="false"></asp:Label>
                                                 </div>
                                                 <div class="form-group col-md-2">
-                                                    <asp:Button ID="btnAddNewOrder" ToolTip="أضافة أمر تشغيل" Width="100%" CssClass="btn float-right btnaction m80"  style=" background-color:#08298A;color:white;" runat="server" Text="Add New Order" OnClick="btnAddNewOrder_Click" />
+                                                    <asp:Button ID="btnAddNewOrder" ToolTip="أضافة أمر تشغيل" Width="100%" CssClass="btn float-right btnaction m80" Style="background-color: #08298A; color: white;" runat="server" Text="Add New Order" OnClick="btnAddNewOrder_Click" />
                                                 </div>
-                                                      <div class="form-group col-md-2">
-                                                    <asp:Button ID="btnCloseOrder" ToolTip="غلق أمر تشغيل" Width="100%" CssClass="btn float-right btnaction m80"  style=" background-color:red;color:white;" runat="server" Text="Finish Order" OnClick="btnCloseOrder_Click" />
+                                                <div class="form-group col-md-2">
+                                                    <asp:Button ID="btnCloseOrder" ToolTip="غلق أمر تشغيل" Width="100%" CssClass="btn float-right btnaction m80" Style="background-color: red; color: white;" runat="server" Text="Finish Order" OnClick="btnCloseOrder_Click" />
                                                 </div>
                                             </div>
                                         </div>
@@ -83,24 +83,25 @@
                                 <div id="dvDetails" runat="server">
                                     <i class="fa fa-tools" style="background-color: #5858FA; color: white;"></i>
                                     <div class="timeline-item">
-                                        <span class="time"><i class="fa fa-tools" style="color:white;"></i></span>
+                                        <span class="time"><i class="fa fa-tools" style="color: white;"></i></span>
                                         <h3 class="timeline-header" style="background-color: #5858FA; color: white;">Add New Item</h3>
                                         <div class="timeline-body">
 
                                             <div class="row">
                                                 <div class="form-group col-md-3">
                                                     <label for="Store">Select Store </label>
-                                                    <asp:DropDownList ToolTip="أختار المخزن" AppendDataBoundItems="true"
+                                                    <asp:DropDownList ToolTip="أختار المخزن"
                                                         CssClass="form-control" ID="Store" DataSourceID="STORES" DataTextField="STORENAME"
-                                                        DataValueField="ID" runat="server">
-                                                        <asp:ListItem Value="0" Selected="True" Text="Select Store"></asp:ListItem>
+                                                        DataValueField="STORENUMBER" runat="server" AutoPostBack="true">
+                                                        <%--<asp:ListItem Value="0" Selected="True" Text="Select Store"></asp:ListItem>--%>
                                                     </asp:DropDownList>
                                                 </div>
 
                                                 <div class="form-group col-md-5">
                                                     <label for="selectitem">Select Material</label>
-                                                    <asp:DropDownList ToolTip="أختار الصنف" AppendDataBoundItems="true" ID="selectitem" DataSourceID="ldsitems" DataTextField="MaterialName" DataValueField="ID" CssClass="form-control" runat="server">
-                                                        <asp:ListItem Value="0" Selected="true" Text="Select Material"></asp:ListItem>
+                                                    <asp:DropDownList ToolTip="أختار الصنف"  ID="selectitem" 
+                                                        DataSourceID="ldsitems" DataTextField="MaterialName" DataValueField="ID" CssClass="form-control" runat="server">
+                                                        <%--<asp:ListItem Value="0" Selected="true" Text="Select Material"></asp:ListItem>--%>
                                                     </asp:DropDownList>
                                                 </div>
                                                 <div class="form-group col-md-2">
@@ -110,7 +111,29 @@
                                                 <div class="form-group col-md-2">
                                                     <asp:Button ID="btnCheckItemStock" ToolTip="بيانات البضاعة فى المخزن" Width="100%" CssClass="btn btnaction float-right m80" Style="background-color: #5858FA; color: white;" runat="server" Text="Get Available Material" OnClick="btnCheckItemStock_Click" />
                                                 </div>
+                                                   <asp:SqlDataSource ID="ldsitems" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
+                                            SelectCommand="SELECT DISTINCT M.ID, M.MaterialName FROM Materials AS M INNER JOIN MaterialInStock AS MS ON M.ID = MS.MaterialID WHERE (M.IsActive = 1) AND (MS.StoreID = @StoreID) Order by M.MaterialName ASC">
+                                            <SelectParameters>
+                                                <asp:ControlParameter ControlID="Store" Name="StoreID" PropertyName="SelectedValue" />
+                                            </SelectParameters>
+                                        </asp:SqlDataSource>
+
+                                                <%-- <asp:SqlDataSource ID="ldsitems" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
+                                                    SelectCommand="SELECT Distinct [ID], [MaterialName] FROM [Materials] Order By MaterialName Asc">
+                                                    <SelectParameters>
+                                                        <asp:Parameter DefaultValue="true" Name="IsActive" Type="Boolean" />
+                                                    </SelectParameters>
+                                                </asp:SqlDataSource>--%>
+
+                                                <asp:SqlDataSource ID="STORES" runat="server"
+                                                    ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
+                                                    SelectCommand="SELECT * FROM [STORES] Order By StoreName Asc "></asp:SqlDataSource>
+
+                                                <asp:SqlDataSource ID="Customers" runat="server"
+                                                    ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
+                                                    SelectCommand="SELECT * FROM [Customers] Order By CustomerName Asc "></asp:SqlDataSource>
                                             </div>
+
 
                                             <div class="row">
                                                 <div class="form-group col-md-12">
@@ -157,7 +180,7 @@
                                 <div id="Itemdetails" runat="server">
                                     <i class="fa fa-cog bg-danger"></i>
                                     <div class="timeline-item">
-                                        <span class="time"><i class="fa fa-cog" style="color:white;"></i></span>
+                                        <span class="time"><i class="fa fa-cog" style="color: white;"></i></span>
 
                                         <div class="timeline-body">
                                             <div class="row">
@@ -220,7 +243,7 @@
                                 <div id="dvOrderDetails" runat="server">
                                     <i class="fa fa-list bg-info"></i>
                                     <div class="timeline-item">
-                                        <span class="time"><i class="fas fa-list" style="color:white"></i></span>
+                                        <span class="time"><i class="fas fa-list" style="color: white"></i></span>
                                         <h3 class="timeline-header bg-info">Order Details</h3>
                                         <div class="timeline-body">
                                             <div class="row">
@@ -280,20 +303,6 @@
             </section>
 
 
-            <asp:SqlDataSource ID="ldsitems" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
-                SelectCommand="SELECT Distinct [ID], [MaterialName] FROM [Materials] Order By MaterialName Asc">
-                <SelectParameters>
-                    <asp:Parameter DefaultValue="true" Name="IsActive" Type="Boolean" />
-                </SelectParameters>
-            </asp:SqlDataSource>
-
-            <asp:SqlDataSource ID="STORES" runat="server"
-                ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
-                SelectCommand="SELECT * FROM [STORES] Order By StoreName Asc "></asp:SqlDataSource>
-
-            <asp:SqlDataSource ID="Customers" runat="server"
-                ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
-                SelectCommand="SELECT * FROM [Customers] Order By CustomerName Asc "></asp:SqlDataSource>
         </div>
         <!-- /.timeline -->
 

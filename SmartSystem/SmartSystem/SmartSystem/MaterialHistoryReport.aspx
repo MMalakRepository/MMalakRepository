@@ -46,20 +46,20 @@
                                                 <div class="form-group col-md-4">
                                                     <label for="dsStore">Select Store </label>
                                                     <asp:DropDownList ToolTip="أختار المخزن"
-                                                        AppendDataBoundItems="true" CssClass="form-control"
+                                                        CssClass="form-control"
                                                         ID="dsStore" DataSourceID="ldsStores" DataTextField="StoreName"
                                                         DataValueField="ID" runat="server" AutoPostBack="True">
-                                                        <asp:ListItem Selected="True" Value="0" Text="Select Store"></asp:ListItem>
+                                                        <%--<asp:ListItem Selected="True" Value="0" Text="Select Store"></asp:ListItem>--%>
                                                     </asp:DropDownList>
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="dsMaterials">Select Material </label>
                                                     <asp:DropDownList ToolTip="أختار المخزن"
-                                                        AppendDataBoundItems="true" CssClass="form-control"
-                                                        ID="dsMaterials" DataSourceID="ldsMaterials"
+                                                        CssClass="form-control"
+                                                        ID="dsMaterials" DataSourceID="ldsitems"
                                                         DataTextField="MaterialName"
                                                         DataValueField="ID" runat="server">
-                                                        <asp:ListItem Selected="True" Value="0" Text="Select Material"></asp:ListItem>
+                                                        <%--<asp:ListItem Selected="True" Value="0" Text="Select Material"></asp:ListItem>--%>
                                                     </asp:DropDownList>
                                                 </div>
 
@@ -77,6 +77,12 @@
                                         <asp:SqlDataSource ID="ldsMaterials" runat="server"
                                             ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
                                             SelectCommand="SELECT Materials.ID, Materials.MaterialName, MaterialInStock.StoreID FROM Materials INNER JOIN MaterialInStock ON Materials.ID = MaterialInStock.MaterialID  Where  MaterialInStock.StoreID = @StoreID ORDER BY Materials.MaterialName">
+                                            <SelectParameters>
+                                                <asp:ControlParameter ControlID="dsStore" Name="StoreID" PropertyName="SelectedValue" />
+                                            </SelectParameters>
+                                        </asp:SqlDataSource>
+                                          <asp:SqlDataSource ID="ldsitems" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
+                                            SelectCommand="SELECT DISTINCT M.ID, M.MaterialName FROM Materials AS M INNER JOIN MaterialInStock AS MS ON M.ID = MS.MaterialID WHERE (M.IsActive = 1) AND (MS.StoreID = @StoreID) Order by M.MaterialName ASC">
                                             <SelectParameters>
                                                 <asp:ControlParameter ControlID="dsStore" Name="StoreID" PropertyName="SelectedValue" />
                                             </SelectParameters>

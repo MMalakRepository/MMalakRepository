@@ -38,14 +38,17 @@
                                             <div class="row">
                                                 <div class="form-group col-md-6">
                                                     <label for="SelectStores">Select Store Location</label>
-                                                    <asp:DropDownList ToolTip="أختار المخزن" AppendDataBoundItems="true" CssClass="form-control" DataSourceID="STORES" DataTextField="StoreName" DataValueField="STORENUMBER" ID="SelectStores" runat="server" AutoPostBack="True">
-                                                        <asp:ListItem Selected="True" Value="0">Select Store </asp:ListItem>
+                                                    <asp:DropDownList ToolTip="أختار المخزن" CssClass="form-control"
+                                                        DataSourceID="STORES" DataTextField="StoreName" DataValueField="STORENUMBER"
+                                                        ID="SelectStores" runat="server" AutoPostBack="True">
+                                                        <%--<asp:ListItem Selected="True" Value="0">Select Store </asp:ListItem>--%>
                                                     </asp:DropDownList>
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="selectitem">Select Material</label>
-                                                    <asp:DropDownList ToolTip="أختار الصنف" ID="selectitem" DataSourceID="ldsitems" DataTextField="MaterialName" DataValueField="MaterialID" CssClass="form-control" runat="server" AppendDataBoundItems="True">
-                                                        <asp:ListItem Selected="True" Value="0">Select Material</asp:ListItem>
+                                                    <asp:DropDownList ToolTip="أختار الصنف" ID="selectitem" DataSourceID="ldsitems" 
+                                                        DataTextField="MaterialName" DataValueField="MaterialID" CssClass="form-control" runat="server">
+                                                        <%--<asp:ListItem Selected="True" Value="0">Select Material</asp:ListItem>--%>
                                                     </asp:DropDownList>
                                                 </div>
                                                 <asp:SqlDataSource ID="ldsitems" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"

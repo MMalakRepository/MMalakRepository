@@ -32,8 +32,8 @@ namespace SmartSystem
         {
             try
             {
-                if(SelectStores.SelectedIndex == 0 || selectitem.SelectedIndex == 0 || itemunit.SelectedIndex == 0){
-                    LblError.Text = "Please Select Store , Material and Unit";
+                if(itemunit.SelectedIndex == 0){
+                    LblError.Text = "Please Select Measure Unit";
                     LblError.Visible = true;
                     LblError.ForeColor = System.Drawing.Color.Red;
                 }

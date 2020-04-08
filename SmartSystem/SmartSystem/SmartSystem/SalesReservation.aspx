@@ -83,11 +83,14 @@
 
                                                 <div class="form-group col-md-4">
                                                     <label for="Store">Select Store </label>
-                                                    <asp:DropDownList ToolTip="أختار المخزن" CssClass="form-control" ID="dsStores" DataSourceID="STORES" DataTextField="STORENAME" DataValueField="STORENUMBER" runat="server" AutoPostBack="True"></asp:DropDownList>
+                                                    <asp:DropDownList ToolTip="أختار المخزن" CssClass="form-control" ID="dsStores" 
+                                                        DataSourceID="STORES" DataTextField="STORENAME" DataValueField="STORENUMBER" 
+                                                        runat="server" AutoPostBack="True"></asp:DropDownList>
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label for="selectitem">Select Material</label>
-                                                    <asp:DropDownList ToolTip="أختار الصنف" ID="dsMaterials" DataSourceID="ldsitems" DataTextField="MaterialName" DataValueField="ID" CssClass="form-control" runat="server"></asp:DropDownList>
+                                                    <asp:DropDownList ToolTip="أختار الصنف" ID="dsMaterials" DataSourceID="ldsitems" 
+                                                        DataTextField="MaterialName" DataValueField="ID" CssClass="form-control" runat="server"></asp:DropDownList>
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <asp:Button ID="btnGetMaterialData" Width="100%" ToolTip="أظهار بيانات الصنف" CssClass="btn btn-info float-right m80 btnaction" runat="server" Text="Get Material Data" OnClick="btnGetMaterialData_Click" />
@@ -148,7 +151,8 @@
                                             </asp:Panel>
                                         </div>
 
-                                        <asp:SqlDataSource ID="ldsitems" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>" SelectCommand="SELECT DISTINCT M.ID, M.MaterialName FROM Materials AS M INNER JOIN MaterialInStock AS MS ON M.ID = MS.MaterialID WHERE (M.IsActive = 1) AND (MS.StoreID = @StoreID) Order by M.MaterialName ASC">
+                                        <asp:SqlDataSource ID="ldsitems" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
+                                            SelectCommand="SELECT DISTINCT M.ID, M.MaterialName FROM Materials AS M INNER JOIN MaterialInStock AS MS ON M.ID = MS.MaterialID WHERE (M.IsActive = 1) AND (MS.StoreID = @StoreID) Order by M.MaterialName ASC">
                                             <SelectParameters>
                                                 <asp:ControlParameter ControlID="dsStores" Name="StoreID" PropertyName="SelectedValue" />
                                             </SelectParameters>
