@@ -25,6 +25,7 @@ namespace SmartSystem
         protected void Page_Init(object sender, EventArgs e)
         {
             int CustomerID =   int.Parse(Request.QueryString["ID"]);
+            DateTime adate = Convert.ToDateTime(Request.QueryString["Date"]);
             
             SqlConnection con = new SqlConnection();
             con.ConnectionString = ConfigurationManager.ConnectionStrings["SmartShutterConnectionString"].ConnectionString;
@@ -35,7 +36,8 @@ namespace SmartSystem
                        "  Materials ON OrderDetails.MaterialID = Materials.ID INNER JOIN "+
                        "  Orders ON OrderDetails.OrderID = Orders.ID INNER JOIN "+
                        "  Customers ON Orders.CustomerID = Customers.CustomerID INNER JOIN "+
-                       "  Stores ON OrderDetails.StoreID = Stores.ID Where OrderDetails.IsActive = 1 and Orders.CustomerID = " + CustomerID;
+                       "  Stores ON OrderDetails.StoreID = Stores.ID Where OrderDetails.IsActive = 1 and "+
+                       " Orders.CustomerID = " + CustomerID + " and CAST(Orders.OrderDate as Date) = '" + adate.ToShortDateString() + "' ";
 
             SqlCommand cmd = new SqlCommand(cmdtxt, con);
             cmd.CommandTimeout = 0;

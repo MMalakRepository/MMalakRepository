@@ -22,10 +22,17 @@ namespace SmartSystem
                 lblOrderErr.Visible = true;
                 lblOrderErr.ForeColor = System.Drawing.Color.Red;
             }
+            else if(adate.Value == null || adate.Value == String.Empty)
+            {
+                lblOrderErr.Text = "Please Select a Date ";
+                lblOrderErr.Visible = true;
+                lblOrderErr.ForeColor = System.Drawing.Color.Red;
+            }
             else
             {
+                DateTime dt = Convert.ToDateTime(adate.Value);
                 int Customerid = Convert.ToInt32(Customer.SelectedValue);
-                Response.Redirect("PrintCustomers.aspx?ID="+ Customerid.ToString());
+                Response.Redirect("PrintCustomers.aspx?ID="+ Customerid.ToString() +"&Date="+ dt.ToLongDateString());
             }
         }
     }

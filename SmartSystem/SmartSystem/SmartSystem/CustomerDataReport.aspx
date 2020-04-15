@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SmartShutter.Master" AutoEventWireup="true" CodeBehind="CustomerDataReport.aspx.cs" Inherits="SmartSystem.CustomerDataReport" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="plugins/bootstrap-datetimepicker/sample%20in%20bootstrap%20v3/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet" />
     <style>
         .btnaction {
             margin-top: 30px;
@@ -52,6 +54,17 @@
                                                         <asp:ListItem Selected="True" Value="0" Text="Select Customer"></asp:ListItem>
                                                     </asp:DropDownList>
                                                 </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="dtp_input2">Date</label>
+                                                    <div class="input-group date form_date " data-date="" 
+                                                        data-date-format="dd MM yyyy" data-link-field="dtp_input2"
+                                                        data-link-format="yyyy-mm-dd">
+                                                        <input class="form-control" size="16" type="text" id="adate" name="adate" runat="server" value="" readonly>
+                                                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove text-danger" ></span></span>
+                                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar text-primary"></span></span>
+                                                    </div>
+                                                    <input type="hidden" id="dtp_input2" value="" /><br />
+                                                </div>
 
                                                 <div class="form-group col-md-3">
                                                     <asp:Button ID="btnGetCustomerOrders" Width="100%" CssClass="btn btn-info float-right btnaction m80" runat="server" Text="Get Customer Data" OnClick="btnGetCustomerOrders_Click" />
@@ -73,4 +86,29 @@
             </section>
         </div>
     </form>
+    <script src="plugins/bootstrap-datetimepicker/sample%20in%20bootstrap%20v3/jquery/jquery-1.8.3.min.js"></script>
+
+    <script src="plugins/bootstrap-datetimepicker/sample%20in%20bootstrap%20v3/bootstrap/js/bootstrap.min.js"></script>
+    <script src="plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+
+
+<%--    <script type="text/javascript" src="./jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap-datetimepicker.js" charset="UTF-8"></script>--%>
+<%--<script type="text/javascript" src="../js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>--%>
+<script type="text/javascript">
+ 
+	$('.form_date').datetimepicker({
+        language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+ 
+</script>
+
 </asp:Content>

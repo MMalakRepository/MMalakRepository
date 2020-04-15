@@ -193,7 +193,7 @@
                                                 <div class="form-group col-md-2">
                                                     <asp:Button ID="btnCheckItemStock" ToolTip="بيانات البضاعة فى المخزن" 
                                                         Width="100%" CssClass="btn btnaction float-right m80" 
-                                                        Style="background-color: #08AD96; color: white;" runat="server" Text="مراجعة بيانات المخزون المتاح" OnClick="btnCheckItemStock_Click" />
+                                                        Style="background-color: #08AD96; color: white;" runat="server" Text="المخزون المتاح" OnClick="btnCheckItemStock_Click" />
                                                 </div>
                                                 <asp:SqlDataSource ID="ldsitems" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
                                                     SelectCommand="SELECT DISTINCT M.ID, M.MaterialName FROM Materials AS M INNER JOIN MaterialInStock AS MS ON M.ID = MS.MaterialID WHERE (M.IsActive = 1) AND (MS.StoreID = @StoreID) Order by M.MaterialName ASC">
