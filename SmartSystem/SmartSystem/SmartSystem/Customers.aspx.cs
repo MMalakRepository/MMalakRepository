@@ -96,7 +96,7 @@ namespace SmartSystem
 
             catch (Exception ex)
             {
-                LblError.Text = "Error In Customer Creation , The Error is " + ex.InnerException.InnerException.Message;
+                LblError.Text = "Error In Customer Creation , The Error is " + ex.InnerException.Message;
                 LblError.Visible = true;
                 LblError.ForeColor = System.Drawing.Color.Red;
             }

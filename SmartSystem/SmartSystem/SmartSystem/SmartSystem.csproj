@@ -273,6 +273,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Delicious-Icon.png" />
     <Content Include="Foursquare-Icon.png" />
+    <Content Include="index2.html" />
     <Content Include="MaterialAdditionDataReport.aspx" />
     <Content Include="MaterialHistoryReport.aspx" />
     <Content Include="MaterialOut.aspx" />
@@ -665,6 +666,7 @@
     <Content Include="PrintCustomers.aspx" />
     <Content Include="PrintOrder.aspx" />
     <Content Include="PrintSafetyReport.aspx" />
+    <Content Include="project_add.html" />
     <Content Include="RegisterNewUser.aspx" />
     <Content Include="NewMaterial.aspx" />
     <Content Include="packages.config" />

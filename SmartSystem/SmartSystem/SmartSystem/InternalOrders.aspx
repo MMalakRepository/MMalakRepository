@@ -1,6 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SmartShutter.Master" AutoEventWireup="true" CodeBehind="InternalOrders.aspx.cs" Inherits="SmartSystem.InternalOrders" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".card-orange").addClass("collapsed-card");
+            $(".customerdata").css("display", "none");
+            $("#addcustomer").addClass("fa-plus");
+            $("#addcustomer").removeClass("fa-minus");
+        });
+    </script>  
     <style>
         .btnaction {
             margin-top: 30px;
@@ -38,15 +47,87 @@
                             <div class="timeline">
                                 <!-- timeline time label -->
                                 <div class="time-label">
-                                    <span style="font-size: 25px; padding: 10px; width: 100%; text-align: center; background-color: #009999; color: white;">WareHouse Order</span>
+                                    <span style="font-size: 25px; padding: 10px; width: 100%; text-align: center; 
+                                   background-color: #009999; color: white;">WareHouse Order</span>
                                 </div>
                                 <!-- /.timeline-label -->
                                 <!-- timeline item -->
-                                <div>
-                                    <i class="fa fa-store-alt" style="background-color: #08298A; color: white;"></i>
+
+                                <div id="NCustomer" runat="server" name="NCustomer">
+                                    <i class="fas fa-user" style="background-color: #08AD96; color: white"></i>
                                     <div class="timeline-item">
-                                        <span class="time"><i class="fa fa-store-alt" style="background-color: #08298A; color: white;"></i></span>
-                                        <h3 class="timeline-header" style="background-color: #08298A; color: white;">Add new Order</h3>
+                                        <span class="time"><i class="fa fa-store-alt" style="background-color: #08AD96; color: white;"></i></span>
+
+                                        <div class="timeline-body">
+                                            <div class="col-md-12">
+                                                <div class="card card-orange">
+                                                    <div class="card-header" style="background-color:#08AD96">
+                                                        <h3 class="card-title text-bold text-white">أضافة عميل جديد </h3>
+
+                                                        <div class="card-tools">
+                                                            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                                                <i id="addcustomer" class="fas fa-minus"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body customerdata">
+                                                        <div class="row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="customernumber">Customer Number</label>
+                                                                <input title=" رقم العميل" type="text" class="form-control" id="customernumber" name="customernumber" runat="server" placeholder="رقم العميل">
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="customername">Customer Name</label>
+                                                                <input title="أسم العميل" type="text" class="form-control" id="customername" name="customername" runat="server" placeholder="أسم العميل">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="customeremail">Email Address</label>
+                                                                <input title=" البريد الألكترونى" type="text" class="form-control" name="customeremail" runat="server" id="customeremail" placeholder="البريد الألكترونى">
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="customeraddress">Address</label>
+                                                                <input title="العنوان" type="text" class="form-control" id="customeraddress" name="customeraddress" runat="server" placeholder="العنوان">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="contactperson">Contact Person</label>
+                                                                <input title="أسم الشخص المسئول" type="text" class="form-control" id="contactperson" name="contactperson" runat="server" placeholder="الشخص المسئول">
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="phonenumber">Phone Number</label>
+                                                                <input title="رقم التليفون" type="text" class="form-control" id="phonenumber" name="phonenumber" runat="server" placeholder="رقم الهاتف">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="form-group col-md-6">
+                                                                <asp:Label ID="LblError" runat="server" Text=""></asp:Label>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <asp:Button ToolTip="أضافة عميل جديد" ID="btnAddNewCustomer"
+                                                                    CssClass="btn float-right" runat="server" BackColor="#08AD96" ForeColor="White"
+                                                                    Text="Add New Customer" OnClick="btnAddNewCustomer_Click" />
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <!-- /.card-body -->
+                                                </div>
+                                                <!-- /.card -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <i class="fa fa-store-alt" style="background-color:#0AD6B8; color: white;"></i>
+                                    <div class="timeline-item">
+                                        <span class="time"><i class="fa fa-store-alt" style="background-color:#0AD6B8; color: white;"></i></span>
+                                        <h3 class="timeline-header" style="background-color:#0AD6B8; color: white;">أضافة أذن صرف</h3>
                                         <div class="timeline-body">
                                             <div class="row">
                                                 <div class="form-group col-md-4">
@@ -54,7 +135,7 @@
                                                     <asp:DropDownList ToolTip="أختار العميل" AppendDataBoundItems="true" CssClass="form-control"
                                                         ID="Customer" DataSourceID="Customers" DataTextField="CustomerName"
                                                         DataValueField="CustomerID" runat="server">
-                                                        <asp:ListItem Selected="True" Value="0" Text="Select Customer"></asp:ListItem>
+                                                        <asp:ListItem Selected="True" Value="0" Text="أختار العميل"></asp:ListItem>
                                                     </asp:DropDownList>
                                                 </div>
                                                 <div class="form-group col-md-3">
@@ -66,10 +147,11 @@
                                                     <asp:Label ID="LblOrderID" runat="server" Text="" Visible="false"></asp:Label>
                                                 </div>
                                                 <div class="form-group col-md-2">
-                                                    <asp:Button ID="btnAddNewOrder" ToolTip="أضافة أمر تشغيل" Width="100%" CssClass="btn float-right btnaction m80" Style="background-color: #08298A; color: white;" runat="server" Text="Add New Order" OnClick="btnAddNewOrder_Click" />
+                                                    <asp:Button ID="btnAddNewOrder" ToolTip="أضافة أمر تشغيل" 
+                                                        Width="100%" CssClass="btn float-right btnaction m80" Style="background-color:#0AD6B8; color: white;" runat="server" Text="أذن صرف جديد" OnClick="btnAddNewOrder_Click" />
                                                 </div>
                                                 <div class="form-group col-md-2">
-                                                    <asp:Button ID="btnCloseOrder" ToolTip="غلق أمر تشغيل" Width="100%" CssClass="btn float-right btnaction m80" Style="background-color: red; color: white;" runat="server" Text="Finish Order" OnClick="btnCloseOrder_Click" />
+                                                    <asp:Button ID="btnCloseOrder" ToolTip="غلق أمر تشغيل" Width="100%" CssClass="btn float-right btnaction m80" Style="background-color: red; color: white;" runat="server" Text="غلق أذن الصرف" OnClick="btnCloseOrder_Click" />
                                                 </div>
                                             </div>
                                         </div>
@@ -81,15 +163,15 @@
 
                                 <!-- timeline item -->
                                 <div id="dvDetails" runat="server">
-                                    <i class="fa fa-tools" style="background-color: #5858FA; color: white;"></i>
+                                    <i class="fa fa-tools" style="background-color: #08AD96; color: white;"></i>
                                     <div class="timeline-item">
                                         <span class="time"><i class="fa fa-tools" style="color: white;"></i></span>
-                                        <h3 class="timeline-header" style="background-color: #5858FA; color: white;">Add New Item</h3>
+                                        <h3 class="timeline-header" style="background-color: #08AD96; color: white;">أضافة صنف جديد</h3>
                                         <div class="timeline-body">
 
                                             <div class="row">
                                                 <div class="form-group col-md-3">
-                                                    <label for="Store">Select Store </label>
+                                                    <label for="Store">أختار المخزن </label>
                                                     <asp:DropDownList ToolTip="أختار المخزن"
                                                         CssClass="form-control" ID="Store" DataSourceID="STORES" DataTextField="STORENAME"
                                                         DataValueField="STORENUMBER" runat="server" AutoPostBack="true">
@@ -98,7 +180,7 @@
                                                 </div>
 
                                                 <div class="form-group col-md-5">
-                                                    <label for="selectitem">Select Material</label>
+                                                    <label for="selectitem">أختار الصنف</label>
                                                     <asp:DropDownList ToolTip="أختار الصنف" ID="selectitem"
                                                         DataSourceID="ldsitems" DataTextField="MaterialName" DataValueField="ID" CssClass="form-control" runat="server">
                                                         <%--<asp:ListItem Value="0" Selected="true" Text="Select Material"></asp:ListItem>--%>
@@ -109,7 +191,9 @@
                                                 </div>
 
                                                 <div class="form-group col-md-2">
-                                                    <asp:Button ID="btnCheckItemStock" ToolTip="بيانات البضاعة فى المخزن" Width="100%" CssClass="btn btnaction float-right m80" Style="background-color: #5858FA; color: white;" runat="server" Text="Get Available Material" OnClick="btnCheckItemStock_Click" />
+                                                    <asp:Button ID="btnCheckItemStock" ToolTip="بيانات البضاعة فى المخزن" 
+                                                        Width="100%" CssClass="btn btnaction float-right m80" 
+                                                        Style="background-color: #08AD96; color: white;" runat="server" Text="مراجعة بيانات المخزون المتاح" OnClick="btnCheckItemStock_Click" />
                                                 </div>
                                                 <asp:SqlDataSource ID="ldsitems" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
                                                     SelectCommand="SELECT DISTINCT M.ID, M.MaterialName FROM Materials AS M INNER JOIN MaterialInStock AS MS ON M.ID = MS.MaterialID WHERE (M.IsActive = 1) AND (MS.StoreID = @StoreID) Order by M.MaterialName ASC">
@@ -190,16 +274,16 @@
                                                         name="txtStore" runat="server">
                                                 </div>
                                                 <div class="form-group col-md-2">
-                                                    <label for="txtCurrentStock">Available Stock</label>
+                                                    <label for="txtCurrentStock">المخزون المتاح</label>
                                                     <input type="text" title="الرصيد المتاح" disabled class="form-control" id="txtCurrentStock"
                                                         name="txtCurrentStock" runat="server">
                                                 </div>
                                                 <div class="form-group col-md-2">
-                                                    <label for="txtRequestedStock">Requested stock</label>
+                                                    <label for="txtRequestedStock">الكمية المطلوبة</label>
                                                     <input type="text" title="الكمية المطلوبة" class="form-control" id="txtRequestedStock" name="txtRequestedStock" runat="server" placeholder="أدخل الكمية المطلوبة" />
                                                 </div>
                                                 <div class="form-group col-md-3">
-                                                    <label for="txtNote">Notes</label>
+                                                    <label for="txtNote">ملاحظات أضافية</label>
                                                     <input type="text" title=" أدخل ملاحظات" class="form-control" id="txtNote" name="txtNote" runat="server" placeholder="أدخل ملاحظات" />
                                                 </div>
 
@@ -208,7 +292,7 @@
                                                     <input type="text" title="نوعية الصنف" class="form-control" id="txtItemType" disabled name="txtItemType" runat="server" />
                                                 </div>
                                                 <div class="form-group col-md-2">
-                                                    <asp:Button ID="btnAddNewItem" ToolTip="أضافة صنف لأمر الشغل" Width="100%" CssClass="btn btn-danger float-right m80 btnaction" runat="server" Text="Add New Material" OnClick="btnAddNewItem_Click" />
+                                                    <asp:Button ID="btnAddNewItem" ToolTip="أضافة صنف لأمر الشغل" Width="100%" CssClass="btn btn-danger float-right m80 btnaction" runat="server" Text="أضافة الصنف" OnClick="btnAddNewItem_Click" />
                                                 </div>
                                             </div>
 
@@ -244,7 +328,7 @@
                                     <i class="fa fa-list bg-info"></i>
                                     <div class="timeline-item">
                                         <span class="time"><i class="fas fa-list" style="color: white"></i></span>
-                                        <h3 class="timeline-header bg-info">Order Details</h3>
+                                        <h3 class="timeline-header bg-info">تفاصيل أذن الصرف</h3>
                                         <div class="timeline-body">
                                             <div class="row">
                                                 <div class="form-group col-md-12">

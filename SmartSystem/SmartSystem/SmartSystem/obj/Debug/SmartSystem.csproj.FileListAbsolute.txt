@@ -1049,9 +1049,8 @@ D:\MIchael\SmartShutter\SmartSystem12\SmartSystem\SmartSystem\SmartSystem\SmartS
 D:\MIchael\SmartShutter\SmartSystem12\SmartSystem\SmartSystem\SmartSystem\SmartSystem\bin\SmartSystem.dll
 D:\MIchael\SmartShutter\SmartSystem12\SmartSystem\SmartSystem\SmartSystem\SmartSystem\bin\SmartSystem.pdb
 D:\MIchael\SmartShutter\SmartSystem12\SmartSystem\SmartSystem\SmartSystem\SmartSystem\bin\Microsoft.SqlServer.Types.dll
-D:\MIchael\SmartShutter\SmartSystem12\SmartSystem\SmartSystem\SmartSystem\SmartSystem\obj\Debug\SmartSystem.csprojResolveAssemblyReference.cache
-D:\MIchael\SmartShutter\SmartSystem12\SmartSystem\SmartSystem\SmartSystem\SmartSystem\obj\Debug\RdlCompile.cache
-D:\MIchael\SmartShutter\SmartSystem12\SmartSystem\SmartSystem\SmartSystem\SmartSystem\obj\Debug\RdlCompile.compiled
 D:\MIchael\SmartShutter\SmartSystem12\SmartSystem\SmartSystem\SmartSystem\SmartSystem\obj\Debug\SmartSystem.csproj.CoreCompileInputs.cache
 D:\MIchael\SmartShutter\SmartSystem12\SmartSystem\SmartSystem\SmartSystem\SmartSystem\obj\Debug\SmartSystem.dll
 D:\MIchael\SmartShutter\SmartSystem12\SmartSystem\SmartSystem\SmartSystem\SmartSystem\obj\Debug\SmartSystem.pdb
+D:\MIchael\SmartShutter\SmartSystem12\SmartSystem\SmartSystem\SmartSystem\SmartSystem\obj\Debug\SmartSystem.csprojAssemblyReference.cache
+D:\MIchael\SmartShutter\SmartSystem12\SmartSystem\SmartSystem\SmartSystem\SmartSystem\obj\Debug\SmartSystem.csproj.CopyComplete

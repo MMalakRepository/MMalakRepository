@@ -16,6 +16,7 @@ namespace SmartSystem
 
         protected void btnGetHistoryData_Click(object sender, EventArgs e)
         {
+
                 int mID = Convert.ToInt32(dsMaterials.SelectedValue);
                 int sID = Convert.ToInt32(dsStore.SelectedValue);
                 Response.Redirect("~/PrintMaterialHistory.aspx?MID=" + mID.ToString() + "&SID=" + sID.ToString());
