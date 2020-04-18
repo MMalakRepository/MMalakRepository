@@ -1,12 +1,22 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SmartShutter.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="MaterialsReport.aspx.cs" Inherits="SmartSystem.NewMaterialsReport" %>
 
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script>
+        $(document).ready(function () {
+            //$("a[title='Excel']").parent().hide();  // Remove Excel option from export dropdown.
+            $("a[title='Word']").parent().hide();   // Remove PDF option from export dropdown.
+        });
+    </script>
     <style>
         .btnaction {
             margin-top: 30px;
             margin-left: 20px;
         }
     </style>
+
 
     <script type="text/javascript">
         function SelectSafety() {
@@ -236,7 +246,8 @@
                                                                         </SelectParameters>
                                                                     </asp:SqlDataSource>
                                                                     <div class="form-group col-md-3">
-                                                                        <asp:Button ID="btnGetMaterialData" CssClass="btn btn-danger btnaction float-right" Width="100%" Visible="true" runat="server" Text="Get Data" OnClick="btnGetMaterialData_Click" />
+                                                                        <asp:Button ID="btnGetMaterialData" CssClass="btn btn-danger btnaction float-right" Width="100%" Visible="true" 
+                                                                            runat="server" Text="Get Data" OnClick="btnGetMaterialData_Click" />
                                                                     </div>
                                                                     <div class="form-group col-md-3">
                                                                         <asp:ImageButton ID="btnExportMaterialPDF" CssClass="btnaction float-right" Width="50px" Height="50px" runat="server" ImageUrl="~/Images/pdf.png" OnClick="btnExportMaterialsPDF_Click" />
@@ -272,7 +283,12 @@
                                                                             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                                                                         </asp:GridView>
 
-                                                                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>" SelectCommand="SELECT MaterialInStock.StockOnHand, MaterialInStock.SafetyStock, MaterialInStock.Location, MaterialInStock.OpeningStock, Materials.MaterialNo, Materials.MaterialName, Stores.StoreName, MaterialInStock.ReservedStock, Supplier.Name AS SupplierName FROM MaterialInStock INNER JOIN Materials ON MaterialInStock.MaterialID = Materials.ID INNER JOIN Stores ON MaterialInStock.StoreID = Stores.ID INNER JOIN Supplier ON Materials.SupplierID = Supplier.SupplierID WHERE (MaterialInStock.MaterialID = @MaterialID)">
+                                                                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>" 
+                                                                            SelectCommand="SELECT MaterialInStock.StockOnHand, MaterialInStock.SafetyStock, MaterialInStock.Location,
+                                                                            MaterialInStock.OpeningStock, Materials.MaterialNo, Materials.MaterialName, Stores.StoreName, MaterialInStock.ReservedStock,
+                                                                            Supplier.Name AS SupplierName FROM MaterialInStock INNER JOIN Materials ON MaterialInStock.MaterialID = Materials.ID 
+                                                                            INNER JOIN Stores ON MaterialInStock.StoreID = Stores.ID INNER JOIN Supplier ON Materials.SupplierID = Supplier.SupplierID 
+                                                                            WHERE (MaterialInStock.MaterialID = @MaterialID)">
                                                                             <SelectParameters>
                                                                                 <asp:ControlParameter ControlID="selectitems" Name="MaterialID" PropertyName="SelectedValue" />
                                                                             </SelectParameters>
@@ -581,6 +597,13 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div >
+                                            <rsweb:ReportViewer ShowPrintButton="true" ID="ReportViewer1" runat="server" Width="80%" Height="700px" 
+                                                BorderStyle="Solid" BorderWidth="2px" SizeToReportContent="True">
+                                                <LocalReport ReportPath="./Reports/MaterialsOut.rdlc" EnableExternalImages="true">
+                                                </LocalReport>
+                                            </rsweb:ReportViewer>
                                         </div>
                                     </div>
                                     <!-- /.card -->

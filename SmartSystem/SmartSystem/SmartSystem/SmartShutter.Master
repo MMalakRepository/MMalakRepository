@@ -119,7 +119,7 @@
                         <li class="dropdown-divider"></li>
                         <li><a href="MaterialOut.aspx" class="dropdown-item" title="متابعة الأصناف الباقية لأوامر الشغل">Materials Out For Order</a></li>
                         <li class="dropdown-divider"></li>
-                        <li><a href="MaterialsReport.aspx" class="dropdown-item" title="تقرير الأصناف السليمة">Materials Report</a></li>
+                        <li><a href="MaterialDataReport.aspx" class="dropdown-item" title="تقرير الأصناف السليمة">Materials Report</a></li>
                         <li><a href="CuttingListReport.aspx" class="dropdown-item" title="تقرير الأصناف المقطوعة">Cutting List Report</a></li>
                         <li><a href="DeadReport.aspx" class="dropdown-item" title="تقرير الأصناف المعيوبة" >Dead List Report</a></li>
                         <li class="dropdown-divider"></li>
@@ -344,7 +344,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="MaterialsReport.aspx" class="nav-link">
+                                    <a href="MaterialDataReport.aspx" class="nav-link">
                                         <i class="fas fa-tools  nav-icon"></i>
                                         <p>All Materials Report</p>
                                     </a>

@@ -10,16 +10,7 @@
 namespace SmartSystem {
     
     
-    public partial class NewMaterialsReport {
-        
-        /// <summary>
-        /// ScriptManager1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+    public partial class MaterialDataReport {
         
         /// <summary>
         /// Form1 control.
@@ -29,6 +20,15 @@ namespace SmartSystem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
+        
+        /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
         /// SelectStores control.
@@ -58,31 +58,13 @@ namespace SmartSystem {
         protected global::System.Web.UI.WebControls.Button btnGetStoreData;
         
         /// <summary>
-        /// btnExportstorePDF control.
+        /// ReportStore control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnExportstorePDF;
-        
-        /// <summary>
-        /// btnExportStoreExcel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnExportStoreExcel;
-        
-        /// <summary>
-        /// GridData control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridData;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportStore;
         
         /// <summary>
         /// SqlDataSource1 control.
@@ -121,31 +103,13 @@ namespace SmartSystem {
         protected global::System.Web.UI.WebControls.Button btnGetMaterialData;
         
         /// <summary>
-        /// btnExportMaterialPDF control.
+        /// ReportMaterial control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnExportMaterialPDF;
-        
-        /// <summary>
-        /// btnExportMaterialExcel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnExportMaterialExcel;
-        
-        /// <summary>
-        /// GridMaterials control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridMaterials;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportMaterial;
         
         /// <summary>
         /// SqlDataSource2 control.
@@ -193,31 +157,13 @@ namespace SmartSystem {
         protected global::System.Web.UI.WebControls.Button btnGetSupplierData;
         
         /// <summary>
-        /// ImageButton1 control.
+        /// ReportSupplier control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
-        
-        /// <summary>
-        /// ImageButton2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton2;
-        
-        /// <summary>
-        /// GridSupplierData control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridSupplierData;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportSupplier;
         
         /// <summary>
         /// SqlDataSource4 control.
@@ -274,31 +220,13 @@ namespace SmartSystem {
         protected global::System.Web.UI.WebControls.Button btnGetSagetyData;
         
         /// <summary>
-        /// btnExportSafetyPDF control.
+        /// ReportSafety control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnExportSafetyPDF;
-        
-        /// <summary>
-        /// btnExportSafetyExcel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnExportSafetyExcel;
-        
-        /// <summary>
-        /// GridSafety control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridSafety;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportSafety;
         
         /// <summary>
         /// SqlDataSource5 control.
@@ -328,24 +256,6 @@ namespace SmartSystem {
         protected global::System.Web.UI.WebControls.Button btnGetDataByCategory;
         
         /// <summary>
-        /// btnGetDataByCategoryPDF control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnGetDataByCategoryPDF;
-        
-        /// <summary>
-        /// btnGetDataByCategoryExcel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnGetDataByCategoryExcel;
-        
-        /// <summary>
         /// ldsCategories control.
         /// </summary>
         /// <remarks>
@@ -355,13 +265,13 @@ namespace SmartSystem {
         protected global::System.Web.UI.WebControls.SqlDataSource ldsCategories;
         
         /// <summary>
-        /// GridView2 control.
+        /// ReportCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView2;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportCategory;
         
         /// <summary>
         /// SqlDataSource6 control.
@@ -391,24 +301,6 @@ namespace SmartSystem {
         protected global::System.Web.UI.WebControls.Button btnGetDataBySubCategory;
         
         /// <summary>
-        /// btnExportSubCategoryDataPDF control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnExportSubCategoryDataPDF;
-        
-        /// <summary>
-        /// btnExportSubCategoryDataExcel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnExportSubCategoryDataExcel;
-        
-        /// <summary>
         /// ldsSubCategories control.
         /// </summary>
         /// <remarks>
@@ -418,13 +310,13 @@ namespace SmartSystem {
         protected global::System.Web.UI.WebControls.SqlDataSource ldsSubCategories;
         
         /// <summary>
-        /// GridSubCategory control.
+        /// ReportSubCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridSubCategory;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportSubCategory;
         
         /// <summary>
         /// SqlDataSource8 control.
