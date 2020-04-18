@@ -184,21 +184,8 @@
                                                                                 </LocalReport>
                                                                             </rsweb:ReportViewer>
                                                                         </div>
-                                                                        <asp:SqlDataSource ID="SqlDataSource1" runat="server"
-                                                                            ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
-                                                                            SelectCommand="SELECT M.MaterialNo, M.MaterialName, S.StoreName, MS.Location,
-                                                                            MS.SafetyStock, MS.StockOnHand FROM MaterialInStock AS MS INNER JOIN Materials 
-                                                                            AS M ON MS.MaterialID = M.ID INNER JOIN Stores AS S ON MS.StoreID = S.ID 
-                                                                            WHERE (MS.IsActive = 1) AND (MS.StoreID = @StoreID)">
-                                                                            <SelectParameters>
-                                                                                <asp:Parameter DefaultValue="True" Name="IsActive" Type="Boolean" />
-                                                                                <asp:ControlParameter ControlID="SelectStores" DefaultValue="" Name="StoreID" PropertyName="SelectedValue" />
-                                                                            </SelectParameters>
-                                                                        </asp:SqlDataSource>
-
                                                                     </div>
                                                                 </div>
-
                                                             </div>
                                                             <!-- /.card -->
                                                         </div>
@@ -215,7 +202,7 @@
                                                                 <div class="row">
                                                                     <div class="form-group col-md-6">
                                                                         <label for="selectitems">Select Material</label>
-                                                                        <asp:DropDownList AppendDataBoundItems="true" ToolTip="أختار الصنف" 
+                                                                        <asp:DropDownList AppendDataBoundItems="true" ToolTip="أختار الصنف"
                                                                             CssClass="form-control" ID="selectitems" runat="server" DataSourceID="ldsMaterials" DataTextField="MaterialName" DataValueField="ID" AutoPostBack="False">
                                                                             <asp:ListItem Selected="True" Value="0" Enabled="true">Select Material .. </asp:ListItem>
                                                                         </asp:DropDownList>
@@ -229,9 +216,7 @@
                                                                         <asp:Button ID="btnGetMaterialData" CssClass="btn btn-danger btnaction float-right" Width="100%" Visible="true"
                                                                             runat="server" Text="Get Data" OnClick="btnGetMaterialData_Click" />
                                                                     </div>
-
                                                                 </div>
-
                                                                 <div class="row">
                                                                     <div class="form-group col-md-12">
                                                                         <div>
@@ -241,20 +226,8 @@
                                                                                 </LocalReport>
                                                                             </rsweb:ReportViewer>
                                                                         </div>
-                                                                        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
-                                                                            SelectCommand="SELECT MaterialInStock.StockOnHand, MaterialInStock.SafetyStock, MaterialInStock.Location,
-                                                                            MaterialInStock.OpeningStock, Materials.MaterialNo, Materials.MaterialName, Stores.StoreName, MaterialInStock.ReservedStock,
-                                                                            Supplier.Name AS SupplierName FROM MaterialInStock INNER JOIN Materials ON MaterialInStock.MaterialID = Materials.ID 
-                                                                            INNER JOIN Stores ON MaterialInStock.StoreID = Stores.ID INNER JOIN Supplier ON Materials.SupplierID = Supplier.SupplierID 
-                                                                            WHERE (MaterialInStock.MaterialID = @MaterialID)">
-                                                                            <SelectParameters>
-                                                                                <asp:ControlParameter ControlID="selectitems" Name="MaterialID" PropertyName="SelectedValue" />
-                                                                            </SelectParameters>
-                                                                        </asp:SqlDataSource>
-
                                                                     </div>
                                                                 </div>
-
                                                                 <div class="row">
                                                                     <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
                                                                 </div>
@@ -273,7 +246,7 @@
                                                                     <div class="form-group col-md-6">
                                                                         <label for="SelectStores">Select Supplier</label>
                                                                         <asp:DropDownList AppendDataBoundItems="true" ToolTip="أختار المورد"
-                                                                            CssClass="form-control" ID="selectsupplier" runat="server" 
+                                                                            CssClass="form-control" ID="selectsupplier" runat="server"
                                                                             DataSourceID="ldsSuppliers" DataTextField="Name" DataValueField="SupplierID" AutoPostBack="false">
                                                                             <asp:ListItem Selected="True" Value="0" Enabled="true">Select Supplier .. </asp:ListItem>
                                                                         </asp:DropDownList>
@@ -286,9 +259,7 @@
                                                                     <div class="form-group col-md-3">
                                                                         <asp:Button ID="btnGetSupplierData" CssClass="btn btn-success btnaction float-right" Width="100%" Visible="true" runat="server" Text="Get Data" OnClick="btnGetSupplierData_Click" />
                                                                     </div>
-
                                                                 </div>
-
                                                                 <div class="row">
                                                                     <div>
                                                                         <rsweb:ReportViewer ShowPrintButton="true" ID="ReportSupplier" runat="server" Visible="false"
@@ -297,16 +268,7 @@
                                                                             </LocalReport>
                                                                         </rsweb:ReportViewer>
                                                                     </div>
-                                                                    <div class="form-group col-md-12">
-                                                                        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>" SelectCommand="SELECT Materials.MaterialName, MaterialInStock.StockOnHand, MaterialInStock.SafetyStock, MaterialInStock.OpeningStock, MaterialInStock.Location, MaterialInStock.ReservedStock, Stores.StoreName, Units.UnitName, Supplier.Name As SupplierName, Supplier.Country FROM MaterialInStock INNER JOIN Materials ON MaterialInStock.MaterialID = Materials.ID INNER JOIN Stores ON MaterialInStock.StoreID = Stores.ID INNER JOIN Supplier ON Materials.SupplierID = Supplier.SupplierID INNER JOIN Units ON Materials.UnitID = Units.ID WHERE (Materials.SupplierID = @SupplierID)">
-                                                                            <SelectParameters>
-                                                                                <asp:ControlParameter ControlID="selectsupplier" Name="SupplierID" PropertyName="SelectedValue" />
-                                                                            </SelectParameters>
-                                                                        </asp:SqlDataSource>
-
-                                                                    </div>
                                                                 </div>
-
                                                                 <div class="row">
                                                                     <asp:Label ID="LblErrorSupplierData" runat="server" Text=""></asp:Label>
                                                                 </div>
@@ -328,7 +290,7 @@
                                                                                 <label for="SafetyStores">Select Store Location</label>
                                                                                 <asp:DropDownList AppendDataBoundItems="true" ToolTip="أختار المخزن"
                                                                                     CssClass="form-control" ID="SafetyStores"
-                                                                                    runat="server" DataSourceID="ldsstores" DataTextField="StoreName" 
+                                                                                    runat="server" DataSourceID="ldsstores" DataTextField="StoreName"
                                                                                     DataValueField="StoreNumber"
                                                                                     AutoPostBack="False">
                                                                                     <asp:ListItem Selected="True" Value="0">Select Store ..</asp:ListItem>
@@ -344,7 +306,7 @@
                                                                             </asp:SqlDataSource>
                                                                             <div class="form-group col-md-3">
                                                                                 <asp:Button ID="btnGetSagetyData" CssClass="btn btn-warning btnaction float-right"
-                                                                                    Width="100%" Visible="true" runat="server" Text="Get Data" 
+                                                                                    Width="100%" Visible="true" runat="server" Text="Get Data"
                                                                                     OnClick="btnGetSagetyData_Click" />
                                                                             </div>
 
@@ -358,18 +320,6 @@
                                                                                         </LocalReport>
                                                                                     </rsweb:ReportViewer>
                                                                                 </div>
-                                                                                <asp:SqlDataSource ID="SqlDataSource5" runat="server"
-                                                                                    ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
-                                                                                    SelectCommand="SELECT M.MaterialNo, M.MaterialName, S.StoreName, MS.Location,
-                                                                                       MS.SafetyStock, MS.StockOnHand FROM MaterialInStock AS MS INNER JOIN Materials 
-                                                                                       AS M ON MS.MaterialID = M.ID INNER JOIN Stores AS S ON MS.StoreID = S.ID WHERE 
-                                                                                       (MS.IsActive = 1) AND (MS.StoreID = @StoreID) AND (MS.SafetyStock &gt; MS.StockOnHand)">
-                                                                                    <SelectParameters>
-                                                                                        <asp:Parameter DefaultValue="True" Name="IsActive" Type="Boolean" />
-                                                                                        <asp:ControlParameter ControlID="SafetyStores" DefaultValue="" Name="StoreID" PropertyName="SelectedValue" />
-                                                                                    </SelectParameters>
-                                                                                </asp:SqlDataSource>
-
                                                                             </div>
                                                                         </div>
 
@@ -401,7 +351,6 @@
                                                                     <div class="form-group col-md-3">
                                                                         <asp:Button ID="btnGetDataByCategory" CssClass="btn btn-info btnaction float-right" Width="100%" Visible="true" runat="server" Text="Get Data" OnClick="btnGetDataByCategory_Click" />
                                                                     </div>
-
                                                                     <asp:SqlDataSource ID="ldsCategories" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>" SelectCommand="SELECT *  FROM [Category]  ">
                                                                         <SelectParameters>
                                                                             <asp:Parameter DefaultValue="true" Name="IsActive" Type="Boolean" />
@@ -418,12 +367,6 @@
                                                                                 </LocalReport>
                                                                             </rsweb:ReportViewer>
                                                                         </div>
-                                                                        <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>" SelectCommand="SELECT Materials.MaterialName, Supplier.Name AS Supplier, Stores.StoreName, MaterialInStock.StockOnHand, MaterialInStock.SafetyStock, MaterialInStock.Location, MaterialInStock.ReservedStock, Materials.MaterialNo, Units.UnitName, MaterialInStock.OpeningStock FROM Materials INNER JOIN Supplier ON Materials.SupplierID = Supplier.SupplierID INNER JOIN MaterialInStock ON Materials.ID = MaterialInStock.MaterialID AND Supplier.SupplierID = MaterialInStock.Supplier INNER JOIN Stores ON MaterialInStock.StoreID = Stores.ID INNER JOIN Units ON Materials.UnitID = Units.ID AND MaterialInStock.UnitID = Units.ID WHERE (Materials.TypeID IN (SELECT ID FROM SubCategories WHERE (CategoryID = @categoryID)))">
-                                                                            <SelectParameters>
-                                                                                <asp:ControlParameter ControlID="SelectCategory" Name="categoryID" PropertyName="SelectedValue" />
-                                                                            </SelectParameters>
-                                                                        </asp:SqlDataSource>
-
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -461,11 +404,7 @@
                                                                                 </LocalReport>
                                                                             </rsweb:ReportViewer>
                                                                         </div>
-                                                                        <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>" SelectCommand="SELECT Materials.MaterialName, Supplier.Name AS Supplier, Stores.StoreName, MaterialInStock.StockOnHand, MaterialInStock.SafetyStock, MaterialInStock.Location, MaterialInStock.ReservedStock, Materials.MaterialNo, Units.UnitName, MaterialInStock.OpeningStock FROM Materials INNER JOIN Supplier ON Materials.SupplierID = Supplier.SupplierID INNER JOIN MaterialInStock ON Materials.ID = MaterialInStock.MaterialID AND Supplier.SupplierID = MaterialInStock.Supplier INNER JOIN Stores ON MaterialInStock.StoreID = Stores.ID INNER JOIN Units ON Materials.UnitID = Units.ID AND MaterialInStock.UnitID = Units.ID WHERE (Materials.TypeID = @categoryID)">
-                                                                            <SelectParameters>
-                                                                                <asp:ControlParameter ControlID="SelectSubCategory" Name="categoryID" PropertyName="SelectedValue" />
-                                                                            </SelectParameters>
-                                                                        </asp:SqlDataSource>
+
 
                                                                     </div>
                                                                 </div>

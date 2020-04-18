@@ -288,6 +288,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="CuttingListDataReport.aspx" />
     <Content Include="Delicious-Icon.png" />
     <Content Include="Foursquare-Icon.png" />
     <Content Include="index2.html" />
@@ -2565,6 +2566,17 @@
     <Content Include="DataSets\MaterialAddition.xsc">
       <DependentUpon>MaterialAddition.xsd</DependentUpon>
     </Content>
+    <Content Include="DataSets\CuttingMaterialData.xsc">
+      <DependentUpon>CuttingMaterialData.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSets\CuttingMaterialData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CuttingMaterialData.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSets\CuttingMaterialData.xss">
+      <DependentUpon>CuttingMaterialData.xsd</DependentUpon>
+    </Content>
     <None Include="DataSets\MaterialAddition.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -2642,7 +2654,12 @@
     <Content Include="plugins\bootstrap-datetimepicker\sample in bootstrap v3\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="plugins\bootstrap-datetimepicker\sample in bootstrap v3\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="plugins\bootstrap-datetimepicker\tests\README.md" />
-    <EmbeddedResource Include="Reports\MaterialsData.rdlc" />
+    <EmbeddedResource Include="Reports\CuttingMaterialData.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\MaterialsData.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -2760,6 +2777,18 @@
     </Compile>
     <Compile Include="ContainerData.cs">
       <DependentUpon>SmartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CuttingListDataReport.aspx.cs">
+      <DependentUpon>CuttingListDataReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CuttingListDataReport.aspx.designer.cs">
+      <DependentUpon>CuttingListDataReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\CuttingMaterialData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CuttingMaterialData.xsd</DependentUpon>
     </Compile>
     <Compile Include="DataSets\MaterialsData.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -3189,8 +3218,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reports\AvailableStock.rdlc" />
-    <EmbeddedResource Include="Reports\MaterialAddition.rdlc" />
-    <EmbeddedResource Include="Reports\SafetyStock.rdlc" />
+    <EmbeddedResource Include="Reports\MaterialAddition.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SafetyStock.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\MaterialHistory.rdlc" />
     <EmbeddedResource Include="Reports\Customers.rdlc" />
     <EmbeddedResource Include="Reports\MaterialsOut.rdlc" />

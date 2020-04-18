@@ -36,7 +36,7 @@ namespace SmartSystem
                          " SubCategories ON Materials.TypeID = SubCategories.ID INNER JOIN " +
                          " Category ON SubCategories.CategoryID = Category.CategoruID INNER JOIN " +
                          " Supplier ON Materials.SupplierID = Supplier.SupplierID AND MaterialInStock.Supplier = Supplier.SupplierID  " +
-                         " Where MaterialInStock.SafetyStock < MaterialInStock.StockOnHand and Stores.ID = "+ Storeid.ToString() +"  ";
+                         " Where MaterialInStock.SafetyStock > MaterialInStock.StockOnHand and Stores.ID = "+ Storeid.ToString() +"  ";
             SqlCommand cmd = new SqlCommand(cmdtxt, con);
             cmd.CommandTimeout = 0;
             cmd.CommandType = CommandType.Text;
@@ -49,7 +49,9 @@ namespace SmartSystem
             ReportSafety.LocalReport.ReportPath = Server.MapPath("./Reports/MaterialsData.rdlc");
             ReportSafety.LocalReport.DataSources.Clear();
             ReportSafety.LocalReport.DataSources.Add(new ReportDataSource("MaterialsData", dt));
-            ReportStore.LocalReport.DisplayName = "MaterialSafetyByStore" + DateTime.Now.ToShortDateString();
+            ReportSafety.LocalReport.DisplayName = "MaterialSafetyByStore " + DateTime.Now.ToShortDateString();
+            //ReportParameter PR = new ReportParameter("ReportDesc", "Safety Report By Store");
+            //ReportSafety.LocalReport.SetParameters(PR);
             ReportSafety.LocalReport.Refresh();
             Page.ClientScript.RegisterStartupScript(this.GetType(), "EnterText", "SelectSafety();", true);
         }
@@ -81,7 +83,9 @@ namespace SmartSystem
             ReportSupplier.LocalReport.ReportPath = Server.MapPath("./Reports/MaterialsData.rdlc");
             ReportSupplier.LocalReport.DataSources.Clear();
             ReportSupplier.LocalReport.DataSources.Add(new ReportDataSource("MaterialsData", dt));
-            ReportStore.LocalReport.DisplayName = "MaterialDataBySupplier" + DateTime.Now.ToShortDateString();
+            ReportSupplier.LocalReport.DisplayName = "MaterialDataBySupplier" + DateTime.Now.ToShortDateString();
+            //ReportParameter PR = new ReportParameter("ReportDesc", "By Supplier");
+            //ReportSupplier.LocalReport.SetParameters(PR);
             ReportSupplier.LocalReport.Refresh();
             Page.ClientScript.RegisterStartupScript(this.GetType(), "EnterText", "SelectSupplier();", true);
         }
@@ -112,8 +116,10 @@ namespace SmartSystem
             ReportMaterial.ProcessingMode = ProcessingMode.Local;
             ReportMaterial.LocalReport.ReportPath = Server.MapPath("./Reports/MaterialsData.rdlc");
             ReportMaterial.LocalReport.DataSources.Clear();
-            ReportStore.LocalReport.DisplayName = "MaterialDataByMaterial" + DateTime.Now.ToShortDateString();
+            ReportMaterial.LocalReport.DisplayName = "MaterialDataByMaterial" + DateTime.Now.ToShortDateString();
             ReportMaterial.LocalReport.DataSources.Add(new ReportDataSource("MaterialsData", dt));
+            //ReportParameter PR = new ReportParameter("ReportDesc", "By Material");
+            //ReportMaterial.LocalReport.SetParameters(PR);
             ReportMaterial.LocalReport.Refresh();
             Page.ClientScript.RegisterStartupScript(this.GetType(), "EnterText", "SelectMaterial();", true);
         }
@@ -145,6 +151,8 @@ namespace SmartSystem
             ReportStore.LocalReport.DisplayName = "MaterialDataByStore" + DateTime.Now.ToShortDateString();
             ReportStore.LocalReport.ReportPath = Server.MapPath("./Reports/MaterialsData.rdlc");
             ReportStore.LocalReport.DataSources.Clear();
+            //ReportParameter PR = new ReportParameter("ReportDesc", "By Store");
+            //ReportStore.LocalReport.SetParameters(PR);
             ReportStore.LocalReport.DataSources.Add(new ReportDataSource("MaterialsData", dt));
             ReportStore.LocalReport.Refresh();
         }
@@ -175,8 +183,10 @@ namespace SmartSystem
             ReportCategory.ProcessingMode = ProcessingMode.Local;
             ReportCategory.LocalReport.ReportPath = Server.MapPath("./Reports/MaterialsData.rdlc");
             ReportCategory.LocalReport.DataSources.Clear();
-            ReportStore.LocalReport.DisplayName = "MaterialDataByCategory" + DateTime.Now.ToShortDateString();
+            ReportCategory.LocalReport.DisplayName = "MaterialDataByCategory" + DateTime.Now.ToShortDateString();
             ReportCategory.LocalReport.DataSources.Add(new ReportDataSource("MaterialsData", dt));
+            //ReportParameter PR = new ReportParameter("ReportDesc", "By Category Family");
+            //ReportCategory.LocalReport.SetParameters(PR);
             ReportCategory.LocalReport.Refresh();
             Page.ClientScript.RegisterStartupScript(this.GetType(), "EnterText", "SelectCategory();", true);
         }
@@ -202,13 +212,15 @@ namespace SmartSystem
             DataTable dt = new DataTable();
             SqlDataAdapter adapt = new SqlDataAdapter(cmd);
             adapt.Fill(dt);
-
+            
             ReportSubCategory.Visible = true;
             ReportSubCategory.ProcessingMode = ProcessingMode.Local;
             ReportSubCategory.LocalReport.ReportPath = Server.MapPath("./Reports/MaterialsData.rdlc");
             ReportSubCategory.LocalReport.DataSources.Clear();
-            ReportStore.LocalReport.DisplayName = "MaterialDataBySubCategory" + DateTime.Now.ToShortDateString();
+            ReportSubCategory.LocalReport.DisplayName = "MaterialDataBySubCategory" + DateTime.Now.ToShortDateString();
             ReportSubCategory.LocalReport.DataSources.Add(new ReportDataSource("MaterialsData", dt));
+            //ReportParameter PR = new ReportParameter("ReportDesc", "By SubCategory");
+            //ReportSubCategory.LocalReport.SetParameters(PR);
             ReportSubCategory.LocalReport.Refresh();
             Page.ClientScript.RegisterStartupScript(this.GetType(), "EnterText", "SelectCategory();", true);
         }
