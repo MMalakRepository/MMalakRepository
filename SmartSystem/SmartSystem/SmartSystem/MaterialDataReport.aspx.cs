@@ -49,7 +49,7 @@ namespace SmartSystem
             ReportSafety.LocalReport.ReportPath = Server.MapPath("./Reports/MaterialsData.rdlc");
             ReportSafety.LocalReport.DataSources.Clear();
             ReportSafety.LocalReport.DataSources.Add(new ReportDataSource("MaterialsData", dt));
-            ReportStore.LocalReport.DisplayName = "MaterialSafetyByStore" + DateTime.Now.ToLongDateString();
+            ReportStore.LocalReport.DisplayName = "MaterialSafetyByStore" + DateTime.Now.ToShortDateString();
             ReportSafety.LocalReport.Refresh();
             Page.ClientScript.RegisterStartupScript(this.GetType(), "EnterText", "SelectSafety();", true);
         }
@@ -81,7 +81,7 @@ namespace SmartSystem
             ReportSupplier.LocalReport.ReportPath = Server.MapPath("./Reports/MaterialsData.rdlc");
             ReportSupplier.LocalReport.DataSources.Clear();
             ReportSupplier.LocalReport.DataSources.Add(new ReportDataSource("MaterialsData", dt));
-            ReportStore.LocalReport.DisplayName = "MaterialDataBySupplier" + DateTime.Now.ToLongDateString();
+            ReportStore.LocalReport.DisplayName = "MaterialDataBySupplier" + DateTime.Now.ToShortDateString();
             ReportSupplier.LocalReport.Refresh();
             Page.ClientScript.RegisterStartupScript(this.GetType(), "EnterText", "SelectSupplier();", true);
         }
@@ -112,7 +112,7 @@ namespace SmartSystem
             ReportMaterial.ProcessingMode = ProcessingMode.Local;
             ReportMaterial.LocalReport.ReportPath = Server.MapPath("./Reports/MaterialsData.rdlc");
             ReportMaterial.LocalReport.DataSources.Clear();
-            ReportStore.LocalReport.DisplayName = "MaterialDataByMaterial" + DateTime.Now.ToLongDateString();
+            ReportStore.LocalReport.DisplayName = "MaterialDataByMaterial" + DateTime.Now.ToShortDateString();
             ReportMaterial.LocalReport.DataSources.Add(new ReportDataSource("MaterialsData", dt));
             ReportMaterial.LocalReport.Refresh();
             Page.ClientScript.RegisterStartupScript(this.GetType(), "EnterText", "SelectMaterial();", true);
@@ -142,7 +142,7 @@ namespace SmartSystem
 
             ReportStore.Visible = true;
             ReportStore.ProcessingMode = ProcessingMode.Local;
-            ReportStore.LocalReport.DisplayName = "MaterialDataByStore" + DateTime.Now.ToLongDateString();
+            ReportStore.LocalReport.DisplayName = "MaterialDataByStore" + DateTime.Now.ToShortDateString();
             ReportStore.LocalReport.ReportPath = Server.MapPath("./Reports/MaterialsData.rdlc");
             ReportStore.LocalReport.DataSources.Clear();
             ReportStore.LocalReport.DataSources.Add(new ReportDataSource("MaterialsData", dt));
@@ -175,7 +175,7 @@ namespace SmartSystem
             ReportCategory.ProcessingMode = ProcessingMode.Local;
             ReportCategory.LocalReport.ReportPath = Server.MapPath("./Reports/MaterialsData.rdlc");
             ReportCategory.LocalReport.DataSources.Clear();
-            ReportStore.LocalReport.DisplayName = "MaterialDataByCategory" + DateTime.Now.ToLongDateString();
+            ReportStore.LocalReport.DisplayName = "MaterialDataByCategory" + DateTime.Now.ToShortDateString();
             ReportCategory.LocalReport.DataSources.Add(new ReportDataSource("MaterialsData", dt));
             ReportCategory.LocalReport.Refresh();
             Page.ClientScript.RegisterStartupScript(this.GetType(), "EnterText", "SelectCategory();", true);
@@ -207,7 +207,7 @@ namespace SmartSystem
             ReportSubCategory.ProcessingMode = ProcessingMode.Local;
             ReportSubCategory.LocalReport.ReportPath = Server.MapPath("./Reports/MaterialsData.rdlc");
             ReportSubCategory.LocalReport.DataSources.Clear();
-            ReportStore.LocalReport.DisplayName = "MaterialDataBySubCategory" + DateTime.Now.ToLongDateString();
+            ReportStore.LocalReport.DisplayName = "MaterialDataBySubCategory" + DateTime.Now.ToShortDateString();
             ReportSubCategory.LocalReport.DataSources.Add(new ReportDataSource("MaterialsData", dt));
             ReportSubCategory.LocalReport.Refresh();
             Page.ClientScript.RegisterStartupScript(this.GetType(), "EnterText", "SelectCategory();", true);
