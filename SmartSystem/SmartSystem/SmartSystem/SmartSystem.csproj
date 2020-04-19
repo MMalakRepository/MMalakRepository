@@ -289,6 +289,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="CuttingListDataReport.aspx" />
+    <Content Include="DeadMaterialReport.aspx" />
     <Content Include="Delicious-Icon.png" />
     <Content Include="Foursquare-Icon.png" />
     <Content Include="index2.html" />
@@ -2577,6 +2578,17 @@
     <Content Include="DataSets\CuttingMaterialData.xss">
       <DependentUpon>CuttingMaterialData.xsd</DependentUpon>
     </Content>
+    <Content Include="DataSets\DeadMaterialData.xsc">
+      <DependentUpon>DeadMaterialData.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSets\DeadMaterialData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DeadMaterialData.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSets\DeadMaterialData.xss">
+      <DependentUpon>DeadMaterialData.xsd</DependentUpon>
+    </Content>
     <None Include="DataSets\MaterialAddition.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -2654,6 +2666,9 @@
     <Content Include="plugins\bootstrap-datetimepicker\sample in bootstrap v3\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="plugins\bootstrap-datetimepicker\sample in bootstrap v3\bootstrap\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="plugins\bootstrap-datetimepicker\tests\README.md" />
+    <EmbeddedResource Include="Reports\DeadMaterialData.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\CuttingMaterialData.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -2790,6 +2805,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CuttingMaterialData.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\DeadMaterialData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeadMaterialData.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\MaterialsData.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2799,6 +2819,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SafetyStock.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DeadMaterialReport.aspx.cs">
+      <DependentUpon>DeadMaterialReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DeadMaterialReport.aspx.designer.cs">
+      <DependentUpon>DeadMaterialReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="MaterialAdditionDataReport.aspx.cs">
       <DependentUpon>MaterialAdditionDataReport.aspx</DependentUpon>

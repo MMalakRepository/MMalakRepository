@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SmartShutter.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="CuttingListDataReport.aspx.cs" Inherits="SmartSystem.CuttingListDataReport" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SmartShutter.Master" EnableEventValidation="false"
+    AutoEventWireup="true" CodeBehind="DeadMaterialReport.aspx.cs" Inherits="SmartSystem.DeadMaterialReport" %>
 
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845DCD8080CC91"
     Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
@@ -79,19 +80,17 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-
     <div class="content-wrapper">
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>CuttingList Data Reports</h1>
+                        <h1>Dead Material Reports</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="Home.aspx">Home</a></li>
-                            <li class="breadcrumb-item active">CuttingList Data Reports</li>
+                            <li class="breadcrumb-item active">Dead Material Reports</li>
                         </ol>
                     </div>
                 </div>
@@ -177,7 +176,7 @@
                                                             <div class="card-body">
                                                                 <div class="row">
                                                                     <div class="form-group col-md-6">
-                                                                        <label for="SelectStores">Select Material</label>
+                                                                        <label for="selectitems">Select Material</label>
                                                                         <asp:DropDownList AppendDataBoundItems="true" ToolTip="أختار الصنف"
                                                                             CssClass="form-control" ID="selectitems" runat="server"
                                                                             DataSourceID="ldsMaterials" DataTextField="MaterialName" DataValueField="ID" AutoPostBack="False">
@@ -197,6 +196,7 @@
 
                                                                 <div class="row">
                                                                     <div class="form-group col-md-12">
+
                                                                         <rsweb:ReportViewer ShowPrintButton="true" ID="ReportMaterial" runat="server" Visible="false"
                                                                             Width="100%" Height="700px" BorderStyle="Solid" BorderWidth="2px" SizeToReportContent="True">
                                                                             <LocalReport ReportPath="./Reports/CuttingMaterialData.rdlc" EnableExternalImages="true">
@@ -254,7 +254,6 @@
                                                 </div>
 
                                             </div>
-
 
                                             <div class="tab-pane fade" id="custom-tabs-one-settings" role="tabpanel" aria-labelledby="custom-tabs-one-settings-tab">
                                                 <div class="row">
@@ -318,8 +317,7 @@
 
                                                                 <div class="row">
                                                                     <div class="form-group col-md-12">
-                                                                        <rsweb:ReportViewer ShowPrintButton="true"
-                                                                            ID="ReportSubCategory" runat="server" Visible="false"
+                                                                        <rsweb:ReportViewer ShowPrintButton="true" ID="ReportSubCategory" runat="server" Visible="false"
                                                                             Width="100%" Height="700px" BorderStyle="Solid" BorderWidth="2px" SizeToReportContent="True">
                                                                             <LocalReport ReportPath="./Reports/CuttingMaterialData.rdlc" EnableExternalImages="true">
                                                                             </LocalReport>
@@ -332,6 +330,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </div>
                                         <!-- /.card -->
                                     </div>

@@ -73,7 +73,7 @@ namespace SmartSystem
                             " SubCategories ON Materials.TypeID = SubCategories.ID INNER JOIN " +
                             " Category ON SubCategories.CategoryID = Category.CategoruID INNER JOIN " +
                             " Supplier ON Materials.SupplierID = Supplier.SupplierID " +
-                            " Where CuttingListsMaterials.IsActive = 1 and Materiald.ID = " + MaterialID.ToString() + "";
+                            " Where CuttingListsMaterials.IsActive = 1 and Materials.ID = " + MaterialID.ToString() + "";
 
             SqlCommand cmd = new SqlCommand(cmdtxt, con);
             cmd.CommandTimeout = 0;
@@ -191,15 +191,15 @@ namespace SmartSystem
             SqlDataAdapter adapt = new SqlDataAdapter(cmd);
             adapt.Fill(dt);
 
-            ReportStore.Visible = true;
-            ReportStore.ProcessingMode = ProcessingMode.Local;
-            ReportStore.LocalReport.ReportPath = Server.MapPath("./Reports/CuttingMaterialData.rdlc");
-            ReportStore.LocalReport.DataSources.Clear();
-            ReportStore.LocalReport.DataSources.Add(new ReportDataSource("CusttingMaterialData", dt));
-            ReportStore.LocalReport.DisplayName = "CuttingMaterialDataBySubCategory" + DateTime.Now.ToString("ddMMyyyyhhmmss");
+            ReportSubCategory.Visible = true;
+            ReportSubCategory.ProcessingMode = ProcessingMode.Local;
+            ReportSubCategory.LocalReport.ReportPath = Server.MapPath("./Reports/CuttingMaterialData.rdlc");
+            ReportSubCategory.LocalReport.DataSources.Clear();
+            ReportSubCategory.LocalReport.DataSources.Add(new ReportDataSource("CusttingMaterialData", dt));
+            ReportSubCategory.LocalReport.DisplayName = "CuttingMaterialDataBySubCategory" + DateTime.Now.ToString("ddMMyyyyhhmmss");
             //ReportParameter PR = new ReportParameter("ReportDesc", "By Supplier");
             //ReportMaterial.LocalReport.SetParameters(PR);
-            ReportStore.LocalReport.Refresh();
+            ReportSubCategory.LocalReport.Refresh();
             Page.ClientScript.RegisterStartupScript(this.GetType(), "EnterText", "SelectCategory();", true);
         }
  
