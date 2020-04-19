@@ -37,7 +37,7 @@
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="SelectStores">Select Store Location</label>
+                                                    <label for="SelectStores">أختار المخزن</label>
                                                     <asp:DropDownList ToolTip="أختار المخزن" CssClass="form-control"
                                                         DataSourceID="STORES" DataTextField="StoreName" DataValueField="STORENUMBER"
                                                         ID="SelectStores" runat="server" AutoPostBack="True">
@@ -45,7 +45,7 @@
                                                     </asp:DropDownList>
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label for="selectitem">Select Material</label>
+                                                    <label for="selectitem">أختار الصنف</label>
                                                     <asp:DropDownList ToolTip="أختار الصنف" ID="selectitem" DataSourceID="ldsitems" 
                                                         DataTextField="MaterialName" DataValueField="MaterialID" CssClass="form-control" runat="server">
                                                         <%--<asp:ListItem Selected="True" Value="0">Select Material</asp:ListItem>--%>
@@ -72,7 +72,7 @@
 
                                             <div class="row">
                                                 <div class="form-group col-md-12">
-                                                    <label for="DefectiveNote">Notes</label>
+                                                    <label for="DefectiveNote">ملاحظات أضافية</label>
                                                     <input title="أدخل الملاحظة" type="text" class="form-control" name="DefectiveNote" runat="server" id="DefectiveNote" placeholder="Enter Your Notes">
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" ErrorMessage="Please Enter your note " ControlToValidate="DefectiveNote"></asp:RequiredFieldValidator>
                                                 </div>
@@ -80,20 +80,20 @@
 
                                             <div class="row">
                                                 <div class="form-group col-md-3">
-                                                    <label for="SWidth">Material Width</label>
+                                                    <label for="SWidth">العرض</label>
                                                     <input title="العرض" type="text" class="form-control" id="SWidth" name="SWidth" runat="server" placeholder="Enter Width">
                                                 </div>
                                                 <div class="form-group col-md-3">
-                                                    <label for="Sheight">Material Height</label>
+                                                    <label for="Sheight">الطول</label>
                                                     <input title="الطول" type="text" class="form-control" id="Sheight" name="Sheight" runat="server" placeholder="Enter Height">
                                                 </div>
 
                                                 <div class="form-group col-md-3">
-                                                    <label for="Quantity">Quantity</label>
+                                                    <label for="Quantity">الكمية</label>
                                                     <input title="الكمية" type="text" class="form-control" id="Quantity" name="Quantity" runat="server" placeholder="Enter Quantity">
                                                 </div>
                                                 <div class="form-group col-md-3">
-                                                    <label for="unit">Measure Unit</label>
+                                                    <label for="unit">وحدة القياس</label>
                                                     <asp:DropDownList ToolTip="أختار وحدة قياس الصنف" CssClass="form-control" ID="itemunit" DataSourceID="unit" DataTextField="UnitName" DataValueField="ID" runat="server" AppendDataBoundItems="True">
                                                         <asp:ListItem Selected="True" Value="0">Select Unit</asp:ListItem>
                                                     </asp:DropDownList>
@@ -107,7 +107,8 @@
 
                                             <!-- /.card-body -->
                                             <div class="card-footer">
-                                                <asp:Button ToolTip="أدخل الصنف" Width="20%" ID="btnAddNewItem" CssClass="btn btn-warning float-right" runat="server" Text="Add New Item" OnClick="btnAddNewItem_Click" />
+                                                <asp:Button ToolTip="أدخل الصنف" Width="20%" ID="btnAddNewItem"
+                                                    CssClass="btn btn-warning float-right" runat="server" Text="أضافة" OnClick="btnAddNewItem_Click" />
                                             </div>
                                         </div>
                                         <!-- /.card -->

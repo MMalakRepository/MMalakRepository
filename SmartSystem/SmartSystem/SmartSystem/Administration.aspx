@@ -53,11 +53,11 @@
                                         <div class="timeline-body">
                                             <div class="row">
                                                 <div class="form-group col-md-3">
-                                                    <label for="txtNewStore">Store Name</label>
+                                                    <label for="txtNewStore">أسم المخزن</label>
                                                     <input type="text" title=" أسم المخزن" class="form-control" id="txtNewStore" name="txtNewStore" runat="server" placeholder="أدخل أسم المخزن">
                                                 </div>
                                                 <div class="form-group col-md-3">
-                                                    <label for="txtStoreLocation">Store Location</label>
+                                                    <label for="txtStoreLocation">عنوان المخزن</label>
                                                     <input type="text" title=" عنوان المخزن" class="form-control" id="txtStoreLocation" name="txtStoreLocation" runat="server" placeholder="أدخل عنوان المخزن">
                                                 </div>
 
@@ -65,7 +65,8 @@
                                                     <asp:Label ID="LbladdNewStore" runat="server" Text="" Visible="false"></asp:Label>
                                                 </div>
                                                 <div class="form-group col-md-3">
-                                                    <asp:ImageButton ID="btnAddnewStore" ToolTip="أضافة مخزن جديد" runat="server" ImageUrl="~/Images/Add.png" Width="100px" Height="100px" CssClass="btn float-right" OnClick="btnAddnewStore_Click" />
+                                                    <asp:ImageButton ID="btnAddnewStore"
+                                                        ToolTip="أضافة مخزن جديد" runat="server" ImageUrl="~/Images/Add.png" Width="100px" Height="100px" CssClass="btn float-right" OnClick="btnAddnewStore_Click" />
                                                 </div>
                                             </div>
                                         </div>
@@ -133,7 +134,7 @@
                                         <div class="timeline-body">
                                             <div class="row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="txtNewUnit">Unit Name</label>
+                                                    <label for="txtNewUnit">وحدة القياس</label>
                                                     <input type="text" title=" وحدة القياس" class="form-control" id="txtNewUnit" name="txtNewUnit" runat="server" placeholder="Enter Unit Name">
                                                 </div>
                                                 <div class="form-group col-md-3"></div>

@@ -76,15 +76,6 @@ namespace SmartSystem {
         protected global::System.Web.UI.WebControls.SqlDataSource ldsCategory;
         
         /// <summary>
-        /// Sheight control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Sheight;
-        
-        /// <summary>
         /// Swidth control.
         /// </summary>
         /// <remarks>
@@ -92,6 +83,15 @@ namespace SmartSystem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText Swidth;
+        
+        /// <summary>
+        /// Sheight control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Sheight;
         
         /// <summary>
         /// itemunit control.

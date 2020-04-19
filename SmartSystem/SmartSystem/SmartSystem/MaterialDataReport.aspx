@@ -157,7 +157,7 @@
                                                             <div class="card-body">
                                                                 <div class="row">
                                                                     <div class="form-group col-md-6">
-                                                                        <label for="SelectStores">Select Store Location</label>
+                                                                        <label for="SelectStores">أختار المخزن</label>
                                                                         <asp:DropDownList AppendDataBoundItems="true" ToolTip="أختار المخزن" CssClass="form-control"
                                                                             ID="SelectStores" runat="server" DataSourceID="ldsstores" DataTextField="StoreName"
                                                                             DataValueField="StoreNumber" AutoPostBack="False">
@@ -201,7 +201,7 @@
                                                             <div class="card-body">
                                                                 <div class="row">
                                                                     <div class="form-group col-md-6">
-                                                                        <label for="selectitems">Select Material</label>
+                                                                        <label for="selectitems">أختار الصنف</label>
                                                                         <asp:DropDownList AppendDataBoundItems="true" ToolTip="أختار الصنف"
                                                                             CssClass="form-control" ID="selectitems" runat="server" DataSourceID="ldsMaterials" DataTextField="MaterialName" DataValueField="ID" AutoPostBack="False">
                                                                             <asp:ListItem Selected="True" Value="0" Enabled="true">Select Material .. </asp:ListItem>
@@ -244,7 +244,7 @@
                                                             <div class="card-body">
                                                                 <div class="row">
                                                                     <div class="form-group col-md-6">
-                                                                        <label for="SelectStores">Select Supplier</label>
+                                                                        <label for="SelectStores">أختار المورد</label>
                                                                         <asp:DropDownList AppendDataBoundItems="true" ToolTip="أختار المورد"
                                                                             CssClass="form-control" ID="selectsupplier" runat="server"
                                                                             DataSourceID="ldsSuppliers" DataTextField="Name" DataValueField="SupplierID" AutoPostBack="false">
@@ -287,7 +287,7 @@
                                                                     <div class="card-body">
                                                                         <div class="row">
                                                                             <div class="form-group col-md-6">
-                                                                                <label for="SafetyStores">Select Store Location</label>
+                                                                                <label for="SafetyStores">أختار المخزن</label>
                                                                                 <asp:DropDownList AppendDataBoundItems="true" ToolTip="أختار المخزن"
                                                                                     CssClass="form-control" ID="SafetyStores"
                                                                                     runat="server" DataSourceID="ldsstores" DataTextField="StoreName"

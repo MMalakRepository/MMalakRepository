@@ -57,23 +57,23 @@
                                     <i class="fas fa-tools bg-info"></i>
                                     <div class="timeline-item">
                                         <span class="time"><i class="fas fa-tools"></i></span>
-                                        <h2 class="timeline-header"><a href="#">Add New Material To Master Data </a></h2>
+                                        <h2 class="timeline-header"><a href="#">أضافة صنف جديد </a></h2>
 
                                         <div class="timeline-body">
 
                                             <div class="row">
                                                 <div class="form-group col-md-3">
-                                                    <label for="itemcode">Code</label>
+                                                    <label for="itemcode">كود الصنف</label>
                                                     <input type="text" title="رقم الصنف" class="form-control" name="itemcode" runat="server" id="itemcode" placeholder="أدخل رقم الصنف">
                                                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" ErrorMessage="Code is Required" ControlToValidate="itemcode"></asp:RequiredFieldValidator>--%>
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label for="itemname">Name</label>
+                                                    <label for="itemname">أسم الصنف</label>
                                                     <input type="text" title="أسم الصنف" class="form-control" id="itemname" name="itemname" runat="server" placeholder="أدخل أسم الصنف">
                                                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ForeColor="Red" ControlToValidate="itemname" ErrorMessage="Material Name is required"></asp:RequiredFieldValidator>--%>
                                                 </div>
                                                 <div class="form-group col-md-3">
-                                                    <label for="itemsupplier">Supplier</label>
+                                                    <label for="itemsupplier">المورد</label>
                                                     <asp:DropDownList ToolTip="أختر المورد" AppendDataBoundItems="true" CssClass="form-control" ID="itemsupplier" DataSourceID="Supplier" DataTextField="Name" DataValueField="SupplierID" runat="server">
                                                         <asp:ListItem Selected="True" Value="0">أختر المورد</asp:ListItem>
                                                     </asp:DropDownList>
@@ -88,7 +88,7 @@
 
                                             <div class="row">
                                                 <div class="form-group col-md-3">
-                                                    <label for="materialcategory">Category</label>
+                                                    <label for="materialcategory">نوع الصنف</label>
                                                     <asp:DropDownList ToolTip="أختر نوع الصنف" CssClass="form-control" ID="materialcategory" DataSourceID="ldsCategory" AppendDataBoundItems="true" runat="server"
                                                         DataTextField="SubCategoryName" DataValueField="ID">
                                                         <asp:ListItem Selected="True" Value="0">أختر نوع الصنف</asp:ListItem>
@@ -96,16 +96,17 @@
                                                     <asp:SqlDataSource ID="ldsCategory" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
                                                         SelectCommand="SELECT * from SubCategories order by SubCategoryName ASC"></asp:SqlDataSource>
                                                 </div>
-                                                <div class="form-group col-md-3">
-                                                    <label for="Sheight">Standard Height</label>
-                                                    <input type="text" title="الطول" class="form-control" id="Sheight" name="Sheight" runat="server" placeholder="طول الصنف">
-                                                </div>
-                                                <div class="form-group col-md-3">
-                                                    <label for="SWidth">Standard Width</label>
+                                                     <div class="form-group col-md-3">
+                                                    <label for="SWidth">العرض</label>
                                                     <input type="text" title="العرض" class="form-control" id="Swidth" name="SWidth" runat="server" placeholder="عرض الصنف">
                                                 </div>
                                                 <div class="form-group col-md-3">
-                                                    <label for="unit">Measure Unit</label>
+                                                    <label for="Sheight">الطول</label>
+                                                    <input type="text" title="الطول" class="form-control" id="Sheight" name="Sheight" runat="server" placeholder="طول الصنف">
+                                                </div>
+                                           
+                                                <div class="form-group col-md-3">
+                                                    <label for="unit">وحدة القياس</label>
                                                     <asp:DropDownList ToolTip="أختر وحدة قياس الصنف" CssClass="form-control" AppendDataBoundItems="true" ID="itemunit" DataSourceID="unit" DataTextField="UnitName" DataValueField="ID" runat="server">
                                                         <asp:ListItem Selected="True" Value="0">أختر وحدة قياس الصنف</asp:ListItem>
                                                     </asp:DropDownList>
@@ -115,14 +116,14 @@
                                             </div>
                                             <div class="row">
                                                 <div class="form-group col-md-12">
-                                                      <label for="itemDescription">Description </label>
+                                                      <label for="itemDescription">ملاحظات أضافية </label>
                                                     <input type="text" title="أسم الصنف" class="form-control" id="itemDescription" name="itemDescription" runat="server" placeholder="أدخل ملاحظات على الصنف">
                                                 </div> 
                                             </div>
 
                                             <div class="row">
                                                 <div class="form-group col-md-8">
-                                                    <label for="itemimage">Material Image</label>
+                                                    <label for="itemimage">صورة الصنف</label>
                                                     <div class="input-group">
                                                         <div class="custom-file">
                                                             <%--<input type="file" class="custom-file-input" name="FileUpload" id="FileUpload">--%>
@@ -135,7 +136,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <asp:Button ID="btnAddNewItem" ToolTip="أضافة صنف جديد" CssClass="btn btn-info float-right btnaction m80" runat="server" Text="Add New Material" OnClick="btnAddNewItem_Click" />
+                                                    <asp:Button ID="btnAddNewItem" ToolTip="أضافة صنف جديد" CssClass="btn btn-info float-right btnaction m80" runat="server" Text="أضافة صنف جديد" OnClick="btnAddNewItem_Click" />
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -156,19 +157,19 @@
                                     <i class="fa fa-store-alt" style="color:white;background-color:#F39C12"  ></i>
                                     <div class="timeline-item">
                                         <span class="time"><i class="fa fa-store-alt"></i></span>
-                                        <h3 class="timeline-header"><a href="#">Add Material To Store Location</a></h3>
+                                        <h3 class="timeline-header"><a href="#">أضافة بيانات الصنف ألى المخزن</a></h3>
                                         <div class="timeline-body">
 
                                             <div class="row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="Store">Select Store </label>
+                                                    <label for="Store">أختر المخزن </label>
                                                     <asp:DropDownList ToolTip="أختر المخزن" AppendDataBoundItems="true" CssClass="form-control" ID="Store" DataSourceID="STORES" DataTextField="STORENAME" DataValueField="STORENUMBER" runat="server">
                                                     <asp:ListItem Selected="True" Value="0"> أختر المخزن</asp:ListItem>
                                                     </asp:DropDownList>
 
                                                     </div>
                                                 <div class="form-group col-md-6">
-                                                    <label for="selectitem">Select Material</label>
+                                                    <label for="selectitem">أختر الصنف</label>
                                                     <asp:DropDownList ToolTip="أختر الصنف" AppendDataBoundItems="true" ID="selectitem" DataSourceID="ldsitems" DataTextField="MaterialName" DataValueField="ID" CssClass="form-control" runat="server">
                                                     <asp:ListItem Selected="True" Value="0">أختر الصنف</asp:ListItem>
                                                     </asp:DropDownList>
@@ -186,19 +187,19 @@
 
                                             <div class="row">
                                                 <div class="form-group col-md-3">
-                                                    <label for="stockOnHand">Initial Stock</label>
+                                                    <label for="stockOnHand">الرصيد المخزون</label>
                                                     <input type="text" title="الرصيد" class="form-control" id="stockOnHand" name="stockOnHand" runat="server" placeholder="الرصيد">
                                                 </div>
                                                 <div class="form-group col-md-3">
-                                                    <label for="safetystock">Safety Stock</label>
+                                                    <label for="safetystock">رصيد الامان</label>
                                                     <input type="text" title="رصيد الأمان" class="form-control" id="safetystock" name="safetystock" runat="server" placeholder="مخزون الأمان">
                                                 </div>
                                                 <div class="form-group col-md-3">
-                                                    <label for="location">Location in Store</label>
+                                                    <label for="location">مكان التخزين</label>
                                                     <input type="text" title="المكان داخل المخزن" class="form-control" id="location" name="location" runat="server" placeholder="المكان داخل المخزن">
                                                 </div>
                                                 <div class="form-group col-md-3">
-                                                    <asp:Button ID="btnAddToStore" ToolTip="أضافة الصنف ألى المخزن" CssClass="btn float-right btnaction m80" style="color:white;background-color:#F39C12"  runat="server" Text="Add Material To Store" OnClick="btnAddToStore_Click" />
+                                                    <asp:Button ID="btnAddToStore" ToolTip="أضافة الصنف ألى المخزن" CssClass="btn float-right btnaction m80" style="color:white;background-color:#F39C12"  runat="server" Text="أضافة الصنف للمخزن" OnClick="btnAddToStore_Click" />
                                                 </div>
                                                 <div class="row">
                                                     <asp:Label ID="LblAddItemToStore" runat="server" style="padding: 15px;" Text="" Visible="false" ></asp:Label>
