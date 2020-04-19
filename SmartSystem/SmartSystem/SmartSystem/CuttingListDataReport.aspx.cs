@@ -51,7 +51,7 @@ namespace SmartSystem
             ReportSupplier.LocalReport.ReportPath = Server.MapPath("./Reports/CuttingMaterialData.rdlc");
             ReportSupplier.LocalReport.DataSources.Clear();
             ReportSupplier.LocalReport.DataSources.Add(new ReportDataSource("CusttingMaterialData", dt));
-            ReportSupplier.LocalReport.DisplayName = "CuttingMaterialDataBySupplier" + DateTime.Now.ToShortDateString();
+            ReportSupplier.LocalReport.DisplayName = "CuttingMaterialDataBySupplier" + DateTime.Now.ToString("ddMMyyyyhhmmss");
             //ReportParameter PR = new ReportParameter("ReportDesc", "By Supplier");
             //ReportSupplier.LocalReport.SetParameters(PR);
             ReportSupplier.LocalReport.Refresh();
@@ -87,7 +87,7 @@ namespace SmartSystem
             ReportMaterial.LocalReport.ReportPath = Server.MapPath("./Reports/CuttingMaterialData.rdlc");
             ReportMaterial.LocalReport.DataSources.Clear();
             ReportMaterial.LocalReport.DataSources.Add(new ReportDataSource("CusttingMaterialData", dt));
-            ReportMaterial.LocalReport.DisplayName = "CuttingMaterialDataByMaterial" + DateTime.Now.ToShortDateString();
+            ReportMaterial.LocalReport.DisplayName = "CuttingMaterialDataByMaterial" + DateTime.Now.ToString("ddMMyyyyhhmmss");
             //ReportParameter PR = new ReportParameter("ReportDesc", "By Supplier");
             //ReportMaterial.LocalReport.SetParameters(PR);
             ReportMaterial.LocalReport.Refresh();
@@ -123,7 +123,7 @@ namespace SmartSystem
             ReportStore.LocalReport.ReportPath = Server.MapPath("./Reports/CuttingMaterialData.rdlc");
             ReportStore.LocalReport.DataSources.Clear();
             ReportStore.LocalReport.DataSources.Add(new ReportDataSource("CusttingMaterialData", dt));
-            ReportStore.LocalReport.DisplayName = "CuttingMaterialDataByMaterial" + DateTime.Now.ToShortDateString();
+            ReportStore.LocalReport.DisplayName = "CuttingMaterialDataByMaterial" + DateTime.Now.ToString("ddMMyyyyhhmmss");
             //ReportParameter PR = new ReportParameter("ReportDesc", "By Supplier");
             //ReportMaterial.LocalReport.SetParameters(PR);
             ReportStore.LocalReport.Refresh();
@@ -159,7 +159,7 @@ namespace SmartSystem
             ReportCategory.LocalReport.ReportPath = Server.MapPath("./Reports/CuttingMaterialData.rdlc");
             ReportCategory.LocalReport.DataSources.Clear();
             ReportCategory.LocalReport.DataSources.Add(new ReportDataSource("CusttingMaterialData", dt));
-            ReportCategory.LocalReport.DisplayName = "CuttingMaterialDataByCategory" + DateTime.Now.ToShortDateString();
+            ReportCategory.LocalReport.DisplayName = "CuttingMaterialDataByCategory" + DateTime.Now.ToString("ddMMyyyyhhmmss");
             //ReportParameter PR = new ReportParameter("ReportDesc", "By Supplier");
             //ReportMaterial.LocalReport.SetParameters(PR);
             ReportCategory.LocalReport.Refresh();
@@ -196,7 +196,7 @@ namespace SmartSystem
             ReportStore.LocalReport.ReportPath = Server.MapPath("./Reports/CuttingMaterialData.rdlc");
             ReportStore.LocalReport.DataSources.Clear();
             ReportStore.LocalReport.DataSources.Add(new ReportDataSource("CusttingMaterialData", dt));
-            ReportStore.LocalReport.DisplayName = "CuttingMaterialDataBySubCategory" + DateTime.Now.ToShortDateString();
+            ReportStore.LocalReport.DisplayName = "CuttingMaterialDataBySubCategory" + DateTime.Now.ToString("ddMMyyyyhhmmss");
             //ReportParameter PR = new ReportParameter("ReportDesc", "By Supplier");
             //ReportMaterial.LocalReport.SetParameters(PR);
             ReportStore.LocalReport.Refresh();

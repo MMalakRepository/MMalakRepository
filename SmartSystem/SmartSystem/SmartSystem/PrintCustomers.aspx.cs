@@ -24,20 +24,20 @@ namespace SmartSystem
         Entities db = new Entities();
         protected void Page_Init(object sender, EventArgs e)
         {
-            int CustomerID =   int.Parse(Request.QueryString["ID"]);
+            int CustomerID = int.Parse(Request.QueryString["ID"]);
             DateTime adate = Convert.ToDateTime(Request.QueryString["Date"]);
-            
+
             SqlConnection con = new SqlConnection();
             con.ConnectionString = ConfigurationManager.ConnectionStrings["SmartShutterConnectionString"].ConnectionString;
             string cmdtxt = "SELECT        Customers.CustomerName, Stores.StoreName, Materials.MaterialNo, " +
-                       " Materials.MaterialName, Orders.ID AS orderNo, Orders.OrderDate, Orders.UserName, OrderDetails.Quantity, OrderDetails.Height, "+
-                       "  OrderDetails.Width, OrderDetails.MaterialType, OrderDetails.Notes"+
-                       "  FROM    OrderDetails INNER JOIN " +
-                       "  Materials ON OrderDetails.MaterialID = Materials.ID INNER JOIN "+
-                       "  Orders ON OrderDetails.OrderID = Orders.ID INNER JOIN "+
-                       "  Customers ON Orders.CustomerID = Customers.CustomerID INNER JOIN "+
-                       "  Stores ON OrderDetails.StoreID = Stores.ID Where OrderDetails.IsActive = 1 and "+
-                       " Orders.CustomerID = " + CustomerID + " and CAST(Orders.OrderDate as Date) = '" + adate.ToShortDateString() + "' ";
+                            " Materials.MaterialName, Orders.ID AS orderNo, Orders.OrderDate, Orders.UserName, OrderDetails.Quantity, OrderDetails.Height, " +
+                            "  OrderDetails.Width, OrderDetails.MaterialType, OrderDetails.Notes" +
+                            "  FROM    OrderDetails INNER JOIN " +
+                            "  Materials ON OrderDetails.MaterialID = Materials.ID INNER JOIN " +
+                            "  Orders ON OrderDetails.OrderID = Orders.ID INNER JOIN " +
+                            "  Customers ON Orders.CustomerID = Customers.CustomerID INNER JOIN " +
+                            "  Stores ON OrderDetails.StoreID = Stores.ID Where OrderDetails.IsActive = 1 and " +
+                            " Orders.CustomerID = " + CustomerID + " and CAST(Orders.OrderDate as Date) = '" + adate.ToShortDateString() + "' ";
 
             SqlCommand cmd = new SqlCommand(cmdtxt, con);
             cmd.CommandTimeout = 0;
@@ -51,16 +51,36 @@ namespace SmartSystem
             ReportViewer1.LocalReport.DataSources.Clear();
             ReportViewer1.LocalReport.DataSources.Add(new ReportDataSource("CustomersDataSet", dt));
             ReportViewer1.LocalReport.Refresh();
- 
+
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
             //SavePDF(ReportViewer1,"D:/");
             savereport();
-        }
+            //ConvertReportToPDF(ReportViewer1.LocalReport);
 
-        
+            //Warning[] warnings;
+            //string[] streamIds;
+            //string contentType;
+            //string encoding;
+            //string extension;
+
+            ////Export the RDLC Report to Byte Array.
+            //byte[] bytes = ReportViewer1.LocalReport.Render("PDF", null, out contentType, out encoding, out extension, out streamIds, out warnings);
+
+            ////Download the RDLC Report in Word, Excel, PDF and Image formats.
+            //Response.Clear();
+            //Response.Buffer = true;
+            //Response.Charset = "";
+            //Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            //Response.ContentType = contentType;
+            //Response.AppendHeader("Content-Disposition", "attachment; filename=RDLC." + extension);
+            //Response.BinaryWrite(bytes);
+            //Response.Flush();
+            //Response.End();
+
+        }
         private void savereport()
         {
             string FileName = "CustomerDataReport_" + DateTime.Now.ToString("ddMMyyyyhhmmss") + ".pdf";
@@ -92,7 +112,7 @@ namespace SmartSystem
             //Response.Close();
             //Response.End();   
 
-    
+
             if (mybytes != null)
             {
                 Response.BinaryWrite(mybytes);
@@ -135,5 +155,5 @@ namespace SmartSystem
         }
     }
 
-     
+
 }
