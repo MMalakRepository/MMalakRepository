@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
-
+using System.Web.Services;
 
 namespace SmartSystem
 {
@@ -263,12 +263,7 @@ namespace SmartSystem
                     string fileName = Path.GetFileName(FileUpload1.PostedFile.FileName);
                     FileUpload1.PostedFile.SaveAs(Server.MapPath("~/Uploads/") + fileName);
                 }
-                else
-                {
-                    LblUploadError.Text = "No File Selected";
-                    LblUploadError.Visible = true;
-                    LblUploadError.ForeColor = System.Drawing.Color.Red;
-                }
+             
 
             }
             catch (Exception ex)
@@ -278,6 +273,6 @@ namespace SmartSystem
                 LblUploadError.ForeColor = System.Drawing.Color.Red;
             }
         }
-
+ 
     }
 }

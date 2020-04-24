@@ -110,8 +110,8 @@ namespace SmartSystem
             txtCurrentStock.Value = gv.Cells[3].Text;
             txtStore.Value = gv.Cells[2].Text;
             txtItemNotes.Value = gv.Cells[6].Text;
-            txtitemHieght.Value = gv.Cells[4].Text;
-            txtItemWidth.Value = gv.Cells[5].Text;
+            txtitemHieght.Value = gv.Cells[5].Text;
+            txtItemWidth.Value = gv.Cells[4].Text;
             txtItemType.Value = gv.Cells[7].Text;
             txtMaterialID.Value = gv.Cells[1].Text;
         }
@@ -121,7 +121,7 @@ namespace SmartSystem
             try
             {
                 var availableQTY = Convert.ToDecimal(txtCurrentStock.Value);
-                var requestedQTY = Convert.ToDecimal(txtRequestedStock.Value.ToString()); ;
+                var requestedQTY = Convert.ToDecimal(txtRequestedStock.Value.ToString()); 
                 if(String.IsNullOrEmpty(txtRequestedStock.Value.ToString()))
                 {
                     LblAddNewItem.Text = "برجاء أدخال الكمية المطلوبة";

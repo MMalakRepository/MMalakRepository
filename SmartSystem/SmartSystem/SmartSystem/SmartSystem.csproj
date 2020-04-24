@@ -233,6 +233,7 @@
     <Content Include="bin\WebGrease.dll" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -2675,6 +2676,7 @@
     <EmbeddedResource Include="Reports\MaterialsData.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Content Include="MaterialHandler.ashx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -2843,6 +2845,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MaterialHistoryData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialHandler.ashx.cs">
+      <DependentUpon>MaterialHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="MaterialHistory.cs">
       <DependentUpon>SmartModel.tt</DependentUpon>

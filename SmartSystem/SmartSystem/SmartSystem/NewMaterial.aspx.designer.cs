@@ -40,6 +40,15 @@ namespace SmartSystem {
         protected global::System.Web.UI.HtmlControls.HtmlInputText itemname;
         
         /// <summary>
+        /// itemDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText itemDescription;
+        
+        /// <summary>
         /// itemsupplier control.
         /// </summary>
         /// <remarks>
@@ -112,15 +121,6 @@ namespace SmartSystem {
         protected global::System.Web.UI.WebControls.SqlDataSource unit;
         
         /// <summary>
-        /// itemDescription control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText itemDescription;
-        
-        /// <summary>
         /// FileUpload1 control.
         /// </summary>
         /// <remarks>
@@ -139,15 +139,6 @@ namespace SmartSystem {
         protected global::System.Web.UI.WebControls.Label LblUploadError;
         
         /// <summary>
-        /// btnAddNewItem control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddNewItem;
-        
-        /// <summary>
         /// LblAddNewItem control.
         /// </summary>
         /// <remarks>
@@ -155,6 +146,15 @@ namespace SmartSystem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LblAddNewItem;
+        
+        /// <summary>
+        /// btnAddNewItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddNewItem;
         
         /// <summary>
         /// Store control.
@@ -173,24 +173,6 @@ namespace SmartSystem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList selectitem;
-        
-        /// <summary>
-        /// ldsitems control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ldsitems;
-        
-        /// <summary>
-        /// STORES control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource STORES;
         
         /// <summary>
         /// stockOnHand control.
@@ -220,13 +202,22 @@ namespace SmartSystem {
         protected global::System.Web.UI.HtmlControls.HtmlInputText location;
         
         /// <summary>
-        /// btnAddToStore control.
+        /// ldsitems control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddToStore;
+        protected global::System.Web.UI.WebControls.SqlDataSource ldsitems;
+        
+        /// <summary>
+        /// STORES control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource STORES;
         
         /// <summary>
         /// LblAddItemToStore control.
@@ -236,5 +227,14 @@ namespace SmartSystem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LblAddItemToStore;
+        
+        /// <summary>
+        /// btnAddToStore control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddToStore;
     }
 }

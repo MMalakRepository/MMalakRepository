@@ -145,7 +145,7 @@ namespace SmartSystem
                 log.ActionType = "Sales Reservation";
                 log.ActionDate = DateTime.Now;
                 log.UserName = User.Identity.Name;
-                log.Action = "Sales Reservation of Material " + M.ToString() + " in Store " + S.ToString() + " Quantity " + txtReservedStock.Value.ToString();
+                log.Action = "Sales Reservation of Material ( " + MS.Material.MaterialName.ToString() + " ) in Store ( " + MS.Store.StoreName.ToString() + " ) Quantity " + txtReservedStock.Value.ToString();
 
                 db.Loggers.Add(log);
                 db.SaveChanges();
@@ -215,12 +215,12 @@ namespace SmartSystem
                 MH.NewStock = newstock;
                 if(reserve)
                 {
-                    MH.Note = " Sales Reservation By " + User.Identity.Name.ToString();
+                    MH.Note = " Sales Reservation Of Material ( " + material.Material.MaterialName.ToString() +" ) in Store ( "+material.Store.StoreName.ToString()+" ) By " + User.Identity.Name.ToString();
                     MH.TransactionName = "Sales Reservation";
                 }
                 else
                 {
-                    MH.Note = " Sales Reservation Cancelled By " + User.Identity.Name.ToString();
+                    MH.Note = " Sales Reservation of Material ( " + material.Material.MaterialName.ToString() + " ) in Store ( " + material.Store.StoreName.ToString() +" ) Cancelled By " + User.Identity.Name.ToString();
                     MH.TransactionName = "Cancel Reservation";
                 }
 
@@ -381,7 +381,7 @@ namespace SmartSystem
                 st.NewStock = stock;
             st.OldReservedStock = TotalReserved;
             st.NewReservedStock = TotalReserved - QTY;
-            st.Notes = "Reservation Cancelled By " + User.Identity.Name;
+            st.Notes = "Reservation of Material ( " + item.Material.MaterialName.ToString() +" ) In Store ( " + item.Store.StoreName.ToString() + " ) Cancelled By " + User.Identity.Name;
 
             db.StockLoggers.Add(st);
             db.SaveChanges();
@@ -390,7 +390,7 @@ namespace SmartSystem
             db.SaveChanges();
 
             Logger log = new Logger();
-            log.Action = "Reservation of " + name + " in Store " + storeid.ToString() + " with Quantity " + QTY.ToString() + " is cancelled ";
+            log.Action = "Reservation of Material ( " + item.Material.MaterialName.ToString() + " ) in Store ( " + item.Store.StoreName.ToString() + " ) with Quantity " + QTY.ToString() + " is cancelled ";
             log.ActionDate = DateTime.Now;
             log.UserName = User.Identity.Name;
             log.ActionType = "Cancel Reservation";

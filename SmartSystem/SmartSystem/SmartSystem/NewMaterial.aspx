@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="Scripts/jquery-1.7.1.js"></script>
+ 
     <style>
         .btnaction {
             margin-top: 35px;
@@ -14,6 +15,7 @@
                 $(this).next('.custom-file-label').html(filename);
             });
         });
+
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -62,16 +64,23 @@
                                         <div class="timeline-body">
 
                                             <div class="row">
-                                                <div class="form-group col-md-3">
+                                                <div class="form-group col-md-2">
                                                     <label for="itemcode">كود الصنف</label>
                                                     <input type="text" title="رقم الصنف" class="form-control" name="itemcode" runat="server" id="itemcode" placeholder="أدخل رقم الصنف">
                                                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" ErrorMessage="Code is Required" ControlToValidate="itemcode"></asp:RequiredFieldValidator>--%>
                                                 </div>
-                                                <div class="form-group col-md-6">
+                                                <div class="form-group col-md-4">
                                                     <label for="itemname">أسم الصنف</label>
                                                     <input type="text" title="أسم الصنف" class="form-control" id="itemname" name="itemname" runat="server" placeholder="أدخل أسم الصنف">
                                                     <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ForeColor="Red" ControlToValidate="itemname" ErrorMessage="Material Name is required"></asp:RequiredFieldValidator>--%>
                                                 </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="itemDescription">ملاحظات أضافية </label>
+                                                    <input type="text" title="أسم الصنف" class="form-control" id="itemDescription" name="itemDescription" runat="server" placeholder="أدخل ملاحظات على الصنف">
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
                                                 <div class="form-group col-md-3">
                                                     <label for="itemsupplier">المورد</label>
                                                     <asp:DropDownList ToolTip="أختر المورد" AppendDataBoundItems="true" CssClass="form-control" ID="itemsupplier" DataSourceID="Supplier" DataTextField="Name" DataValueField="SupplierID" runat="server">
@@ -84,9 +93,6 @@
                                                         </SelectParameters>
                                                     </asp:SqlDataSource>
                                                 </div>
-                                            </div>
-
-                                            <div class="row">
                                                 <div class="form-group col-md-3">
                                                     <label for="materialcategory">نوع الصنف</label>
                                                     <asp:DropDownList ToolTip="أختر نوع الصنف" CssClass="form-control" ID="materialcategory" DataSourceID="ldsCategory" AppendDataBoundItems="true" runat="server"
@@ -96,16 +102,16 @@
                                                     <asp:SqlDataSource ID="ldsCategory" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
                                                         SelectCommand="SELECT * from SubCategories order by SubCategoryName ASC"></asp:SqlDataSource>
                                                 </div>
-                                                     <div class="form-group col-md-3">
+                                                <div class="form-group col-md-2">
                                                     <label for="SWidth">العرض</label>
                                                     <input type="text" title="العرض" class="form-control" id="Swidth" name="SWidth" runat="server" placeholder="عرض الصنف">
                                                 </div>
-                                                <div class="form-group col-md-3">
+                                                <div class="form-group col-md-2">
                                                     <label for="Sheight">الطول</label>
                                                     <input type="text" title="الطول" class="form-control" id="Sheight" name="Sheight" runat="server" placeholder="طول الصنف">
                                                 </div>
-                                           
-                                                <div class="form-group col-md-3">
+
+                                                <div class="form-group col-md-2">
                                                     <label for="unit">وحدة القياس</label>
                                                     <asp:DropDownList ToolTip="أختر وحدة قياس الصنف" CssClass="form-control" AppendDataBoundItems="true" ID="itemunit" DataSourceID="unit" DataTextField="UnitName" DataValueField="ID" runat="server">
                                                         <asp:ListItem Selected="True" Value="0">أختر وحدة قياس الصنف</asp:ListItem>
@@ -115,32 +121,27 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="form-group col-md-12">
-                                                      <label for="itemDescription">ملاحظات أضافية </label>
-                                                    <input type="text" title="أسم الصنف" class="form-control" id="itemDescription" name="itemDescription" runat="server" placeholder="أدخل ملاحظات على الصنف">
-                                                </div> 
-                                            </div>
 
-                                            <div class="row">
-                                                <div class="form-group col-md-8">
+                                                <div class="form-group col-md-6">
                                                     <label for="itemimage">صورة الصنف</label>
                                                     <div class="input-group">
                                                         <div class="custom-file">
                                                             <%--<input type="file" class="custom-file-input" name="FileUpload" id="FileUpload">--%>
-                                                                       <asp:FileUpload ID="FileUpload1" runat="server" class="custom-file-input"  />
-                                                                     <label class="custom-file-label" for="FileUpload1">أختر ملف</label>
+                                                            <asp:FileUpload ID="FileUpload1" runat="server" class="custom-file-input" />
+                                                            <label class="custom-file-label" for="FileUpload1">أختر ملف</label>
                                                         </div>
                                                         <div class="input-group-append">
                                                         </div>
-                                                        <asp:Label ID="LblUploadError" runat="server" style="padding: 15px;" Text=""></asp:Label>
+                                                        <asp:Label ID="LblUploadError" runat="server" Style="padding: 15px;" Text=""></asp:Label>
                                                     </div>
                                                 </div>
-                                                <div class="form-group col-md-4">
-                                                    <asp:Button ID="btnAddNewItem" ToolTip="أضافة صنف جديد" CssClass="btn btn-info float-right btnaction m80" runat="server" Text="أضافة صنف جديد" OnClick="btnAddNewItem_Click" />
+                                                <div class=" form-group col-md-4">
+                                                    <asp:Label ID="LblAddNewItem" runat="server" Width="100%" Text="" Style="padding: 15px;" Visible="false"></asp:Label>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <asp:Label ID="LblAddNewItem" runat="server" Text="" style="padding: 15px;" Visible="false"></asp:Label>
+                                                <div class="form-group col-md-2">
+                                                    <asp:Button ID="btnAddNewItem" Width="100%" ToolTip="أضافة صنف جديد" CssClass="btn btn-info float-right btnaction m80" runat="server" Text="أضافة صنف جديد" OnClick="btnAddNewItem_Click" />
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -149,30 +150,42 @@
 
                                 <!-- timeline time label -->
                                 <div class="time-label">
-                                    <span style="font-size: 20px; padding: 10px; width: 100%; text-align: center;color:white;background-color:#F39C12">Assign Material To Store location</span>
+                                    <span style="font-size: 20px; padding: 10px; width: 100%; text-align: center; color: white; background-color: #F39C12">Assign Material To Store location</span>
                                 </div>
                                 <!-- /.timeline-label -->
                                 <!-- timeline item -->
                                 <div>
-                                    <i class="fa fa-store-alt" style="color:white;background-color:#F39C12"  ></i>
+                                    <i class="fa fa-store-alt" style="color: white; background-color: #F39C12"></i>
                                     <div class="timeline-item">
                                         <span class="time"><i class="fa fa-store-alt"></i></span>
                                         <h3 class="timeline-header"><a href="#">أضافة بيانات الصنف ألى المخزن</a></h3>
                                         <div class="timeline-body">
 
                                             <div class="row">
-                                                <div class="form-group col-md-6">
+                                                <div class="form-group col-md-2">
                                                     <label for="Store">أختر المخزن </label>
                                                     <asp:DropDownList ToolTip="أختر المخزن" AppendDataBoundItems="true" CssClass="form-control" ID="Store" DataSourceID="STORES" DataTextField="STORENAME" DataValueField="STORENUMBER" runat="server">
-                                                    <asp:ListItem Selected="True" Value="0"> أختر المخزن</asp:ListItem>
+                                                        <asp:ListItem Selected="True" Value="0"> أختر المخزن</asp:ListItem>
                                                     </asp:DropDownList>
 
-                                                    </div>
-                                                <div class="form-group col-md-6">
+                                                </div>
+                                                <div class="form-group col-md-4">
                                                     <label for="selectitem">أختر الصنف</label>
                                                     <asp:DropDownList ToolTip="أختر الصنف" AppendDataBoundItems="true" ID="selectitem" DataSourceID="ldsitems" DataTextField="MaterialName" DataValueField="ID" CssClass="form-control" runat="server">
-                                                    <asp:ListItem Selected="True" Value="0">أختر الصنف</asp:ListItem>
+                                                        <asp:ListItem Selected="True" Value="0">أختر الصنف</asp:ListItem>
                                                     </asp:DropDownList>
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                    <label for="stockOnHand">الرصيد</label>
+                                                    <input type="text" title="الرصيد" class="form-control" id="stockOnHand" name="stockOnHand" runat="server" placeholder="الرصيد">
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                    <label for="safetystock">رصيد الامان</label>
+                                                    <input type="text" title="رصيد الأمان" class="form-control" id="safetystock" name="safetystock" runat="server" placeholder="مخزون الأمان">
+                                                </div>
+                                                <div class="form-group col-md-2">
+                                                    <label for="location">مكان التخزين</label>
+                                                    <input type="text" title="المكان داخل المخزن" class="form-control" id="location" name="location" runat="server" placeholder="المكان داخل المخزن">
                                                 </div>
                                                 <asp:SqlDataSource ID="ldsitems" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
                                                     SelectCommand="SELECT Distinct [ID], [MaterialName] FROM [Materials] Order By MaterialName Asc">
@@ -186,24 +199,17 @@
                                             </div>
 
                                             <div class="row">
-                                                <div class="form-group col-md-3">
-                                                    <label for="stockOnHand">الرصيد المخزون</label>
-                                                    <input type="text" title="الرصيد" class="form-control" id="stockOnHand" name="stockOnHand" runat="server" placeholder="الرصيد">
+                                                <%--                                             --%>
+
+                                                <div class="form-group col-md-9">
+                                                    <asp:Label ID="LblAddItemToStore" runat="server" Style="padding: 15px;" Text="" Visible="false"></asp:Label>
+
                                                 </div>
                                                 <div class="form-group col-md-3">
-                                                    <label for="safetystock">رصيد الامان</label>
-                                                    <input type="text" title="رصيد الأمان" class="form-control" id="safetystock" name="safetystock" runat="server" placeholder="مخزون الأمان">
+                                                    <asp:Button ID="btnAddToStore" ToolTip="أضافة الصنف ألى المخزن" CssClass="btn float-right btnaction m80" Style="color: white; background-color: #F39C12" runat="server" Text="أضافة الصنف للمخزن" OnClick="btnAddToStore_Click" />
                                                 </div>
-                                                <div class="form-group col-md-3">
-                                                    <label for="location">مكان التخزين</label>
-                                                    <input type="text" title="المكان داخل المخزن" class="form-control" id="location" name="location" runat="server" placeholder="المكان داخل المخزن">
-                                                </div>
-                                                <div class="form-group col-md-3">
-                                                    <asp:Button ID="btnAddToStore" ToolTip="أضافة الصنف ألى المخزن" CssClass="btn float-right btnaction m80" style="color:white;background-color:#F39C12"  runat="server" Text="أضافة الصنف للمخزن" OnClick="btnAddToStore_Click" />
-                                                </div>
-                                                <div class="row">
-                                                    <asp:Label ID="LblAddItemToStore" runat="server" style="padding: 15px;" Text="" Visible="false" ></asp:Label>
-                                                </div>
+
+
                                             </div>
 
                                         </div>
