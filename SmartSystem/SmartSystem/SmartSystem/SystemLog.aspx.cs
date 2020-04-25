@@ -8,6 +8,10 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.text.html.simpleparser;
 using System.IO;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Data;
+using Microsoft.Reporting.WebForms;
 
 namespace SmartSystem
 {
@@ -17,82 +21,45 @@ namespace SmartSystem
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!User.IsInRole("Management"))
-            //{
-           
-            //    Logger log = new Logger();
-            //    log.ActionDate = DateTime.Now;
-            //    log.ActionType = "Authorization";
-            //    log.UserName = User.Identity.Name;
-            //    log.Action = "User tried to access System Log";
+            if (!User.IsInRole("Management"))
+            {
 
-            //    db.Loggers.Add(log);
-            //    db.SaveChanges();
-            //    Response.Redirect("Unauthorized.aspx");
-            //}
+                Logger log = new Logger();
+                log.ActionDate = DateTime.Now;
+                log.ActionType = "Authorization";
+                log.UserName = User.Identity.Name;
+                log.Action = "User tried to access System Log";
 
-              
+                db.Loggers.Add(log);
+                db.SaveChanges();
+                Response.Redirect("Unauthorized.aspx");
+            }
+
+
         }
-
-        protected void btnExportstorePDF_Click(object sender, ImageClickEventArgs e)
+        protected void btnGetLogData_Click(object sender, EventArgs e)
         {
-            GridData.AllowPaging = false;
-            GridData.DataBind();
-            Response.Clear();
-            Response.Buffer = true;
-            Response.ClearContent();
-            Response.ClearHeaders();
-            Response.Charset = "";
-            StringWriter sw = new StringWriter();
-            HtmlTextWriter hw = new HtmlTextWriter(sw);
-            Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            Response.ContentType = "application/pdf";
-            Response.AddHeader("content-disposition", "attachment;filename=SystemLog Report " + DateTime.Now.ToShortDateString() + ".pdf");
-            GridData.GridLines = GridLines.Horizontal;
-            GridData.HeaderStyle.Font.Bold = true;
-            GridData.HeaderStyle.ForeColor = System.Drawing.Color.DarkBlue;
-            GridData.RenderControl(hw);
-            StringReader sr = new StringReader(sw.ToString());
-            Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
-            HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
-            PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
-            pdfDoc.Open();
-            htmlparser.Parse(sr);
-            pdfDoc.Close();
-            Response.Write(pdfDoc);
-            Response.End();
-            GridData.AllowPaging = true;
-            GridData.DataBind();
-        }
+            string  ActionType = Event.SelectedItem.ToString();
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = ConfigurationManager.ConnectionStrings["SmartShutterConnectionString"].ConnectionString;
+            string cmdtxt = @" SELECT UserName, ActionDate, ActionType, LogID, Action FROM Logger Where ActionType = '"+ ActionType +"' ORDER BY LogID DESC ";
 
-        protected void btnExportStoreExce_Click(object sender, ImageClickEventArgs e)
-        {
-            GridData.AllowPaging = false;
-            GridData.DataBind();
-            Response.Clear();
-            Response.Buffer = true;
-            Response.ClearContent();
-            Response.ClearHeaders();
-            Response.Charset = "";
-            string FileName = "SystemLog Report" + DateTime.Now.ToShortDateString() + ".xls";
-            StringWriter strwritter = new StringWriter();
-            HtmlTextWriter htmltextwrtter = new HtmlTextWriter(strwritter);
-            Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            Response.ContentType = "application/vnd.ms-excel";
-            Response.AddHeader("Content-Disposition", "attachment;filename=" + FileName);
-            GridData.GridLines = GridLines.Both;
-            GridData.HeaderStyle.Font.Bold = true;
-            GridData.RenderControl(htmltextwrtter);
-            Response.Write(strwritter.ToString());
-            Response.End();
-            GridData.AllowPaging = true;
-        }
+            SqlCommand cmd = new SqlCommand(cmdtxt, con);
+            cmd.CommandTimeout = 0;
+            cmd.CommandType = CommandType.Text;
+            DataTable dt = new DataTable();
+            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+            adapt.Fill(dt);
 
-        public override void VerifyRenderingInServerForm(Control control)
-        {
-            //required to avoid the runtime error "  
-            //Control 'GridView1' of type 'GridView' must be placed inside a form tag with runat=server."  
+            ReportLog.Visible = true;
+            ReportLog.ProcessingMode = ProcessingMode.Local;
+            ReportLog.LocalReport.ReportPath = Server.MapPath("./Reports/SystemLog.rdlc");
+            ReportLog.LocalReport.DataSources.Clear();
+            ReportLog.LocalReport.DataSources.Add(new ReportDataSource("SystemLog", dt));
+            ReportLog.LocalReport.DisplayName = "SystemLogReport" + DateTime.Now.ToString("ddMMyyyyhhmmss");
+            //ReportParameter PR = new ReportParameter("ReportDesc", "By Supplier");
+            //ReportMaterial.LocalReport.SetParameters(PR);
+            ReportLog.LocalReport.Refresh();
         }
-
     }
 }

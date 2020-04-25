@@ -2676,6 +2676,17 @@
     <EmbeddedResource Include="Reports\MaterialsData.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Content Include="DataSets\SystemLog.xsc">
+      <DependentUpon>SystemLog.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSets\SystemLog.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SystemLog.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSets\SystemLog.xss">
+      <DependentUpon>SystemLog.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -2746,7 +2757,6 @@
     </Content>
     <Content Include="StockReport.aspx" />
     <Content Include="SystemLog.aspx" />
-    <Content Include="top-nav.html" />
     <Content Include="Transfers.aspx" />
     <Content Include="Unauthorized.aspx" />
     <Content Include="Uploads\12.jpg" />
@@ -2820,6 +2830,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SafetyStock.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\SystemLog.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SystemLog.xsd</DependentUpon>
     </Compile>
     <Compile Include="DeadMaterialReport.aspx.cs">
       <DependentUpon>DeadMaterialReport.aspx</DependentUpon>
@@ -3250,6 +3265,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Reports\AvailableStock.rdlc" />
     <EmbeddedResource Include="Reports\MaterialAddition.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SystemLog.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\SafetyStock.rdlc">

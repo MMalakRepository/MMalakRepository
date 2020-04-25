@@ -1,6 +1,18 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SmartShutter.Master" AutoEventWireup="true"  EnableEventValidation="false" CodeBehind="SystemLog.aspx.cs" Inherits="SmartSystem.SystemLog" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SmartShutter.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="SystemLog.aspx.cs" Inherits="SmartSystem.SystemLog" %>
+
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845DCD8080CC91"
+    Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-        <style>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script>
+        $(document).ready(function () {
+            //$("a[title='Excel']").parent().hide();  // Remove Excel option from export dropdown.
+            $("a[title='Word']").parent().hide();   // Remove PDF option from export dropdown.
+        });
+    </script>
+    s
+    <style>
         .btnaction {
             margin-top: 30px;
             margin-left: 20px;
@@ -8,7 +20,8 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <form id="Form1" runat="server" enctype="multipart/form-data">
+    <form id="Form1" runat="server" enctype="multipart/form-data">
+                           <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="content-wrapper">
             <section class="content-header">
                 <div class="container-fluid">
@@ -54,13 +67,22 @@
                                                         SelectCommand="SELECT Distinct  ActionType FROM Logger "></asp:SqlDataSource>
                                                 </div>
 
-
                                                 <div class="form-group col-md-3">
-                                                    <asp:ImageButton ID="btnExportstorePDF" CssClass="btnaction float-right" Width="50px" Height="50px" runat="server" ImageUrl="~/Images/pdf.png" OnClick="btnExportstorePDF_Click" />
-                                                    <asp:ImageButton ID="btnExportStoreExce" runat="server" CssClass="btnaction float-right" Width="50px" Height="50px" ImageUrl="~/Images/excel.png"  OnClick="btnExportStoreExce_Click" />
+                                                    <asp:Button ID="btnGetLogData" CssClass="btn btn-warning btnaction float-right" Width="100%" Visible="true" runat="server" Text="Get Log Data" OnClick="btnGetLogData_Click" />
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-md-12">
+                                                    <rsweb:ReportViewer ShowPrintButton="true" ID="ReportLog" runat="server" Visible="false"
+                                                        Width="100%" Height="700px" BorderStyle="Solid" BorderWidth="2px" SizeToReportContent="True">
+                                                        <LocalReport ReportPath="./Reports/SystemLog.rdlc" EnableExternalImages="true">
+                                                        </LocalReport>
+                                                    </rsweb:ReportViewer>
                                                 </div>
                                             </div>
-                                            <div class="row">
+                                            <%--                                   <div class="row">
                                                 <div class="form-group col-md-12">
                                                     <asp:GridView ID="GridData" runat="server" PageSize="5" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" Width="100%" AllowPaging="True" AllowSorting="True">
                                                         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
@@ -81,15 +103,16 @@
                                                         <SortedDescendingCellStyle BackColor="#FFFDF8" />
                                                         <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                                                     </asp:GridView>
-                                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>" SelectCommand="SELECT UserName, ActionDate, Action, ActionType FROM Logger WHERE (ActionType = @ActionType) ORDER BY ActionDate DESC">
+                                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server"
+                                                        ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
+                                                        SelectCommand="SELECT UserName, ActionDate, Action, ActionType FROM Logger WHERE (ActionType = @ActionType) ORDER BY ActionDate DESC">
                                                         <SelectParameters>
                                                             <asp:ControlParameter ControlID="Event" DefaultValue="" Name="ActionType" PropertyName="SelectedValue" />
                                                         </SelectParameters>
                                                     </asp:SqlDataSource>
 
                                                 </div>
-                                            </div>
-
+                                            </div>--%>
                                         </div>
                                         <!-- /.card -->
                                     </div>

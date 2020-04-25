@@ -22,6 +22,15 @@ namespace SmartSystem {
         protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
         
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
         /// Event control.
         /// </summary>
         /// <remarks>
@@ -40,39 +49,21 @@ namespace SmartSystem {
         protected global::System.Web.UI.WebControls.SqlDataSource Events;
         
         /// <summary>
-        /// btnExportstorePDF control.
+        /// btnGetLogData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnExportstorePDF;
+        protected global::System.Web.UI.WebControls.Button btnGetLogData;
         
         /// <summary>
-        /// btnExportStoreExce control.
+        /// ReportLog control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnExportStoreExce;
-        
-        /// <summary>
-        /// GridData control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridData;
-        
-        /// <summary>
-        /// SqlDataSource1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportLog;
     }
 }
