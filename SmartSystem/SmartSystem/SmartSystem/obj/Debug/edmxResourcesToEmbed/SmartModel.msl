@@ -129,6 +129,7 @@
     <EntitySetMapping Name="DeadMaterials">
       <EntityTypeMapping TypeName="SmartShutterModel.DeadMaterial">
         <MappingFragment StoreEntitySet="DeadMaterials">
+          <ScalarProperty Name="ReservedQTY" ColumnName="ReservedQTY" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -194,6 +195,7 @@
     <EntitySetMapping Name="CuttingListsMaterials">
       <EntityTypeMapping TypeName="SmartShutterModel.CuttingListsMaterial">
         <MappingFragment StoreEntitySet="CuttingListsMaterials">
+          <ScalarProperty Name="ReservedQTY" ColumnName="ReservedQTY" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
@@ -235,6 +237,8 @@
     <EntitySetMapping Name="MaterialInStocks">
       <EntityTypeMapping TypeName="SmartShutterModel.MaterialInStock">
         <MappingFragment StoreEntitySet="MaterialInStock">
+          <ScalarProperty Name="SalesPrice" ColumnName="SalesPrice" />
+          <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
           <ScalarProperty Name="Supplier" ColumnName="Supplier" />
           <ScalarProperty Name="UnitID" ColumnName="UnitID" />
           <ScalarProperty Name="LastOrderDate" ColumnName="LastOrderDate" />
@@ -507,6 +511,21 @@
           <ScalarProperty Name="StoreID" ColumnName="StoreID" />
           <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
           <ScalarProperty Name="ContainerID" ColumnName="ContainerID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReservedCuttingMaterials">
+      <EntityTypeMapping TypeName="SmartShutterModel.ReservedCuttingMaterial">
+        <MappingFragment StoreEntitySet="ReservedCuttingMaterials">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+          <ScalarProperty Name="Paid" ColumnName="Paid" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="ReservedDate" ColumnName="ReservedDate" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="CuttingMaterialID" ColumnName="CuttingMaterialID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

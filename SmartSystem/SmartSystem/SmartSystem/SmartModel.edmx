@@ -145,6 +145,7 @@
           <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" />
           <Property Name="UserName" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" />
+          <Property Name="ReservedQTY" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="DeadMaterials">
           <Key>
@@ -161,6 +162,7 @@
           <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" />
           <Property Name="UserName" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" />
+          <Property Name="ReservedQTY" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Logger">
           <Key>
@@ -207,6 +209,8 @@
           <Property Name="LastOrderDate" Type="datetime" />
           <Property Name="UnitID" Type="int" />
           <Property Name="Supplier" Type="int" />
+          <Property Name="CostPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SalesPrice" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Materials">
           <Key>
@@ -284,6 +288,20 @@
           <Property Name="PropertyValueStrings" Type="nvarchar" MaxLength="4000" Nullable="false" />
           <Property Name="PropertyValueBinary" Type="image" Nullable="false" />
           <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReservedCuttingMaterials">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CuttingMaterialID" Type="int" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ReservedDate" Type="datetime" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="250" />
+          <Property Name="Paid" Type="bit" />
+          <Property Name="PaidAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="ReservedMaterials">
           <Key>
@@ -420,7 +438,7 @@
           <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'SmartShutter.dbo.MaterialsForOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'smartshutter.dbo.MaterialsForOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="MaterialsForOrder">
           <Key>
             <PropertyRef Name="MaterialType" />
@@ -435,7 +453,7 @@ warning 6002: The table/view 'SmartShutter.dbo.MaterialsForOrder' does not have 
           <Property Name="MaterialType" Type="varchar" MaxLength="12" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'SmartShutter.dbo.OrderDetailsData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'smartshutter.dbo.OrderDetailsData' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="OrderDetailsData">
           <Key>
             <PropertyRef Name="ID" />
@@ -799,6 +817,18 @@ warning 6002: The table/view 'SmartShutter.dbo.OrderDetailsData' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ReservedCuttingMaterials_CuttingListsMaterials">
+          <End Role="CuttingListsMaterials" Type="Self.CuttingListsMaterials" Multiplicity="0..1" />
+          <End Role="ReservedCuttingMaterials" Type="Self.ReservedCuttingMaterials" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CuttingListsMaterials">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReservedCuttingMaterials">
+              <PropertyRef Name="CuttingMaterialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ReservedMaterials_MaterialInStock">
           <End Role="MaterialInStock" Type="Self.MaterialInStock" Multiplicity="0..1" />
           <End Role="ReservedMaterials" Type="Self.ReservedMaterials" Multiplicity="*" />
@@ -1003,6 +1033,7 @@ warning 6002: The table/view 'SmartShutter.dbo.OrderDetailsData' does not have a
           <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Profiles" EntityType="Self.Profiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReservedCuttingMaterials" EntityType="Self.ReservedCuttingMaterials" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReservedMaterials" EntityType="Self.ReservedMaterials" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StockLogger" EntityType="Self.StockLogger" Schema="dbo" store:Type="Tables" />
@@ -1155,6 +1186,10 @@ FROM [dbo].[OrderDetailsData] AS [OrderDetailsData]</DefiningQuery>
           <AssociationSet Name="FK_Orders_Customers" Association="Self.FK_Orders_Customers">
             <End Role="Customers" EntitySet="Customers" />
             <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReservedCuttingMaterials_CuttingListsMaterials" Association="Self.FK_ReservedCuttingMaterials_CuttingListsMaterials">
+            <End Role="CuttingListsMaterials" EntitySet="CuttingListsMaterials" />
+            <End Role="ReservedCuttingMaterials" EntitySet="ReservedCuttingMaterials" />
           </AssociationSet>
           <AssociationSet Name="FK_ReservedMaterials_MaterialInStock" Association="Self.FK_ReservedMaterials_MaterialInStock">
             <End Role="MaterialInStock" EntitySet="MaterialInStock" />
@@ -1596,6 +1631,11 @@ FROM [dbo].[OrderDetailsData] AS [OrderDetailsData]</DefiningQuery>
             <End Role="Store" EntitySet="Stores" />
             <End Role="ContainerData" EntitySet="ContainerDatas" />
           </AssociationSet>
+          <EntitySet Name="ReservedCuttingMaterials" EntityType="SmartShutterModel.ReservedCuttingMaterial" />
+          <AssociationSet Name="FK_ReservedCuttingMaterials_CuttingListsMaterials" Association="SmartShutterModel.FK_ReservedCuttingMaterials_CuttingListsMaterials">
+            <End Role="CuttingListsMaterial" EntitySet="CuttingListsMaterials" />
+            <End Role="ReservedCuttingMaterial" EntitySet="ReservedCuttingMaterials" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1636,6 +1676,7 @@ FROM [dbo].[OrderDetailsData] AS [OrderDetailsData]</DefiningQuery>
           <NavigationProperty Name="Material" Relationship="SmartShutterModel.FK_DeadMaterials_Materials" FromRole="DeadMaterial" ToRole="Material" />
           <Property Type="Decimal" Name="Quantity" Precision="18" Scale="2" />
           <Property Name="IsActive" Type="Boolean" />
+          <Property Name="ReservedQTY" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <Association Name="FK_DeadMaterials_Units">
           <End Type="SmartShutterModel.Unit" Role="Unit" Multiplicity="0..1" />
@@ -1793,6 +1834,8 @@ FROM [dbo].[OrderDetailsData] AS [OrderDetailsData]</DefiningQuery>
           <NavigationProperty Name="Store" Relationship="SmartShutterModel.FK_DefectiveMaterials_Stores" FromRole="CuttingListsMaterial" ToRole="Store" />
           <NavigationProperty Name="Unit" Relationship="SmartShutterModel.FK_DefectiveMaterials_Units" FromRole="CuttingListsMaterial" ToRole="Unit" />
           <Property Name="IsActive" Type="Boolean" />
+          <Property Name="ReservedQTY" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="ReservedCuttingMaterials" Relationship="SmartShutterModel.FK_ReservedCuttingMaterials_CuttingListsMaterials" FromRole="CuttingListsMaterial" ToRole="ReservedCuttingMaterial" />
         </EntityType>
         <EntityType Name="SubCategory">
           <Key>
@@ -1895,6 +1938,8 @@ FROM [dbo].[OrderDetailsData] AS [OrderDetailsData]</DefiningQuery>
           <NavigationProperty Name="Unit" Relationship="SmartShutterModel.FK_MaterialInStock_Units" FromRole="MaterialInStock" ToRole="Unit" />
           <NavigationProperty Name="ReservedMaterials" Relationship="SmartShutterModel.FK_ReservedMaterials_MaterialInStock" FromRole="MaterialInStock" ToRole="ReservedMaterial" />
           <NavigationProperty Name="StockLoggers" Relationship="SmartShutterModel.FK_StockLogger_MaterialInStock" FromRole="MaterialInStock" ToRole="StockLogger" />
+          <Property Name="CostPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SalesPrice" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <Association Name="FK_MaterialInStock_Currency">
           <End Type="SmartShutterModel.Currency" Role="Currency" Multiplicity="0..1" />
@@ -2485,6 +2530,33 @@ FROM [dbo].[OrderDetailsData] AS [OrderDetailsData]</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ReservedCuttingMaterial">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CuttingMaterialID" Type="Int32" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ReservedDate" Type="DateTime" Precision="3" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Paid" Type="Boolean" />
+          <Property Name="PaidAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <NavigationProperty Name="CuttingListsMaterial" Relationship="SmartShutterModel.FK_ReservedCuttingMaterials_CuttingListsMaterials" FromRole="ReservedCuttingMaterial" ToRole="CuttingListsMaterial" />
+        </EntityType>
+        <Association Name="FK_ReservedCuttingMaterials_CuttingListsMaterials">
+          <End Type="SmartShutterModel.CuttingListsMaterial" Role="CuttingListsMaterial" Multiplicity="0..1" />
+          <End Type="SmartShutterModel.ReservedCuttingMaterial" Role="ReservedCuttingMaterial" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CuttingListsMaterial">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ReservedCuttingMaterial">
+              <PropertyRef Name="CuttingMaterialID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2619,6 +2691,7 @@ FROM [dbo].[OrderDetailsData] AS [OrderDetailsData]</DefiningQuery>
           <EntitySetMapping Name="DeadMaterials">
             <EntityTypeMapping TypeName="SmartShutterModel.DeadMaterial">
               <MappingFragment StoreEntitySet="DeadMaterials">
+                <ScalarProperty Name="ReservedQTY" ColumnName="ReservedQTY" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -2684,6 +2757,7 @@ FROM [dbo].[OrderDetailsData] AS [OrderDetailsData]</DefiningQuery>
           <EntitySetMapping Name="CuttingListsMaterials">
             <EntityTypeMapping TypeName="SmartShutterModel.CuttingListsMaterial">
               <MappingFragment StoreEntitySet="CuttingListsMaterials">
+                <ScalarProperty Name="ReservedQTY" ColumnName="ReservedQTY" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
@@ -2725,6 +2799,8 @@ FROM [dbo].[OrderDetailsData] AS [OrderDetailsData]</DefiningQuery>
           <EntitySetMapping Name="MaterialInStocks">
             <EntityTypeMapping TypeName="SmartShutterModel.MaterialInStock">
               <MappingFragment StoreEntitySet="MaterialInStock">
+                <ScalarProperty Name="SalesPrice" ColumnName="SalesPrice" />
+                <ScalarProperty Name="CostPrice" ColumnName="CostPrice" />
                 <ScalarProperty Name="Supplier" ColumnName="Supplier" />
                 <ScalarProperty Name="UnitID" ColumnName="UnitID" />
                 <ScalarProperty Name="LastOrderDate" ColumnName="LastOrderDate" />
@@ -2997,6 +3073,21 @@ FROM [dbo].[OrderDetailsData] AS [OrderDetailsData]</DefiningQuery>
                 <ScalarProperty Name="StoreID" ColumnName="StoreID" />
                 <ScalarProperty Name="MaterialID" ColumnName="MaterialID" />
                 <ScalarProperty Name="ContainerID" ColumnName="ContainerID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReservedCuttingMaterials">
+            <EntityTypeMapping TypeName="SmartShutterModel.ReservedCuttingMaterial">
+              <MappingFragment StoreEntitySet="ReservedCuttingMaterials">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="ReservedDate" ColumnName="ReservedDate" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="CuttingMaterialID" ColumnName="CuttingMaterialID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

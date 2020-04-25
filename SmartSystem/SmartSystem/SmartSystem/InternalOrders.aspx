@@ -249,7 +249,9 @@
                                                         <SortedDescendingCellStyle BackColor="#FFFDF8" />
                                                         <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                                                     </asp:GridView>
-                                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>" SelectCommand="SELECT * FROM MaterialsForOrder Where StoreID = @StoreID and MaterialID = @MaterialID and IsActive = 1 and Stock > 0">
+                                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                                                        ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
+                                                        SelectCommand="SELECT * FROM MaterialsForOrder Where StoreID = @StoreID and MaterialID = @MaterialID and IsActive = 1 and Stock > 0">
                                                         <SelectParameters>
                                                             <asp:ControlParameter ControlID="Store" DefaultValue="" Name="StoreID" PropertyName="SelectedValue" />
                                                             <asp:ControlParameter ControlID="selectitem" DefaultValue="" Name="MaterialID" PropertyName="SelectedValue" />

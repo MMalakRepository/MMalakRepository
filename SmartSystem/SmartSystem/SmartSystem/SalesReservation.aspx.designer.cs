@@ -40,13 +40,31 @@ namespace SmartSystem {
         protected global::System.Web.UI.WebControls.DropDownList dsMaterials;
         
         /// <summary>
-        /// btnGetMaterialData control.
+        /// pnlAvailableMaterial control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGetMaterialData;
+        protected global::System.Web.UI.WebControls.Panel pnlAvailableMaterial;
+        
+        /// <summary>
+        /// GridMaterial control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridMaterial;
+        
+        /// <summary>
+        /// SqlDataSource4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource4;
         
         /// <summary>
         /// pnlMaterialData control.
@@ -74,6 +92,15 @@ namespace SmartSystem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText itemname;
+        
+        /// <summary>
+        /// itemtype control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText itemtype;
         
         /// <summary>
         /// txtstock control.
@@ -139,6 +166,33 @@ namespace SmartSystem {
         protected global::System.Web.UI.WebControls.Button btnReserveStock;
         
         /// <summary>
+        /// txtItemHeight control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtItemHeight;
+        
+        /// <summary>
+        /// txtItemWidth control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtItemWidth;
+        
+        /// <summary>
+        /// txtItemNote control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtItemNote;
+        
+        /// <summary>
         /// ldsitems control.
         /// </summary>
         /// <remarks>
@@ -193,6 +247,15 @@ namespace SmartSystem {
         protected global::System.Web.UI.WebControls.DropDownList selectcancelitem;
         
         /// <summary>
+        /// canceltype control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList canceltype;
+        
+        /// <summary>
         /// btnCancelData control.
         /// </summary>
         /// <remarks>
@@ -202,13 +265,13 @@ namespace SmartSystem {
         protected global::System.Web.UI.WebControls.Button btnCancelData;
         
         /// <summary>
-        /// cancelPanel control.
+        /// cancelMaterialPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel cancelPanel;
+        protected global::System.Web.UI.WebControls.Panel cancelMaterialPanel;
         
         /// <summary>
         /// GridData control.
@@ -227,6 +290,33 @@ namespace SmartSystem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource3;
+        
+        /// <summary>
+        /// cancelCuttingPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel cancelCuttingPanel;
+        
+        /// <summary>
+        /// GridCuttingReservation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridCuttingReservation;
+        
+        /// <summary>
+        /// SqlDataSource5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource5;
         
         /// <summary>
         /// SqlDataSource1 control.

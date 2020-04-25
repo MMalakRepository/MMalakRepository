@@ -22,26 +22,27 @@ namespace SmartSystem
             else
             {
                 pnlMaterialData.Visible = false;
-                cancelPanel.Visible = false;
+                cancelCuttingPanel.Visible = false;
+                cancelMaterialPanel.Visible = false;
                 Session["UserName"] = User.Identity.Name;
-            }
-
-  
-                
+            }                
         }
 
-        protected void btnGetMaterialData_Click(object sender, EventArgs e)
-        {
-            var materialid = Convert.ToInt32(dsMaterials.SelectedValue);
-            var storeid = Convert.ToInt32(dsStores.SelectedValue);
-            var Ms = db.MaterialInStocks.Where(x => x.MaterialID == materialid && x.StoreID == storeid).FirstOrDefault();
-            itemname.Value = Ms.Material.MaterialName;
-            txtstock.Value = Ms.StockOnHand.ToString();
-            txtReservedStock.Value = "";
-            SafetyStock.Value = Ms.SafetyStock.ToString();
-            materialimg.Src = Ms.Material.imagepath;
-            pnlMaterialData.Visible = true;
-        }
+        //protected void btnGetMaterialData_Click(object sender, EventArgs e)
+        //{
+        //    //var materialid = Convert.ToInt32(dsMaterials.SelectedValue);
+        //    //var storeid = Convert.ToInt32(dsStores.SelectedValue);
+        //    //var Ms = db.MaterialInStocks.Where(x => x.MaterialID == materialid && x.StoreID == storeid).FirstOrDefault();
+        //    //itemname.Value = Ms.Material.MaterialName;
+        //    //txtstock.Value = Ms.StockOnHand.ToString();
+        //    //txtReservedStock.Value = "";
+        //    //SafetyStock.Value = Ms.SafetyStock.ToString();
+        //    //materialimg.Src = Ms.Material.imagepath;
+        //    //pnlMaterialData.Visible = true;
+
+        //    pnlAvailableMaterial.Visible = true;
+        //    GridMaterial.DataBind();
+        //}
 
         protected void btnReserveStock_Click(object sender, EventArgs e)
         {
@@ -68,9 +69,11 @@ namespace SmartSystem
                 }
                 else
                 {
-                    var reserved = Convert.ToDecimal(txtReservedStock.Value);
-                    var material = db.MaterialInStocks.Where(x => x.MaterialID == mt && x.StoreID == s).FirstOrDefault();
-                    var stock = Convert.ToDecimal(material.StockOnHand);
+                  decimal stock = Convert.ToDecimal(txtstock.Value.ToString());
+                  decimal reserved = Convert.ToDecimal(txtReservedStock.Value);
+                  var material = db.MaterialInStocks.Where(x => x.MaterialID == mt && x.StoreID == s).FirstOrDefault();
+             
+                   
                     if(stock < reserved)
                     {
                         lblError.ForeColor = Color.Red;
@@ -82,10 +85,96 @@ namespace SmartSystem
                     }
                     else
                     {
-                        ReserveStock();
+                        if(itemtype.Value.ToLower() == "material")
+                        {
+                            ReserveStock();
+                        }
+                        else if (itemtype.Value.ToLower() == "cuttinglist")
+                        {
+                            ReserveCuttingList();
+                        }
+
+                        pnlMaterialData.Visible = false;
+                        GridMaterial.DataBind();
                     }
                 }
             }
+        }
+
+        private void ReserveCuttingList()
+        {
+            int S = Convert.ToInt32(dsStores.SelectedValue);
+            int M = Convert.ToInt32(dsMaterials.SelectedValue);
+            var Height = Convert.ToDecimal(txtItemHeight.Value.ToString());
+            var Notes = txtItemNote.Value.ToString();
+            var Stock = Convert.ToDecimal(txtstock.Value.ToString());
+            var Width = Convert.ToDecimal(txtItemWidth.Value.ToString());
+            var MS = db.CuttingListsMaterials.Where(x => x.StoreID == S && x.MaterialID == M && x.Notes == Notes && x.Height == Height && x.Width == Width && x.Quantity == Stock).FirstOrDefault();
+            decimal res = 0;
+            decimal oldres = 0;
+            decimal newres = 0;
+            try
+            {
+                ReservedCuttingMaterial RM = new ReservedCuttingMaterial();
+                RM.CuttingMaterialID = MS.ID;
+                RM.ReservedDate = DateTime.Now;
+                RM.UserName = User.Identity.Name;
+                RM.Quantity = Convert.ToDecimal(txtReservedStock.Value);
+                if (txtPaidAmount.Value == null || txtPaidAmount.Value == String.Empty)
+                {
+                    res = Convert.ToDecimal(txtReservedStock.Value);
+                    RM.Paid = false;
+                    RM.PaidAmount = 0;
+                    if (MS.ReservedQTY == null)
+                    {
+                        MS.ReservedQTY = res;
+                        newres = res;
+                    }
+                    else
+                    {
+                        oldres = Convert.ToDecimal(MS.ReservedQTY);
+                        newres = oldres + res;
+                        MS.ReservedQTY = newres;
+                        
+
+                    }
+                    //LogAction(MS.Quantity, oldres, MS.Quantity, newres, MS.ID);
+                }
+
+                else
+                {
+                    RM.Paid = true;
+                    RM.PaidAmount = Convert.ToDecimal(txtPaidAmount.Value.ToString());
+                    MS.Quantity -= Convert.ToDecimal(txtReservedStock.Value.ToString());
+                }
+
+                RM.IsDeleted = false;
+                RM.Note = txtNotes.Value;
+                db.ReservedCuttingMaterials.Add(RM);
+                db.SaveChanges();
+
+                Logger log = new Logger();
+                log.ActionType = "Sales Reservation";
+                log.ActionDate = DateTime.Now;
+                log.UserName = User.Identity.Name;
+                log.Action = "Sales Reservation of Cutting List Material ( " + MS.Material.MaterialName.ToString() + " ) in Store ( " + MS.Store.StoreName.ToString() + " ) Quantity " + txtReservedStock.Value.ToString();
+
+                db.Loggers.Add(log);
+                db.SaveChanges();
+
+                lblError.Visible = false;
+                txtReservedStock.Value = "";
+                pnlMaterialData.Visible = false;
+                txtPaidAmount.Value = "";
+                txtNotes.Value = "";
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = "Error in Stock Reservation " + ex.InnerException.InnerException.Message;
+                lblError.ForeColor = Color.Red;
+                lblError.Visible = true;
+            }
+
         }
 
         private void ReserveStock()
@@ -122,8 +211,6 @@ namespace SmartSystem
                         newres = oldres + res;
                         MS.ReservedStock = newres;
                     }
-
-
                     LogAction(MS.StockOnHand, oldres, MS.StockOnHand, newres, MS.ID);
                 }
                   
@@ -131,9 +218,8 @@ namespace SmartSystem
                 {
                     RM.Paid = true;
                     RM.PaidAmount = Convert.ToDecimal(txtPaidAmount.Value);
-
-
                     DecreaseStock(MSS);
+         
                 }
 
                 RM.IsDeleted = false;
@@ -184,9 +270,7 @@ namespace SmartSystem
                 {
                     material.ReservedStock += Convert.ToDecimal(txtReservedStock.Value);
                 }
-                    
-
-
+                   
                 material.StockOnHand -= Convert.ToDecimal(txtReservedStock.Value);
                 db.SaveChanges();
 
@@ -238,34 +322,44 @@ namespace SmartSystem
         }
 
         private void LogAction(decimal? oldstock, decimal? oldreserved, decimal? newstock, decimal? newreserved,int materialinstock)
-        {
-            try
-            {
-                StockLogger st = new StockLogger();
-                st.MaterialInStock = materialinstock;
-                st.OldStock = oldstock;
-                st.NewStock = newstock;
-                st.OldReservedStock = oldreserved;
-                st.NewReservedStock = newreserved;
-                st.UserName = User.Identity.Name;
-                st.Notes = txtNotes.Value;
+        {                    
+                try
+                {
+                    StockLogger st = new StockLogger();
+                    st.MaterialInStock = materialinstock;
+                    st.OldStock = oldstock;
+                    st.NewStock = newstock;
+                    st.OldReservedStock = oldreserved;
+                    st.NewReservedStock = newreserved;
+                    st.UserName = User.Identity.Name;
+                    st.Notes = txtNotes.Value;
 
-                db.StockLoggers.Add(st);
-                db.SaveChanges();
-            }
-            catch(Exception ex)
-            {
-                lblError.Text = "Error in Stock Log " + ex.InnerException.InnerException.Message;
-                lblError.ForeColor = Color.Red;
-                lblError.Visible = true;
-            }
-
+                    db.StockLoggers.Add(st);
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    lblError.Text = "Error in Stock Log " + ex.InnerException.InnerException.Message;
+                    lblError.ForeColor = Color.Red;
+                    lblError.Visible = true;
+                }
         }
   
         protected void btnCancelData_Click(object sender, EventArgs e)
         {
-            cancelPanel.Visible = true;
-            GridData.DataBind();
+            if(canceltype.SelectedIndex == 0)
+            {
+                cancelMaterialPanel.Visible = true;
+                cancelCuttingPanel.Visible = false;
+                GridData.DataBind();
+            }
+            else if(canceltype.SelectedIndex == 1)
+            {
+                cancelCuttingPanel.Visible = true;
+                cancelMaterialPanel.Visible = false;
+                GridCuttingReservation.DataBind();
+            }
+         
         }
 
         //protected void GridData_SelectedIndexChanged(object sender, EventArgs e)
@@ -381,7 +475,7 @@ namespace SmartSystem
                 st.NewStock = stock;
             st.OldReservedStock = TotalReserved;
             st.NewReservedStock = TotalReserved - QTY;
-            st.Notes = "Reservation of Material ( " + item.Material.MaterialName.ToString() +" ) In Store ( " + item.Store.StoreName.ToString() + " ) Cancelled By " + User.Identity.Name;
+            st.Notes = "Cancel Reservation of Material ( " + item.Material.MaterialName.ToString() +" ) In Store ( " + item.Store.StoreName.ToString() + " ) Cancelled By " + User.Identity.Name;
 
             db.StockLoggers.Add(st);
             db.SaveChanges();
@@ -390,7 +484,7 @@ namespace SmartSystem
             db.SaveChanges();
 
             Logger log = new Logger();
-            log.Action = "Reservation of Material ( " + item.Material.MaterialName.ToString() + " ) in Store ( " + item.Store.StoreName.ToString() + " ) with Quantity " + QTY.ToString() + " is cancelled ";
+            log.Action = "Cancel Reservation of Material ( " + item.Material.MaterialName.ToString() + " ) in Store ( " + item.Store.StoreName.ToString() + " ) with Quantity " + QTY.ToString() + " is cancelled ";
             log.ActionDate = DateTime.Now;
             log.UserName = User.Identity.Name;
             log.ActionType = "Cancel Reservation";
@@ -398,6 +492,87 @@ namespace SmartSystem
             db.SaveChanges();
 
             GridData.DataBind();
+        }
+
+        protected void dsMaterials_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            pnlAvailableMaterial.Visible = true;
+            GridMaterial.DataBind();
+        }
+
+        protected void GridMaterial_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //MaterialName,stock,width,height,Notes,type
+            GridViewRow gv = GridMaterial.SelectedRow;
+
+            var Width = gv.Cells[3].Text.ToString();
+            var Height = gv.Cells[4].Text.ToString();
+            if(Width != null || Width != String.Empty)
+                txtItemWidth.Value = gv.Cells[3].Text.ToString();
+            else
+                txtItemWidth.Value = "0";
+
+            if(Height != null || Height != String.Empty)
+                txtItemHeight.Value = gv.Cells[4].Text.ToString();
+            else
+                txtItemHeight.Value = "0";
+
+            decimal stock = Convert.ToDecimal(gv.Cells[2].Text.ToString());
+            string Notes = gv.Cells[5].Text.ToString();
+            txtItemNote.Value = Notes;
+            string MaterialName = gv.Cells[1].Text.ToString();
+            var materialid = Convert.ToInt32(dsMaterials.SelectedValue);
+            var storeid = Convert.ToInt32(dsStores.SelectedValue);
+            string MaterialType = gv.Cells[6].Text.ToString();
+            var Ms = db.MaterialInStocks.Where(x => x.MaterialID == materialid && x.StoreID == storeid).FirstOrDefault();
+            itemname.Value = Ms.Material.MaterialName;
+            itemtype.Value = MaterialType.ToString();
+            txtReservedStock.Value = "";
+            SafetyStock.Value = Ms.SafetyStock.ToString();
+            materialimg.Src = Ms.Material.imagepath;
+
+            if (MaterialType == "Material")
+            {
+                txtstock.Value = Ms.StockOnHand.ToString();
+            }
+            else if(MaterialType == "CuttingList")
+            {
+                txtstock.Value = stock.ToString();
+            }
+            pnlMaterialData.Visible = true;
+
+        }
+
+        protected void GridCuttingReservation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GridViewRow gv = GridCuttingReservation.SelectedRow;
+            int ReservedID = Convert.ToInt32(gv.Cells[1].Text.ToString());
+            var ReservedMaterial = db.ReservedCuttingMaterials.Where(x => x.ID == ReservedID).FirstOrDefault();
+            decimal QTY = Convert.ToDecimal(ReservedMaterial.Quantity);
+            string ReservationNote = ReservedMaterial.Note;
+            decimal PaidAmount = Convert.ToDecimal(ReservedMaterial.PaidAmount);
+            int cuttingListID = Convert.ToInt32(ReservedMaterial.CuttingMaterialID);
+            ReservedMaterial.IsDeleted = true;
+            var CMaterial = db.CuttingListsMaterials.Where(x => x.ID == cuttingListID).FirstOrDefault();
+            CMaterial.ReservedQTY -= QTY;
+            CMaterial.IsActive = true; 
+            if(PaidAmount != 0)
+            {
+                CMaterial.Quantity += QTY;
+            }
+
+            Logger log = new Logger();
+            log.Action = "Cancel Reservation of CuttingList Material ( " + CMaterial.Material.MaterialName.ToString() + " ) in Store ( " + CMaterial.Store.StoreName.ToString() + " ) with Quantity " + QTY.ToString() + " is cancelled ";
+            log.ActionDate = DateTime.Now;
+            log.UserName = User.Identity.Name;
+            log.ActionType = "Cancel Reservation";
+            db.Loggers.Add(log);
+            db.SaveChanges();
+
+           GridCuttingReservation.DataBind();
+            GridCuttingReservation.Visible = true;
+            GridMaterial.DataBind();
+            GridMaterial.Visible = true;
         }
     }
 }

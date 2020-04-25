@@ -25,6 +25,7 @@ namespace SmartSystem
         public string UserName { get; set; }
         public Nullable<decimal> Quantity { get; set; }
         public Nullable<bool> IsActive { get; set; }
+        public Nullable<decimal> ReservedQTY { get; set; }
     
         public virtual Unit Unit { get; set; }
         public virtual Store Store { get; set; }

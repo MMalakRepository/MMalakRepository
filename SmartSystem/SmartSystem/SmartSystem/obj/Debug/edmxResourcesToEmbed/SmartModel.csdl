@@ -375,6 +375,11 @@
       <End Role="Store" EntitySet="Stores" />
       <End Role="ContainerData" EntitySet="ContainerDatas" />
     </AssociationSet>
+    <EntitySet Name="ReservedCuttingMaterials" EntityType="SmartShutterModel.ReservedCuttingMaterial" />
+    <AssociationSet Name="FK_ReservedCuttingMaterials_CuttingListsMaterials" Association="SmartShutterModel.FK_ReservedCuttingMaterials_CuttingListsMaterials">
+      <End Role="CuttingListsMaterial" EntitySet="CuttingListsMaterials" />
+      <End Role="ReservedCuttingMaterial" EntitySet="ReservedCuttingMaterials" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -415,6 +420,7 @@
     <NavigationProperty Name="Material" Relationship="SmartShutterModel.FK_DeadMaterials_Materials" FromRole="DeadMaterial" ToRole="Material" />
     <Property Type="Decimal" Name="Quantity" Precision="18" Scale="2" />
     <Property Name="IsActive" Type="Boolean" />
+    <Property Name="ReservedQTY" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
   <Association Name="FK_DeadMaterials_Units">
     <End Type="SmartShutterModel.Unit" Role="Unit" Multiplicity="0..1" />
@@ -572,6 +578,8 @@
     <NavigationProperty Name="Store" Relationship="SmartShutterModel.FK_DefectiveMaterials_Stores" FromRole="CuttingListsMaterial" ToRole="Store" />
     <NavigationProperty Name="Unit" Relationship="SmartShutterModel.FK_DefectiveMaterials_Units" FromRole="CuttingListsMaterial" ToRole="Unit" />
     <Property Name="IsActive" Type="Boolean" />
+    <Property Name="ReservedQTY" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="ReservedCuttingMaterials" Relationship="SmartShutterModel.FK_ReservedCuttingMaterials_CuttingListsMaterials" FromRole="CuttingListsMaterial" ToRole="ReservedCuttingMaterial" />
   </EntityType>
   <EntityType Name="SubCategory">
     <Key>
@@ -674,6 +682,8 @@
     <NavigationProperty Name="Unit" Relationship="SmartShutterModel.FK_MaterialInStock_Units" FromRole="MaterialInStock" ToRole="Unit" />
     <NavigationProperty Name="ReservedMaterials" Relationship="SmartShutterModel.FK_ReservedMaterials_MaterialInStock" FromRole="MaterialInStock" ToRole="ReservedMaterial" />
     <NavigationProperty Name="StockLoggers" Relationship="SmartShutterModel.FK_StockLogger_MaterialInStock" FromRole="MaterialInStock" ToRole="StockLogger" />
+    <Property Name="CostPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="SalesPrice" Type="Decimal" Precision="18" Scale="2" />
   </EntityType>
   <Association Name="FK_MaterialInStock_Currency">
     <End Type="SmartShutterModel.Currency" Role="Currency" Multiplicity="0..1" />
@@ -1261,6 +1271,33 @@
       </Principal>
       <Dependent Role="ContainerData">
         <PropertyRef Name="StoreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ReservedCuttingMaterial">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CuttingMaterialID" Type="Int32" />
+    <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ReservedDate" Type="DateTime" Precision="3" />
+    <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Paid" Type="Boolean" />
+    <Property Name="PaidAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="CuttingListsMaterial" Relationship="SmartShutterModel.FK_ReservedCuttingMaterials_CuttingListsMaterials" FromRole="ReservedCuttingMaterial" ToRole="CuttingListsMaterial" />
+  </EntityType>
+  <Association Name="FK_ReservedCuttingMaterials_CuttingListsMaterials">
+    <End Type="SmartShutterModel.CuttingListsMaterial" Role="CuttingListsMaterial" Multiplicity="0..1" />
+    <End Type="SmartShutterModel.ReservedCuttingMaterial" Role="ReservedCuttingMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CuttingListsMaterial">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReservedCuttingMaterial">
+        <PropertyRef Name="CuttingMaterialID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

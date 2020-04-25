@@ -90,6 +90,7 @@ namespace SmartSystem
             DM.UnitID = Convert.ToInt32(itemunit.SelectedValue);
             DM.UserName = User.Identity.Name.ToString();
             DM.ActionDate = DateTime.Now;
+            DM.ReservedQTY = 0;
 
             db.CuttingListsMaterials.Add(DM);
             db.SaveChanges();

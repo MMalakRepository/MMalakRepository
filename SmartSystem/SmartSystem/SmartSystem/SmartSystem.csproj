@@ -2676,7 +2676,6 @@
     <EmbeddedResource Include="Reports\MaterialsData.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Content Include="MaterialHandler.ashx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -2845,9 +2844,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MaterialHistoryData.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="MaterialHandler.ashx.cs">
-      <DependentUpon>MaterialHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="MaterialHistory.cs">
       <DependentUpon>SmartModel.tt</DependentUpon>
@@ -3117,6 +3113,9 @@
       <DependentUpon>NewMaterial.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReservedCuttingMaterial.cs">
+      <DependentUpon>SmartModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ReservedMaterial.cs">
       <DependentUpon>SmartModel.tt</DependentUpon>
     </Compile>

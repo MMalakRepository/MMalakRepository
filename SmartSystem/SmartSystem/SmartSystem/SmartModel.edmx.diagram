@@ -80,6 +80,8 @@
         <AssociationConnector Association="SmartShutterModel.FK_ContainerData_Container" />
         <AssociationConnector Association="SmartShutterModel.FK_ContainerData_Materials" />
         <AssociationConnector Association="SmartShutterModel.FK_ContainerData_Stores" />
+        <EntityTypeShape EntityType="SmartShutterModel.ReservedCuttingMaterial" Width="1.5" PointX="3.375" PointY="19.25" />
+        <AssociationConnector Association="SmartShutterModel.FK_ReservedCuttingMaterials_CuttingListsMaterials" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

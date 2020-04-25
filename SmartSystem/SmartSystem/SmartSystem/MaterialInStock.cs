@@ -37,6 +37,8 @@ namespace SmartSystem
         public Nullable<System.DateTime> LastOrderDate { get; set; }
         public Nullable<int> UnitID { get; set; }
         public Nullable<int> Supplier { get; set; }
+        public Nullable<decimal> CostPrice { get; set; }
+        public Nullable<decimal> SalesPrice { get; set; }
     
         public virtual Currency Currency { get; set; }
         public virtual Material Material { get; set; }

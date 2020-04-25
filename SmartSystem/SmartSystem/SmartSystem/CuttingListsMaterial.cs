@@ -14,6 +14,11 @@ namespace SmartSystem
     
     public partial class CuttingListsMaterial
     {
+        public CuttingListsMaterial()
+        {
+            this.ReservedCuttingMaterials = new HashSet<ReservedCuttingMaterial>();
+        }
+    
         public int ID { get; set; }
         public Nullable<int> MaterialID { get; set; }
         public Nullable<int> StoreID { get; set; }
@@ -25,9 +30,11 @@ namespace SmartSystem
         public Nullable<decimal> Quantity { get; set; }
         public string UserName { get; set; }
         public Nullable<bool> IsActive { get; set; }
+        public Nullable<decimal> ReservedQTY { get; set; }
     
         public virtual Material Material { get; set; }
         public virtual Store Store { get; set; }
         public virtual Unit Unit { get; set; }
+        public virtual ICollection<ReservedCuttingMaterial> ReservedCuttingMaterials { get; set; }
     }
 }
