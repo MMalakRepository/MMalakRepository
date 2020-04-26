@@ -74,7 +74,7 @@
                                                 <div class="form-group col-md-12">
                                                     <label for="DefectiveNote">ملاحظات أضافية</label>
                                                     <input title="أدخل الملاحظة" type="text" class="form-control" name="DefectiveNote" runat="server" id="DefectiveNote" placeholder="Enter Your Notes">
-                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" ErrorMessage="Please Enter your note " ControlToValidate="DefectiveNote"></asp:RequiredFieldValidator>
+                                                    <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" ErrorMessage="Please Enter your note " ControlToValidate="DefectiveNote"></asp:RequiredFieldValidator>--%>
                                                 </div>
                                             </div>
 
