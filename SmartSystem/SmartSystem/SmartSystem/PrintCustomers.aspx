@@ -24,7 +24,7 @@
                                 <LocalReport ReportPath="./Reports/Customers.rdlc" EnableExternalImages="true">
                                 </LocalReport>
                             </rsweb:ReportViewer>
-                            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+                            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" Visible="false" />
 
                         </form>
 

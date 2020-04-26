@@ -15,17 +15,16 @@ namespace SmartSystem
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (!Roles.IsUserInRole(User.Identity.Name, "Management"))
+            if (!Roles.IsUserInRole(User.Identity.Name, "Management") && !Roles.IsUserInRole(User.Identity.Name, "SystemAdmin"))
             {
-                //    Logger log = new Logger();
-                //    log.ActionDate = DateTime.Now;
-                //    log.ActionType = "Authorization";
-                //    log.UserName = User.Identity.Name;
-                //    log.Action = "User tried to access Customers Master Data Page";
-
-                //    db.Loggers.Add(log);
-                //    db.SaveChanges();
-                //    Response.Redirect("Unauthorized.aspx");
+                Logger log = new Logger();
+                log.ActionDate = DateTime.Now;
+                log.ActionType = "Authorization";
+                log.UserName = User.Identity.Name;
+                log.Action = "User tried to access Customers Master Data Page";
+                db.Loggers.Add(log);
+                db.SaveChanges();
+                Response.Redirect("Unauthorized.aspx");
             }
  
         }

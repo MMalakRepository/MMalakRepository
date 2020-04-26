@@ -12,6 +12,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
 using Microsoft.Reporting.WebForms;
+using System.Web.Security;
 
 namespace SmartSystem
 {
@@ -21,17 +22,16 @@ namespace SmartSystem
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!User.IsInRole("Management"))
+            if (!Roles.IsUserInRole(User.Identity.Name, "Management"))
             {
-
                 Logger log = new Logger();
                 log.ActionDate = DateTime.Now;
                 log.ActionType = "Authorization";
                 log.UserName = User.Identity.Name;
-                log.Action = "User tried to access System Log";
-
+                log.Action = "User tried to access System Log Page";
                 db.Loggers.Add(log);
                 db.SaveChanges();
+
                 Response.Redirect("Unauthorized.aspx");
             }
 

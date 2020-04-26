@@ -88,14 +88,11 @@
     </form>
     <script src="plugins/bootstrap-datetimepicker/sample%20in%20bootstrap%20v3/jquery/jquery-1.8.3.min.js"></script>
 
-    <script src="plugins/bootstrap-datetimepicker/sample%20in%20bootstrap%20v3/bootstrap/js/bootstrap.min.js"></script>
+    <%--<script src="plugins/bootstrap-datetimepicker/sample%20in%20bootstrap%20v3/bootstrap/js/bootstrap.min.js"></script>--%>
     <script src="plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
 
 
-<%--    <script type="text/javascript" src="./jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
-<script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/bootstrap-datetimepicker.js" charset="UTF-8"></script>--%>
-<%--<script type="text/javascript" src="../js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>--%>
+ 
 <script type="text/javascript">
  
 	$('.form_date').datetimepicker({

@@ -137,7 +137,8 @@
                         <li class="dropdown-divider"></li>
                         <li><a href="InternalOrdersReport.aspx" class="dropdown-item" title="طباعة أذن الصرف">Print Order</a></li>
                         <li class="dropdown-divider"></li>
-                        <li><a href="CustomerDataReport.aspx" class="dropdown-item" title="أوامر شغل العملاء">Customer Orders</a></li>
+                        <li><a href="CustomerDataReport.aspx" class="dropdown-item" title="أوامر شغل العملاء">Customer Orders By Date</a></li>
+                        <li><a href="CustomerOrdersReport.aspx" class="dropdown-item" title="أوامر شغل العملاء">Customer Orders</a></li>
                     </ul>
                 </li>
                 <li class="nav-item d-sm-none d-md-block demobile">

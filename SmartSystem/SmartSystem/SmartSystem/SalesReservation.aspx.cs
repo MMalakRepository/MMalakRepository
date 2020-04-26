@@ -14,11 +14,21 @@ namespace SmartSystem
         Entities db = new Entities();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Roles.IsUserInRole(User.Identity.Name, "SystemAdmin") &&
-                Roles.IsUserInRole(User.Identity.Name, "Management") &&
-                Roles.IsUserInRole(User.Identity.Name, "Sales"))
+            if (!Roles.IsUserInRole(User.Identity.Name, "SystemAdmin") &&
+                !Roles.IsUserInRole(User.Identity.Name, "Management") &&
+                !Roles.IsUserInRole(User.Identity.Name, "Sales"))
+            {
+                Logger log = new Logger();
+                log.ActionDate = DateTime.Now;
+                log.ActionType = "Authorization";
+                log.UserName = User.Identity.Name;
+                log.Action = "User tried to access Sales Reservation Data Page";
+                db.Loggers.Add(log);
+                db.SaveChanges();
 
                 Response.Redirect("Unauthorized.aspx");
+            }
+
             else
             {
                 pnlMaterialData.Visible = false;
@@ -570,9 +580,9 @@ namespace SmartSystem
             db.SaveChanges();
 
            GridCuttingReservation.DataBind();
-            GridCuttingReservation.Visible = true;
-            GridMaterial.DataBind();
-            GridMaterial.Visible = true;
+           GridCuttingReservation.Visible = true;
+           GridMaterial.DataBind();
+           GridMaterial.Visible = true;
         }
     }
 }

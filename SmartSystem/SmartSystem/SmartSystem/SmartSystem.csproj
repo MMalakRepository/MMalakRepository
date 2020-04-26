@@ -289,6 +289,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="CustomerOrdersReport.aspx" />
     <Content Include="CuttingListDataReport.aspx" />
     <Content Include="DeadMaterialReport.aspx" />
     <Content Include="Delicious-Icon.png" />
@@ -400,6 +401,7 @@
     <Content Include="plugins\bootstrap-datetimepicker\tests\tests.min.html" />
     <Content Include="plugins\bootstrap-datetimepicker\tests\_coverage.html" />
     <Content Include="plugins\jquery\jquery-1.8.3.min.js" />
+    <Content Include="PrintCustomerOrders.aspx" />
     <Content Include="PrintMaterialHistory.aspx" />
     <Content Include="PrintMaterialAddition.aspx" />
     <Content Include="PrintMaterialsOut.aspx" />
@@ -2804,6 +2806,13 @@
     <Compile Include="ContainerData.cs">
       <DependentUpon>SmartModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CustomerOrdersReport.aspx.cs">
+      <DependentUpon>CustomerOrdersReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerOrdersReport.aspx.designer.cs">
+      <DependentUpon>CustomerOrdersReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CuttingListDataReport.aspx.cs">
       <DependentUpon>CuttingListDataReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2890,6 +2899,13 @@
     </Compile>
     <Compile Include="MaterialDataReport.aspx.designer.cs">
       <DependentUpon>MaterialDataReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PrintCustomerOrders.aspx.cs">
+      <DependentUpon>PrintCustomerOrders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrintCustomerOrders.aspx.designer.cs">
+      <DependentUpon>PrintCustomerOrders.aspx</DependentUpon>
     </Compile>
     <Compile Include="PrintMaterialHistory.aspx.cs">
       <DependentUpon>PrintMaterialHistory.aspx</DependentUpon>

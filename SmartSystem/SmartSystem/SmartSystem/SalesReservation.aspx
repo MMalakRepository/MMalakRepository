@@ -133,7 +133,7 @@
                                                             <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                                                         </asp:GridView>
                                                         <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
-                                                            SelectCommand="SELECT MaterialsForOrder.MaterialID, MaterialsForOrder.StoreID, MaterialsForOrder.Stock, MaterialsForOrder.IsActive, MaterialsForOrder.Height, MaterialsForOrder.Width, MaterialsForOrder.Notes, MaterialsForOrder.MaterialType, Materials.MaterialName FROM MaterialsForOrder INNER JOIN Materials ON MaterialsForOrder.MaterialID = Materials.ID WHERE (MaterialsForOrder.StoreID = @StoreID) AND (MaterialsForOrder.MaterialID = @MaterialID) AND (MaterialsForOrder.IsActive = 1) AND (MaterialsForOrder.Stock &gt; 0)">
+                                                            SelectCommand="SELECT MaterialsForOrder.MaterialID, MaterialsForOrder.StoreID, MaterialsForOrder.Stock, MaterialsForOrder.IsActive, MaterialsForOrder.Height, MaterialsForOrder.Width, MaterialsForOrder.Notes, MaterialsForOrder.MaterialType, Materials.MaterialName FROM MaterialsForOrder INNER JOIN Materials ON MaterialsForOrder.MaterialID = Materials.ID WHERE (MaterialsForOrder.StoreID = @StoreID) AND (MaterialsForOrder.MaterialID = @MaterialID) AND (MaterialsForOrder.IsActive = 1) AND (MaterialsForOrder.Stock &gt; 0) And MaterialsForOrder.MaterialType IN ('Material','CuttingList')">
                                                             <SelectParameters>
                                                                 <asp:ControlParameter ControlID="dsStores" DefaultValue="" Name="StoreID" PropertyName="SelectedValue" />
                                                                 <asp:ControlParameter ControlID="dsMaterials" DefaultValue="" Name="MaterialID" PropertyName="SelectedValue" />
@@ -386,7 +386,7 @@
                                                 </div>
                                             </asp:Panel>
                                         </div>
-
+                                        
                                         <asp:SqlDataSource ID="SqlDataSource1" runat="server"
                                             ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
                                             SelectCommand="SELECT DISTINCT M.ID, M.MaterialName FROM Materials AS M INNER JOIN MaterialInStock AS MS 

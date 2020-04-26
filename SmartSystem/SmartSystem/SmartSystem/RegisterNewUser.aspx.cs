@@ -17,18 +17,19 @@ namespace SmartSystem.Login
         Entities db = new Entities();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!User.IsInRole("Management"))
-            //{
+            if (!Roles.IsUserInRole(User.Identity.Name, "Management") &&
+             !Roles.IsUserInRole(User.Identity.Name, "SystemAdmin"))
+            {
+                Logger log = new Logger();
+                log.ActionDate = DateTime.Now;
+                log.ActionType = "Authorization";
+                log.UserName = User.Identity.Name;
+                log.Action = "User tried to access New User Data Page";
+                db.Loggers.Add(log);
+                db.SaveChanges();
 
-            //    Logger log = new Logger();
-            //    log.ActionDate = DateTime.Now;
-            //    log.ActionType = "Authorization";
-            //    log.UserName = User.Identity.Name;
-            //    log.Action = "User tried to access User Registration Page";
-            //    db.Loggers.Add(log);
-            //    db.SaveChanges();
-            //    Response.Redirect("Unauthorized.aspx");
-            //}
+                Response.Redirect("Unauthorized.aspx");
+            }
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -12,21 +13,25 @@ namespace SmartSystem
         Entities db = new Entities();
         protected void Page_Load(object sender, EventArgs e)
         {
-        //    if (!User.IsInRole("StockManager") || !User.IsInRole("Management"))
-        //    {
 
-        //        Logger log = new Logger();
-        //        log.ActionDate = DateTime.Now;
-        //        log.ActionType = "Authorization";
-        //        log.UserName = User.Identity.Name;
-        //        log.Action = "User tried to access Internal Orders Page";
+            if (!Roles.IsUserInRole(User.Identity.Name, "Management") &&
+              !Roles.IsUserInRole(User.Identity.Name, "StoreManager"))
+            {
+                Logger log = new Logger();
+                log.ActionDate = DateTime.Now;
+                log.ActionType = "Authorization";
+                log.UserName = User.Identity.Name;
+                log.Action = "User tried to access Materials Update Data Page";
+                db.Loggers.Add(log);
+                db.SaveChanges();
 
-        //        db.Loggers.Add(log);
-        //        db.SaveChanges();
-        //        Response.Redirect("Unauthorized.aspx");
-        //    }
-
-            pnlMaterialData.Visible = false;
+                Response.Redirect("Unauthorized.aspx");
+            }
+            else
+            {
+                pnlMaterialData.Visible = false;
+            }
+         
         }
 
         protected void btnUpdateMaterial_Click(object sender, EventArgs e)
