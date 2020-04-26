@@ -15,8 +15,8 @@ namespace SmartSystem
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Roles.IsUserInRole(User.Identity.Name, "SystemAdmin") &&
-         !Roles.IsUserInRole(User.Identity.Name, "Management") &&
-         !Roles.IsUserInRole(User.Identity.Name, "StoreManager"))
+                !Roles.IsUserInRole(User.Identity.Name, "Management") &&
+                !Roles.IsUserInRole(User.Identity.Name, "StoreManager"))
             {
                 Logger log = new Logger();
                 log.ActionDate = DateTime.Now;
