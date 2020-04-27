@@ -251,9 +251,7 @@ namespace SmartSystem
                     {
                         NewStore();
                     }
- 
                 }
-
             }
             catch (Exception ex)
             {
@@ -268,7 +266,7 @@ namespace SmartSystem
             Store u = new Store();
             u.StoreName = txtNewStore.Value;
             u.IsActive = true;
-            u.StoreNumber = db.Stores.Max(x => x.ID) + 1;
+            
             if (txtStoreLocation.Value == null || txtStoreLocation.Value == String.Empty)
                 u.StoreLocation = "";
             else
@@ -277,6 +275,9 @@ namespace SmartSystem
             db.Stores.Add(u);
             db.SaveChanges();
 
+            var s = db.Stores.Where(x => x.StoreName == txtNewStore.Value.ToString()).FirstOrDefault();
+            s.StoreNumber = s.ID;
+            db.SaveChanges();
 
             Logger log = new Logger();
             log.ActionDate = DateTime.Now;
