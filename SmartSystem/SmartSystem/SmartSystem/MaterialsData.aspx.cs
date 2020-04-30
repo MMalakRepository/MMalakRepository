@@ -44,13 +44,25 @@ namespace SmartSystem
             var oldsafetystock = Ms.SafetyStock.ToString();
             var oldreserved = Ms.ReservedStock.ToString();
             decimal newstock = Convert.ToDecimal(txtstock.Value);
+            string oldname = Ms.Material.MaterialName.ToString();
+            string newname = itemname.Value.ToString();
+            int oldtype = Convert.ToInt32(Ms.Material.TypeID);
+            string oldtypename = Ms.Material.SubCategory.SubCategoryName.ToString();
+            int newtype = Convert.ToInt32(materialcategory.SelectedValue);
 
             try
             {
                 Ms.ReservedStock = Convert.ToDecimal(txtReservedStock.Value);
                 Ms.StockOnHand = Convert.ToDecimal(txtstock.Value);
                 Ms.SafetyStock = Convert.ToDecimal(SafetyStock.Value);
+                if (oldname != newname)
+                    Ms.Material.MaterialName = newname;
+
+                if (oldtype != newtype)
+                    Ms.Material.TypeID = newtype;
+
                 db.SaveChanges();
+                dsMaterials.DataBind();
                 lblError.Text = "The Material Data Updated Successfully";
                 lblError.Visible = true;
                 lblError.ForeColor = System.Drawing.Color.Green;
@@ -72,9 +84,23 @@ namespace SmartSystem
                 db.StockLoggers.Add(stLog);
                 db.SaveChanges();
 
+                
                 Logger Log = new Logger();
                 Log.ActionType = "Update Material";
-                Log.Action = "Material " + Ms.Material.MaterialName + " Stock in Store " + Ms.Store.StoreName + " is ( "+txtstock.Value.ToString()+" ) And Safety Stock is ( " + SafetyStock.Value.ToString() + " ) ";
+                string Action = "Material ( " + Ms.Material.MaterialName + " ) Stock in Store ( " + Ms.Store.StoreName + " ) is ( " + txtstock.Value.ToString() + " ) And Safety Stock is ( " + SafetyStock.Value.ToString() + " ) ";
+                if(oldname == newname)
+                {
+                    Log.Action =  Action;
+                }
+                else 
+                {
+                    Log.Action = Action + " and Material Name Changed From ( '" + oldname + "' ) To ( '" + newname + "' ) ";
+                }
+
+                if (oldtype != newtype)
+                    Log.Action += " and Category changed from ( '" + oldtypename + "' ) To ('" + materialcategory.SelectedItem.ToString() + "') )";
+                
+                
                 Log.UserName = User.Identity.Name;
                 Log.ActionDate = DateTime.Now;
                 db.Loggers.Add(Log);
@@ -90,7 +116,7 @@ namespace SmartSystem
                     MH.UserName = User.Identity.Name;
                     MH.NewStock = Convert.ToDecimal(txtstock.Value);
                     MH.OldStock = Convert.ToDecimal(OldStock);
-                    MH.Note = "Material " + Ms.Material.MaterialName + " Stock is now updated in Store " + storeid.ToString();
+                    MH.Note = "Material ( " + Ms.Material.MaterialName + " ) Stock is now updated in Store " + Ms.Store.StoreName.ToString();
                     db.MaterialHistories.Add(MH);
                     db.SaveChanges();
                 }
@@ -127,6 +153,8 @@ namespace SmartSystem
             txtReservedStock.Value = Ms.ReservedStock.ToString();
             SafetyStock.Value = Ms.SafetyStock.ToString();
             materialimg.Src = Ms.Material.imagepath;
+            //materialcategory.SelectedValue = "1";
+            materialcategory.SelectedIndex = materialcategory.Items.IndexOf(materialcategory.Items.FindByValue(Ms.Material.TypeID.ToString()));
 
             pnlMaterialData.Visible = true;
         }

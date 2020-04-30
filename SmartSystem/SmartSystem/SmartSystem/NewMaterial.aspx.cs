@@ -220,6 +220,13 @@ namespace SmartSystem
                     db.SaveChanges();
                     uploadimage();
 
+                    Logger log = new Logger();
+                    log.UserName = User.Identity.Name;
+                    log.Action = "New Material " + itemname.Value.ToString() + " is added successfully ";
+                    log.ActionType = "New Material";
+                    log.ActionDate = DateTime.Now;
+                    db.Loggers.Add(log);
+                    db.SaveChanges();
 
                     selectitem.Items.Clear();
                     ListItem item = new ListItem();

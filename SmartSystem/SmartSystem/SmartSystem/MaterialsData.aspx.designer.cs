@@ -94,13 +94,22 @@ namespace SmartSystem {
         protected global::System.Web.UI.HtmlControls.HtmlInputText SafetyStock;
         
         /// <summary>
-        /// txtReservedStock control.
+        /// materialcategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtReservedStock;
+        protected global::System.Web.UI.WebControls.DropDownList materialcategory;
+        
+        /// <summary>
+        /// ldsCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource ldsCategory;
         
         /// <summary>
         /// btnCancel control.
@@ -119,6 +128,15 @@ namespace SmartSystem {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnUpdateMaterial;
+        
+        /// <summary>
+        /// txtReservedStock control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtReservedStock;
         
         /// <summary>
         /// lblError control.

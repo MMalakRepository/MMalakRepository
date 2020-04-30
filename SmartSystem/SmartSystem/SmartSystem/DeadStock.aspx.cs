@@ -106,7 +106,14 @@ namespace SmartSystem
             db.MaterialHistories.Add(MH);
             db.SaveChanges();
 
-
+            Logger log = new Logger();
+            log.UserName = User.Identity.Name;
+            log.Action = @"New Dead Material of ( " + selectitem.SelectedItem.ToString() + " ) is added successfully to " +
+                "store( " + SelectStores.SelectedItem.ToString() + " ) With Height " + Sheight.Value.ToString() + " and Width " + SWidth.Value.ToString();
+            log.ActionType = "New DeadMaterial";
+            log.ActionDate = DateTime.Now;
+            db.Loggers.Add(log);
+            db.SaveChanges();
 
             LblError.Text = "New Dead Material is added Successfully";
             LblError.Visible = true;

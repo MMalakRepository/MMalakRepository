@@ -51,7 +51,7 @@ namespace SmartSystem
             }
             catch (Exception ex)
             {
-                LblError.Text = "Error In CuttingList Material , The Error is " + ex.InnerException.InnerException.Message;
+                LblError.Text = "Error In CuttingList Material , The Error is " + ex.InnerException.Message;
                 LblError.Visible = true;
                 LblError.ForeColor = System.Drawing.Color.Red;
             }
@@ -97,6 +97,16 @@ namespace SmartSystem
 
             db.CuttingListsMaterials.Add(DM);
             db.SaveChanges();
+
+            Logger log = new Logger();
+            log.UserName = User.Identity.Name;
+            log.Action = @"New Cutting List of ( " + selectitem.SelectedItem.ToString()  + " ) is added successfully to " +
+                "store( "+ SelectStores.SelectedItem.ToString() + " ) With Height " + Sheight.Value.ToString() + " and Width "+ SWidth.Value.ToString();
+            log.ActionType = "New CuttingList";
+            log.ActionDate = DateTime.Now;
+            db.Loggers.Add(log);
+            db.SaveChanges();
+
 
             LblError.Text = "New Cutting List Material is added Successfully";
             LblError.Visible = true;

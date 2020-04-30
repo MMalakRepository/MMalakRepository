@@ -8,7 +8,6 @@
 
         .containData {
             display: flex;
-
         }
 
 
@@ -68,11 +67,11 @@
                                             <div class="row">
 
                                                 <div class="form-group col-md-4">
-                                                    <label for="Store">Select Store </label>
+                                                    <label for="Store">أختار المخزن </label>
                                                     <asp:DropDownList ToolTip="أختار المخزن" CssClass="form-control" ID="dsStores" DataSourceID="STORES" DataTextField="STORENAME" DataValueField="STORENUMBER" runat="server" AutoPostBack="True"></asp:DropDownList>
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="selectitem">Select Material</label>
+                                                    <label for="selectitem">أختار الصنف</label>
                                                     <asp:DropDownList ToolTip="أختار الصنف" ID="dsMaterials" DataSourceID="ldsitems" DataTextField="MaterialName" DataValueField="ID" CssClass="form-control" runat="server"></asp:DropDownList>
                                                 </div>
                                                 <div class="form-group col-md-4">
@@ -82,44 +81,53 @@
                                             <asp:Panel ID="pnlMaterialData" runat="server">
                                                 <div class="containData col-md-12">
                                                     <div class="d-sm-none d-md-block d-lg-block d-xl-block col-lg-4 col-md-12 demobile">
-                                                        <img id="materialimg" name="materialimg" src="./Images/Delete.png" alt="Item doesn't have Image" style="max-height: 100%; max-width: 100%;height:250px;width:400px;" runat="server" />
+                                                        <img id="materialimg" name="materialimg" src="./Images/Delete.png" alt="Item doesn't have Image" style="max-height: 100%; max-width: 100%; height: 250px; width: 400px;" runat="server" />
                                                     </div>
-                                                <%--    <div class="col-md-2"></div>--%>
+                                                    <%--    <div class="col-md-2"></div>--%>
                                                     <div class="col-md-6">
                                                         <div class="row">
-                                                            <div class="form-group col-md-6 ">
-                                                                <label for="itemdesc">Name</label>
-                                                                <input type="text" disabled title="أسم الصنف" class="form-control" id="itemname" name="itemdesc" runat="server" placeholder="Enter Material Name">
+                                                            <div class="form-group col-md-8 ">
+                                                                <label for="itemdesc">أسم الصنف</label>
+                                                                <input type="text" title="أسم الصنف" class="form-control" id="itemname" name="itemdesc" runat="server" placeholder="Enter Material Name">
                                                             </div>
                                                         </div>
 
                                                         <div class="row">
-                                                            <div class="form-group col-md-3">
-                                                                <label for="txtstock">Stock</label>
+                                                            <div class="form-group col-md-4">
+                                                                <label for="txtstock">الرصيد المتاح</label>
                                                                 <input type="text" title="الكمية داخل المخزن" class="form-control" id="txtstock" name="Stock" runat="server">
                                                             </div>
 
-                                                            <div class="form-group col-md-3">
-                                                                <label for="SafetyStock">Safety Stock</label>
+                                                            <div class="form-group col-md-4">
+                                                                <label for="SafetyStock">رصيد الأمان</label>
                                                                 <input type="text" title=" مخزون الأمان" class="form-control" id="SafetyStock" name="SafetyStock" runat="server">
                                                             </div>
-                                                            <div class="form-group col-md-3" style="visibility: hidden">
-                                                                <label for="txtReservedStock">Reserved Stock</label>
-                                                                <input type="text" title="الكمية المحجوزة داخل المخزن" class="form-control" id="txtReservedStock" name="ReservedStock" runat="server">
+                                                             <div class="form-group col-md-4">
+                                                                <label for="materialcategory">نوع الصنف</label>
+                                                                <asp:DropDownList ToolTip="أختر نوع الصنف" CssClass="form-control" ID="materialcategory"
+                                                                    DataSourceID="ldsCategory" runat="server" AutoPostBack="false"
+                                                                    DataTextField="SubCategoryName" DataValueField="ID">
+                                                                </asp:DropDownList>
+                                                                <asp:SqlDataSource ID="ldsCategory" runat="server" ConnectionString="<%$ ConnectionStrings:SmartShutterConnectionString %>"
+                                                                    SelectCommand="SELECT * from SubCategories order by SubCategoryName ASC"></asp:SqlDataSource>
                                                             </div>
+                                                           
+                                                           
                                                         </div>
 
                                                         <div class="row">
                                                             <%--<div class="form-group col-md-3"></div>--%>
-
-                                                            <div class="form-group col-md-3">
-                                                                <asp:Button ID="btnCancel" Width="100%" ToolTip="ألغاء تعديل البيانات" CssClass="btn btn-danger float-right m80" runat="server" Text="Cancel" OnClick="btnCancel_Click" />
+                                                            <div class="form-group col-md-4">
+                                                                <asp:Button ID="btnCancel" Width="100%" ToolTip="ألغاء تعديل البيانات" CssClass="btn btn-danger float-right m80" runat="server" Text="ألغاء" OnClick="btnCancel_Click" />
                                                             </div>
 
-                                                            <div class="form-group col-md-3">
-                                                                <asp:Button ID="btnUpdateMaterial" Width="100%" ToolTip="تعديل مخزون الصنف" CssClass="btn btn-success float-right m80" runat="server" Text="Update Stock" OnClick="btnUpdateMaterial_Click" />
+                                                            <div class="form-group col-md-4">
+                                                                <asp:Button ID="btnUpdateMaterial" Width="100%" ToolTip="تعديل مخزون الصنف" CssClass="btn btn-success float-right m80" runat="server" Text="تعديل البيانات" OnClick="btnUpdateMaterial_Click" />
                                                             </div>
-                                                            <div class="form-group col-md-3"></div>
+                                                            <div class="form-group col-md-4" style="visibility: hidden">
+                                                                <label for="txtReservedStock">Reserved Stock</label>
+                                                                <input type="text" title="الكمية المحجوزة داخل المخزن" class="form-control" id="txtReservedStock" name="ReservedStock" runat="server">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
